@@ -1,26 +1,41 @@
 @import "tailwindcss";
 
+/* docs/agents/06-web-design-trend-agent.md 디자인 토큰 초안 반영 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafaf7;
+  --foreground: #14181a;
+  --color-primary: #2f6f4f;
+  --color-accent: #f2a65a;
+  --color-card: #ffffff;
+  --color-border: #e5e3dd;
+  --color-muted: #6b7280;
+  --radius-card: 16px;
+  --radius-button: 999px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--color-primary);
+  --color-accent: var(--color-accent);
+  --color-card: var(--color-card);
+  --color-border: var(--color-border);
+  --color-muted: var(--color-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #14181a;
     --foreground: #ededed;
+    --color-card: #1c2124;
+    --color-border: #2a3033;
+    --color-muted: #9aa4ab;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
