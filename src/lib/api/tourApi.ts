@@ -103,7 +103,7 @@ function toPlace(item: TourApiItem, category: Category): Place | null {
 }
 
 // docs/agents/02-place-retrieval-agent.md
-// "자체 캐시 DB 조회... 없으면 외부 API 폴백" — MOCK_PLACES가 캐시 역할을
+// "자체 캐시 DB 조회... 없으면 외부 API 폴백" — 스냅샷(src/lib/data/places.json)이 캐시 역할을
 // 하고, 후보가 부족할 때만 이 함수로 실제 데이터를 보충한다.
 export async function searchTourApiPlaces(params: {
   category: Category;

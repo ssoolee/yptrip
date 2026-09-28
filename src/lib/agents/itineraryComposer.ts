@@ -31,6 +31,18 @@ export async function composeItinerary(params: {
   const usedPlaceIds = params.usedPlaceIds ?? new Set<string>();
   const days: ItineraryDay[] = [];
 
+  // 한 코스가 카테고리마다 쓰는 슬롯 수(예: 2일 코스의 카페 2곳). 코스 offset을
+  // 이만큼씩 건너뛰어야 다음 코스가 이전 코스의 후보를 다시 쓰지 않는다 —
+  // offset을 1씩만 밀면 코스 N의 두 번째 카페가 코스 N+1의 첫 카페가 된다.
+  const slotsPerCategory = new Map<Category, number>();
+  for (let day = 1; day <= durationDays; day++) {
+    const template = DAY_TEMPLATES[Math.min(day - 1, DAY_TEMPLATES.length - 1)];
+    for (const slot of template) {
+      if (day === durationDays && slot.skipOnLastDay) continue;
+      slotsPerCategory.set(slot.category, (slotsPerCategory.get(slot.category) ?? 0) + 1);
+    }
+  }
+
   for (let day = 1; day <= durationDays; day++) {
     const isLastDay = day === durationDays;
     const template = DAY_TEMPLATES[Math.min(day - 1, DAY_TEMPLATES.length - 1)];
@@ -44,7 +56,7 @@ export async function composeItinerary(params: {
         requirePetFriendly,
         excludePlaceIds: Array.from(usedPlaceIds),
         count: 1,
-        offset,
+        offset: offset * (slotsPerCategory.get(slot.category) ?? 1),
       });
       if (!candidate) continue;
       usedPlaceIds.add(candidate.placeId);

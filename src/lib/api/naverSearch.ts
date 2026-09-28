@@ -89,6 +89,7 @@ function toPlace(item: NaverLocalItem, category: Category): Place | null {
     placeId: `naver_${item.mapx}_${item.mapy}`,
     name,
     category,
+    categoryLabel: item.category || undefined,
     lat,
     lng,
     address,

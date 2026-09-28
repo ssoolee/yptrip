@@ -1,85 +1,13 @@
-"use client";
+import MapScreen from "@/components/MapScreen";
+import { MapStop } from "@/components/NaverMapView";
+import { SNAPSHOT_PLACES } from "@/lib/data/placeSnapshot";
 
-import { useMemo, useState } from "react";
-import { useSyncExternalStore } from "react";
-import {
-  getFavoritesServerSnapshot,
-  getFavoritesSnapshot,
-  subscribeFavorites,
-} from "@/lib/favorites";
-import { MOCK_PLACES } from "@/lib/mock/places";
-import NaverMapView, { MapStop } from "@/components/NaverMapView";
-
-// docs/prd/02-map-realtime-location-prd.md 참조.
-// 코스별 상세 화면이 아직 없어, 우선 "찜한 코스"를 골라 지도로 보는 형태로
-// 연동한다. 찜한 코스가 없으면 양평 주요 스팟 전체를 오버뷰로 보여준다.
+// 찜한 코스가 없을 때 보여줄 양평 주요 관광지 — 스냅샷(인기순) 중 태그가 붙은
+// 관광지 상위 10곳. 스냅샷 전체가 클라이언트 번들에 들어가지 않도록 서버에서 고른다.
 export default function MapPage() {
-  const favorites = useSyncExternalStore(
-    subscribeFavorites,
-    getFavoritesSnapshot,
-    getFavoritesServerSnapshot,
-  );
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const selected = favorites.find((f) => f.courseId === selectedId) ?? favorites[0];
+  const overviewStops: MapStop[] = SNAPSHOT_PLACES.filter((p) => p.category === "attraction" && p.tags.length > 0)
+    .slice(0, 10)
+    .map((p, i) => ({ lat: p.lat, lng: p.lng, name: p.name, order: i + 1 }));
 
-  const { stops, showRoute, subtitle } = useMemo(() => {
-    if (selected) {
-      const courseStops: MapStop[] = selected.itinerarySnapshot.days
-        .flatMap((d) => d.stops)
-        .map((s, i) => ({ lat: s.lat, lng: s.lng, name: s.name, order: i + 1 }));
-      return { stops: courseStops, showRoute: true, subtitle: selected.title };
-    }
-    const overviewStops: MapStop[] = MOCK_PLACES.slice(0, 10).map((p, i) => ({
-      lat: p.lat,
-      lng: p.lng,
-      name: p.name,
-      order: i + 1,
-    }));
-    return { stops: overviewStops, showRoute: false, subtitle: "양평 주요 스팟 (찜한 코스가 없어 전체 보기)" };
-  }, [selected]);
-
-  return (
-    <div className="mx-auto max-w-2xl px-4 pb-6 pt-6">
-      <h1 className="mb-1 text-lg font-bold">🗺️ 지도</h1>
-      <p className="mb-4 text-sm text-[var(--color-muted)]">{subtitle}</p>
-
-      {favorites.length > 1 && (
-        <select
-          value={selected?.courseId ?? ""}
-          onChange={(e) => setSelectedId(e.target.value)}
-          className="mb-4 w-full rounded-[var(--radius-button)] border border-[var(--color-border)] bg-[var(--color-card)] px-3 py-2 text-sm"
-        >
-          {favorites.map((f) => (
-            <option key={f.courseId} value={f.courseId}>
-              {f.title}
-            </option>
-          ))}
-        </select>
-      )}
-
-      <NaverMapView stops={stops} showRoute={showRoute} />
-
-      <ul className="mt-4 space-y-2">
-        {stops.map((stop) => (
-          <li
-            key={`${stop.order}-${stop.name}`}
-            className="flex items-center justify-between gap-2 rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-card)] px-4 py-2.5 text-sm"
-          >
-            <span>
-              <span className="mr-2 text-[var(--color-muted)]">{stop.order}</span>
-              {stop.name}
-            </span>
-            <a
-              href={`https://map.naver.com/p/search/${encodeURIComponent(stop.name)}`}
-              target="_blank"
-              rel="noreferrer"
-              className="shrink-0 text-xs font-semibold text-[var(--color-primary)]"
-            >
-              길찾기 →
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <MapScreen overviewStops={overviewStops} />;
 }

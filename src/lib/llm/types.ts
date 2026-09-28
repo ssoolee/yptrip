@@ -10,6 +10,9 @@ export interface LlmRequest {
   // true면 JSON 객체만 반환하도록 공급자별 JSON 모드를 켠다.
   json?: boolean;
   maxTokens?: number;
+  // 시도 1회당 대기 상한. 사용자 요청 경로는 기본값(짧게)을 쓰고, 오프라인
+  // 배치 작업(scripts/build-places.ts)처럼 출력이 긴 호출만 늘린다.
+  timeoutMs?: number;
 }
 
 export interface LlmProvider {

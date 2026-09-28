@@ -1,35 +1,35 @@
-import { MOCK_PLACES } from "@/lib/mock/places";
+import { SNAPSHOT_PLACES } from "@/lib/data/placeSnapshot";
 import { getActiveFestivals, searchTourApiPlaces } from "@/lib/api/tourApi";
 import { searchNaverPlaces } from "@/lib/api/naverSearch";
 import { Category, Place } from "@/types/travel";
 
-// TourAPI에서 한 번에 가져올 카테고리별 후보 풀 크기. 목업(카테고리당
-// 2~5개)이 소진된 뒤에도 "더 보기"가 매번 새 실제 장소를 보여줄 수 있도록
-// 넉넉하게 가져온다 (Next.js fetch 캐시로 동일 카테고리 재호출은 저렴함).
+// 스냅샷 이후 새로 등록된 장소도 후보에 들 수 있도록 실시간으로 조회할 TourAPI
+// 카테고리별 개수 (Next.js fetch 캐시로 동일 카테고리 재호출은 저렴함).
 const TOUR_API_POOL_SIZE = 24;
 
 function normalizeName(name: string): string {
   return name.replace(/\s+/g, "").toLowerCase();
 }
 
+// 스냅샷에 있는 장소는 실시간 결과에서 다시 넣지 않는다. 같은 업체가 네이버/TourAPI에
+// 다른 ID로 있을 수 있어 이름으로도 비교한다 — 이미 코스에 쓰여 제외된 장소가
+// 다른 출처의 ID로 다시 들어와 같은 코스에 두 번 나오는 것을 막는다.
+const SNAPSHOT_IDS = new Set(SNAPSHOT_PLACES.map((p) => p.placeId));
+const SNAPSHOT_NAMES = new Set(SNAPSHOT_PLACES.map((p) => normalizeName(p.name)));
+
 function scorePlace(place: Place, tags: string[]): number {
-  return place.tags.reduce((acc, t) => acc + (tags.includes(t) ? 1 : 0), 0) + (place.rating ?? 0) / 10;
+  return place.tags.reduce((acc, t) => acc + (tags.includes(t) ? 1 : 0), 0);
 }
 
 // docs/agents/02-place-retrieval-agent.md 참조.
-// MOCK_PLACES를 "자체 캐시 DB(취향 태그 큐레이션 우선순위)"로 쓰고, 그
-// 뒤에 실데이터(음식점/카페는 네이버 지역 검색 → TourAPI, 그 외는 TourAPI)를
-// 이어 붙여 후보 풀을 구성한다. 목업은 태그 점수순으로 앞에 오고, 실데이터
-// 항목은 태그가 없어 항상 그 뒤에 온다 — 그래서 offset이 작을 땐 큐레이션된
-// 목업이, offset이 목업 개수를 넘어서면(예: "더 보기" 반복 클릭) 실제 장소가
-// 노출된다.
+// 후보 풀 = ① 스냅샷(src/lib/data/places.json — LLM 태그가 붙은 실제 장소)을
+// 취향 태그 점수순으로, 점수가 같으면 원래 순서(네이버 리뷰 많은 순/TourAPI 인기순)대로
+// ② 진행 중 축제(festival 프리셋) ③ 스냅샷에 없는 실시간 조회 결과(태그 없음).
+// offset은 "더 보기" 요청 시 다른 후보를 앞으로 돌리는 데 쓴다.
 //
-// 반려동물 동반 여부는 네이버 검색·TourAPI 기본 목록으로 검증할 수 없어(detailPetTour2
-// 별도 호출 필요) requirePetFriendly 조건에서는 목업 데이터만 사용한다.
-// detailPetTour2를 양평군 표본으로 실제 호출해본 결과 등록된 반려동물
-// 동반 업체가 전무해(PRD-07 §5 오픈 이슈에서 우려한 커버리지 문제가
-// 실제로 확인됨) 지금 연동해도 얻을 데이터가 없다 — 향후 등록 현황이
-// 바뀌면 재검토.
+// 반려동물 동반은 스냅샷에서 소개글에 동반 가능이 명시된 곳(petFriendly)만 쓴다.
+// 실시간 조회 결과는 동반 여부를 검증할 수 없어 제외한다. (TourAPI detailPetTour2는
+// 양평군 표본 조회 결과 등록 업체가 전무해 쓰지 않는다 — PRD-07 §5 오픈 이슈.)
 export async function retrievePlaces(params: {
   category: Category;
   tags: string[];
@@ -39,37 +39,35 @@ export async function retrievePlaces(params: {
   offset?: number;
 }): Promise<Place[]> {
   const { category, tags, excludePlaceIds = [], requirePetFriendly, count = 3, offset = 0 } = params;
+  const excluded = new Set(excludePlaceIds);
 
-  const scoredMock = MOCK_PLACES.filter((p) => p.category === category)
-    .filter((p) => !excludePlaceIds.includes(p.placeId))
+  const scored = SNAPSHOT_PLACES.filter((p) => p.category === category)
+    .filter((p) => !excluded.has(p.placeId))
     .filter((p) => (requirePetFriendly ? p.petFriendly === true : true))
     .map((place) => ({ place, score: scorePlace(place, tags) }));
 
-  // "festival" 프리셋(관광지 카테고리)은 TourAPI searchFestival2의 실제
-  // 진행 중 축제를 후보에 섞어 목업 축제 태그와 동일한 기준으로 경쟁시킨다.
-  // docs/prd/07-external-api-integration.md §3의 "축제 캘린더 데이터 소스"
-  // 오픈 이슈 해소책. 현재 진행 중인 축제가 없으면 조용히 건너뛴다.
+  // "festival" 프리셋(관광지 카테고리)은 TourAPI searchFestival2의 실제 진행 중
+  // 축제를 후보에 섞는다 (축제 API가 "festival" 태그를 붙여 줌).
+  // docs/prd/07-external-api-integration.md §3 "축제 캘린더 데이터 소스" 해소책.
   if (category === "attraction" && tags.includes("festival") && !requirePetFriendly) {
     const festivals = await getActiveFestivals();
-    const known = new Set([...excludePlaceIds, ...scoredMock.map((s) => s.place.placeId)]);
+    const known = new Set([...excluded, ...scored.map((s) => s.place.placeId)]);
     for (const festival of festivals) {
       if (known.has(festival.placeId)) continue;
-      scoredMock.push({ place: festival, score: scorePlace(festival, tags) });
+      scored.push({ place: festival, score: scorePlace(festival, tags) });
     }
   }
 
-  const pool = scoredMock.sort((a, b) => b.score - a.score).map((s) => s.place);
+  // Array.prototype.sort는 안정 정렬 — 동점이면 원래 인기순이 유지된다.
+  const pool = scored.sort((a, b) => b.score - a.score).map((s) => s.place);
 
   if (!requirePetFriendly) {
-    // 음식점/카페는 네이버 지역 검색(리뷰 많은 순)을 TourAPI보다 앞에 둔다 —
-    // TourAPI 음식점 목록은 등록 업체 위주라 실제 인기 업체 커버리지가 낮다.
-    // 같은 업체가 양쪽에 있으면 이름(공백 제거)으로 중복을 거른다.
     const [naverCandidates, tourCandidates] = await Promise.all([
       searchNaverPlaces(category),
       searchTourApiPlaces({ category, count: TOUR_API_POOL_SIZE }),
     ]);
-    const knownIds = new Set([...excludePlaceIds, ...pool.map((p) => p.placeId)]);
-    const knownNames = new Set(pool.map((p) => normalizeName(p.name)));
+    const knownIds = new Set([...excluded, ...SNAPSHOT_IDS, ...pool.map((p) => p.placeId)]);
+    const knownNames = new Set([...SNAPSHOT_NAMES, ...pool.map((p) => normalizeName(p.name))]);
     for (const candidate of [...naverCandidates, ...tourCandidates]) {
       const name = normalizeName(candidate.name);
       if (knownIds.has(candidate.placeId) || knownNames.has(name)) continue;
@@ -80,7 +78,6 @@ export async function retrievePlaces(params: {
   }
 
   if (pool.length === 0) return [];
-  // offset을 적용해 "더 보기" 요청 시 다른 후보를 우선 노출 (순환)
   const rotated = [...pool.slice(offset % pool.length), ...pool.slice(0, offset % pool.length)];
   return rotated.slice(0, count);
 }

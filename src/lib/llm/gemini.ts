@@ -27,7 +27,7 @@ const pausedUntil = new Map<string, number>();
 async function callGemini(
   model: string,
   apiKey: string,
-  { system, prompt, json, maxTokens = 2048 }: LlmRequest,
+  { system, prompt, json, maxTokens = 2048, timeoutMs = ATTEMPT_TIMEOUT_MS }: LlmRequest,
 ): Promise<{ text: string | null; retryable: boolean }> {
   if ((pausedUntil.get(model) ?? 0) > Date.now()) return { text: null, retryable: false };
   try {
@@ -42,7 +42,7 @@ async function callGemini(
           ...(json && { responseMimeType: "application/json" }),
         },
       }),
-      signal: AbortSignal.timeout(ATTEMPT_TIMEOUT_MS),
+      signal: AbortSignal.timeout(timeoutMs),
       cache: "no-store",
     });
     if (!res.ok) {

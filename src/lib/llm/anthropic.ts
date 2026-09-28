@@ -14,7 +14,7 @@ function getClient(): Anthropic | null {
 
 export const anthropicProvider: LlmProvider = {
   name: "anthropic",
-  async generateText({ system, prompt, json, maxTokens = 2048 }: LlmRequest) {
+  async generateText({ system, prompt, json, maxTokens = 2048, timeoutMs }: LlmRequest) {
     const anthropic = getClient();
     if (!anthropic) return null;
 
@@ -34,7 +34,7 @@ export const anthropicProvider: LlmProvider = {
             content: json ? `${prompt}\n\nJSON 객체만 출력하세요. 설명이나 코드블록 없이.` : prompt,
           },
         ],
-      });
+      }, timeoutMs ? { timeout: timeoutMs } : undefined);
       if (response.stop_reason === "refusal") return null;
       const text = response.content
         .map((block) => (block.type === "text" ? block.text : ""))
