@@ -44,7 +44,7 @@ export default async function CourseSearchPage({
         )}
         {conditions.requirePetFriendly && (
           <p className="mt-2 text-xs text-[var(--color-muted)]">
-            소개글에 반려동물 동반 가능이 명시된 곳만 담았어요. 방문 전 동반 조건을 꼭 확인하세요.
+            반려동물 동반 가능 업소 현황에 등록됐거나 소개글에 동반 가능이 명시된 곳만 담았어요. 방문 전 동반 조건을 꼭 확인하세요.
           </p>
         )}
         {conditions.tags.length === 0 && !conditions.requirePetFriendly && (

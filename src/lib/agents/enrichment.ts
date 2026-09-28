@@ -65,7 +65,7 @@ export async function enrichCourse(params: {
   const highlight = days[0]?.stops[0]?.name ?? "양평";
   const fallbackTitle = `${label} 코스: ${withJosa(highlight, "와", "과")} 함께하는 ${days.length}일 여행`;
 
-  return { courseId, title: title ?? fallbackTitle, presetType, days };
+  return { courseId, title: title ?? fallbackTitle, presetType, days, source: "generated" };
 }
 
 function truncate(text: string, max: number): string {

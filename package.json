@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "build:places": "tsx scripts/build-places.ts"
+    "build:places": "tsx scripts/build-places.ts",
+    "build:mbti": "tsx scripts/build-mbti-courses.ts",
+    "build:pet": "tsx scripts/build-pet-places.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.128.0",

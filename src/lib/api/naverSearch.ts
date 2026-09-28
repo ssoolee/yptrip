@@ -120,3 +120,14 @@ export async function searchNaverPlaces(category: Category): Promise<Place[]> {
   }
   return [...places.values()];
 }
+
+// 큐레이션 코스(scripts/build-mbti-courses.ts)의 장소 이름으로 양평군 업체 후보를 찾는다.
+// 카테고리는 원천 자료를 따르므로 업종 판별은 하지 않는다. 이름이 다른 업체가 섞여
+// 나오므로(실측: "두물머리" 검색 1위가 다른 카페) 어느 후보를 쓸지는 호출부가 이름으로 고른다.
+export async function searchNaverPlacesByKeyword(query: string, category: Category): Promise<Place[]> {
+  const items = await searchLocal(`양평 ${query}`);
+  return items
+    .filter((i) => `${i.roadAddress} ${i.address}`.includes("양평군"))
+    .map((i) => toPlace(i, category))
+    .filter((p): p is Place => p !== null);
+}

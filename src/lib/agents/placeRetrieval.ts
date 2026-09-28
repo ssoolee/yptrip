@@ -32,7 +32,8 @@ function scorePlace(place: Place, tags: string[]): number {
 // ② 진행 중 축제(festival 프리셋) ③ 스냅샷에 없는 실시간 조회 결과(태그 없음).
 // offset은 "더 보기" 요청 시 다른 후보를 앞으로 돌리는 데 쓴다.
 //
-// 반려동물 동반은 스냅샷에서 소개글에 동반 가능이 명시된 곳(petFriendly)만 쓴다.
+// 반려동물 동반은 스냅샷에서 petFriendly인 곳만 쓴다 — 소개글에 동반 가능이 명시된 곳과
+// "반려동물 동반 가능 업소 현황"에 등록된 곳(src/lib/data/petPlaces.json, 음식점·카페만 있음).
 // 실시간 조회 결과는 동반 여부를 검증할 수 없어 제외한다. (TourAPI detailPetTour2는
 // 양평군 표본 조회 결과 등록 업체가 전무해 쓰지 않는다 — PRD-07 §5 오픈 이슈.)
 export async function retrievePlaces(params: {
