@@ -32,6 +32,8 @@ export interface Place {
 
 export interface ItineraryStop extends Place {
   timeSlot: string;
+  // 큐레이션 코스(src/lib/data/mbtiCourses.json)에서 이 장소를 넣은 이유
+  reason?: string;
 }
 
 export interface ItineraryDay {
@@ -44,6 +46,16 @@ export interface Course {
   title: string;
   presetType: PresetType;
   days: ItineraryDay[];
+  // curated: 미리 만들어 둔 코스, generated: 에이전트 파이프라인이 만든 코스
+  source?: "curated" | "generated";
+}
+
+// MBTI 유형별로 코스와 따로 보여주는 숙소·펜션 추천
+export interface LodgingPick extends Place {
+  lodgingType: string;
+  reason?: string;
+  // 예약 전에 확인할 점 (객실 구성, 포함 시설 등)
+  notice?: string;
 }
 
 export interface PresetDefinition {

@@ -22,7 +22,10 @@ export async function generateCourses(params: {
   const tags = conditions?.tags ?? (presetType === "mbti" ? tagsForMbti(mbti) : preset?.tags ?? []);
   const requirePetFriendly = conditions?.requirePetFriendly ?? presetType === "pet";
   const durationDays = conditions?.durationDays ?? 2;
-  const label = conditions?.companionLabel ?? preset?.label ?? "양평 여행";
+  const label =
+    conditions?.companionLabel ??
+    (presetType === "mbti" && mbti ? `${mbti.toUpperCase()} 성향` : preset?.label) ??
+    "양평 여행";
 
   // 코스별 생성은 서로 독립적이라 병렬로 돌린다 — 특히 enrichment의 LLM 호출이
   // 가끔 수 초씩 지연되는데, 순차 실행하면 그 지연이 코스 수만큼 누적돼

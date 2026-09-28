@@ -139,6 +139,20 @@ export async function searchTourApiPlaces(params: {
     .slice(0, count);
 }
 
+// 큐레이션 코스(scripts/build-mbti-courses.ts)의 장소 이름으로 양평군 TourAPI 항목을 찾는다.
+// 관광지·숙소는 네이버 검색보다 사진·소개글이 있는 TourAPI 결과가 낫다. 키워드가 부분
+// 일치로 검색되므로 어느 후보를 쓸지는 호출부가 이름으로 고른다.
+export async function searchTourApiByKeyword(keyword: string, category: Category): Promise<Place[]> {
+  const items = await callTourApi("searchKeyword2", {
+    keyword,
+    areaCode: AREA_CODE,
+    sigunguCode: SIGUNGU_CODE,
+    numOfRows: "10",
+    pageNo: "1",
+  });
+  return items.map((item) => toPlace(item, category)).filter((p): p is Place => p !== null);
+}
+
 // docs/prd/07-external-api-integration.md §3 "축제 캘린더 데이터 소스" 오픈
 // 이슈 해소용 — TourAPI searchFestival2로 오늘 이후 진행되는 양평군 축제를
 // 조회한다. contentTypeId=15(축제/공연/행사)로 반환되며, 관광지(attraction)

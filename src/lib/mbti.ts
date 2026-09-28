@@ -1,4 +1,8 @@
+import curation from "@/lib/data/mbtiCourses.json";
+import { Course, LodgingPick } from "@/types/travel";
+
 // docs/prd/01-ai-course-recommendation-prd.md §3.1 MBTI-취향 매핑표
+// "더 보기"로 추가 생성하는 코스(에이전트 파이프라인)의 취향 태그로 쓴다.
 const MBTI_TAG_MAP: Record<string, string[]> = {
   E: ["activity", "lively_food", "group"],
   I: ["quiet_cafe", "nature", "healing"],
@@ -18,4 +22,35 @@ export function tagsForMbti(mbti?: string): string[] {
     for (const tag of MBTI_TAG_MAP[letter]) tags.add(tag);
   }
   return tags.size > 0 ? Array.from(tags) : ["nature", "aesthetic"];
+}
+
+// 16유형을 흔히 쓰는 4개 기질 그룹으로 묶어 버튼 화면에 보여준다.
+export const MBTI_GROUPS: { label: string; types: string[] }[] = [
+  { label: "분석가형", types: ["INTJ", "INTP", "ENTJ", "ENTP"] },
+  { label: "외교관형", types: ["INFJ", "INFP", "ENFJ", "ENFP"] },
+  { label: "관리자형", types: ["ISTJ", "ISFJ", "ESTJ", "ESFJ"] },
+  { label: "탐험가형", types: ["ISTP", "ISFP", "ESTP", "ESFP"] },
+];
+
+export const MBTI_TYPES = MBTI_GROUPS.flatMap((g) => g.types);
+
+export function isMbtiType(value: string): boolean {
+  return MBTI_TYPES.includes(value);
+}
+
+export interface MbtiCuration {
+  summary?: string;
+  courses: Course[];
+  lodging: LodgingPick[];
+}
+
+// scripts/build-mbti-courses.ts(npm run build:mbti)가 만든 유형별 큐레이션 코스.
+// 해당 유형 자료가 아직 없으면 빈 값 — 화면은 자동 생성 코스로 대체한다.
+export function getMbtiCuration(type: string): MbtiCuration {
+  const entry = (curation.types as Record<string, Partial<MbtiCuration>>)[type];
+  return {
+    summary: entry?.summary,
+    courses: entry?.courses ?? [],
+    lodging: entry?.lodging ?? [],
+  };
 }

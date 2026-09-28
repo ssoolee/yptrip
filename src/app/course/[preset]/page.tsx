@@ -28,11 +28,7 @@ export default async function CoursePresetPage({
         </h1>
         <p className="text-sm text-[var(--color-muted)]">{presetDef.description}</p>
       </div>
-      <CourseResults
-        presetType={presetType}
-        initialCourses={initialCourses}
-        showMbtiInput={presetType === "mbti"}
-      />
+      <CourseResults presetType={presetType} initialCourses={initialCourses} />
     </div>
   );
 }
