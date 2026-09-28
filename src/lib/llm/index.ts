@@ -26,6 +26,7 @@ export async function generateJson<T>(req: Omit<LlmRequest, "json">): Promise<T 
   try {
     return JSON.parse(cleaned) as T;
   } catch {
+    console.warn(`[llm] JSON 파싱 실패: ${cleaned.slice(0, 80)}`);
     return null;
   }
 }

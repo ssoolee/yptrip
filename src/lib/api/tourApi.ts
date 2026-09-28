@@ -167,9 +167,13 @@ export async function getActiveFestivals(count = 10): Promise<Place[]> {
 
 // docs/agents/05-enrichment-presentation-agent.md — 사진/개요 보강용.
 // TourAPI 출처 장소(placeId가 "tour_"로 시작)에만 사용한다.
+// 원문 전체를 반환한다 — 길이 조절은 호출부(LLM 요약 또는 잘라내기)가 맡는다.
 export async function getTourApiOverview(contentId: string): Promise<string | undefined> {
   const items = await callTourApi("detailCommon2", { contentId });
-  const overview = items[0]?.overview;
-  if (!overview) return undefined;
-  return overview.length > 120 ? `${overview.slice(0, 120)}…` : overview;
+  const overview = items[0]?.overview
+    ?.replace(/<br\s*\/?>/gi, " ")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  return overview || undefined;
 }

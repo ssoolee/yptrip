@@ -19,9 +19,14 @@ export default function CourseCard({ course }: { course: Course }) {
         <p className="mb-3 text-xs text-[var(--color-muted)]">{course.days.length}일 코스</p>
         <ul className="space-y-1 text-sm">
           {previewStops.map((stop) => (
-            <li key={stop.placeId} className="flex items-center gap-2">
-              <span className="text-[var(--color-muted)]">{stop.timeSlot}</span>
-              <span>{stop.name}</span>
+            <li key={stop.placeId}>
+              <div className="flex items-center gap-2">
+                <span className="text-[var(--color-muted)]">{stop.timeSlot}</span>
+                <span>{stop.name}</span>
+              </div>
+              {stop.reviewSummary && (
+                <p className="line-clamp-1 text-xs text-[var(--color-muted)]">{stop.reviewSummary}</p>
+              )}
             </li>
           ))}
         </ul>
