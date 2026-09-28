@@ -16,6 +16,7 @@ export const PLACE_TAGS = {
   lively_food: "여럿이 떠들썩하게 먹기 좋은 식당 (고기구이·바비큐 등)",
   group: "단체 방문에 적합",
   local_food: "양평 향토·지역 음식",
+  indoor: "실내 위주라 비 오는 날에도 좋은 곳",
 } as const;
 
 export type PlaceTag = keyof typeof PLACE_TAGS;

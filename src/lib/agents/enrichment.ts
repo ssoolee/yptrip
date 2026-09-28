@@ -1,5 +1,4 @@
 import { Course, ItineraryDay, PresetType } from "@/types/travel";
-import { getPreset } from "@/lib/presets";
 import { getTourApiOverview } from "@/lib/api/tourApi";
 import { generateJson } from "@/lib/llm";
 import { courseSignature } from "@/lib/courseSignature";
@@ -17,15 +16,16 @@ const FALLBACK_SUMMARY_LENGTH = 60;
 // LLM 무료 등급의 분당 호출 한도(15 RPM)를 아끼는 핵심 수단이다.
 // 서버 재시작 시 비워지며, Firestore 캐시 도입 전까지의 임시 방편.
 const summaryCache = new Map<string, string>();
-const titleCache = new Map<string, string>(); // key: 코스 서명 + 동행 유형
+const titleCache = new Map<string, string>(); // key: 프리셋 + 동행 표현 + 코스 서명
 
 export async function enrichCourse(params: {
   days: ItineraryDay[];
   presetType: PresetType;
+  // 제목에 쓰는 동행 표현 — 프리셋 이름(예: "연인과 함께") 또는 자연어 해석 결과
+  label: string;
   courseId: string;
 }): Promise<Course> {
-  const { presetType, courseId } = params;
-  const preset = getPreset(presetType);
+  const { presetType, label, courseId } = params;
 
   // placeId → TourAPI 소개 원문 (요약이 아직 없는 TourAPI 장소만)
   const overviews = new Map<string, string>();
@@ -39,12 +39,12 @@ export async function enrichCourse(params: {
       }),
   );
 
-  const titleKey = `${presetType}:${courseSignature(params.days)}`;
+  const titleKey = `${presetType}:${label}:${courseSignature(params.days)}`;
   const cachedTitle = titleCache.get(titleKey);
   const generated =
     cachedTitle && overviews.size === 0
       ? { title: cachedTitle, summaries: {} }
-      : await generateTitleAndSummaries(params.days, preset?.label, overviews);
+      : await generateTitleAndSummaries(params.days, label, overviews);
   // 요약 때문에 다시 호출했더라도 한 번 정해진 제목은 바꾸지 않는다.
   const title = cachedTitle ?? generated?.title;
   if (title) titleCache.set(titleKey, title);
@@ -63,7 +63,7 @@ export async function enrichCourse(params: {
   }));
 
   const highlight = days[0]?.stops[0]?.name ?? "양평";
-  const fallbackTitle = `${preset?.label ?? "양평"} 코스: ${withJosa(highlight, "와", "과")} 함께하는 ${days.length}일 여행`;
+  const fallbackTitle = `${label} 코스: ${withJosa(highlight, "와", "과")} 함께하는 ${days.length}일 여행`;
 
   return { courseId, title: title ?? fallbackTitle, presetType, days };
 }

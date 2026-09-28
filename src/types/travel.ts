@@ -7,7 +7,9 @@ export type PresetType =
   | "friends"
   | "pet"
   | "mbti"
-  | "festival";
+  | "festival"
+  // 자연어 요청으로 만든 코스 (/course/search)
+  | "custom";
 
 export interface Place {
   placeId: string;

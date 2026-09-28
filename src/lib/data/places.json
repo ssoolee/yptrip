@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-28T05:37:37.782Z",
+ "generatedAt": "2026-09-28T05:48:49.838Z",
  "places": [
   {
    "placeId": "tour_129647",
@@ -14,7 +14,7 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%A7%80%ED%8F%89%ED%96%A5%EA%B5%90",
    "tags": [],
-   "reviewSummary": "조선시대 지방 교육기관의 역사를 간직한 지평향교에서 전통 문화를 느껴보세요."
+   "reviewSummary": "조선시대 지방 교육기관이었던 지평향교는 현재 제사 기능을 이어가고 있다."
   },
   {
    "placeId": "tour_2792940",
@@ -32,7 +32,7 @@
     "nature",
     "healing"
    ],
-   "reviewSummary": "개발이 닿지 않은 오지 마을인 명달리계곡에서 태고의 자연 생태를 만나보세요."
+   "reviewSummary": "개발이 닿지 않은 오지인 명달리계곡은 태고의 자연 생태와 야생화를 간직하고 있다."
   },
   {
    "placeId": "tour_129645",
@@ -51,7 +51,7 @@
     "healing",
     "kid_friendly"
    ],
-   "reviewSummary": "숲이 우거지고 물이 맑은 석산계곡에서 시원하고 안전한 물놀이를 즐겨보세요."
+   "reviewSummary": "소리산을 휘돌며 흐르는 석산계곡은 울창한 숲과 맑은 물로 가족 피서지로 제격이다."
   },
   {
    "placeId": "tour_127688",
@@ -66,7 +66,7 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%82%AC%EB%82%98%EC%82%AC(%EC%96%91%ED%8F%89)",
    "tags": [],
-   "reviewSummary": "용문산 백운봉 기슭에 위치한 사나사에서 오랜 역사와 고즈넉한 풍경을 느껴보세요."
+   "reviewSummary": "용문산 백운봉 기슭에 자리한 사나사는 신라시대 창건된 역사 깊은 사찰이다."
   },
   {
    "placeId": "tour_2674763",
@@ -83,9 +83,10 @@
    "tags": [
     "nature",
     "healing",
-    "photo_spot"
+    "photo_spot",
+    "aesthetic"
    ],
-   "reviewSummary": "다양한 수종의 숲길이 아름다운 서후리숲에서 힐링 산책을 즐겨보세요."
+   "reviewSummary": "다양한 수종의 숲과 산책로가 조성된 서후리숲은 힐링하기 좋은 수목원이다."
   },
   {
    "placeId": "tour_2757536",
@@ -102,7 +103,7 @@
    "tags": [
     "activity"
    ],
-   "reviewSummary": "다양한 체육시설과 공원이 조성된 개군레포츠공원에서 여유로운 시간을 보내보세요."
+   "reviewSummary": "다양한 체육시설과 공원이 조성된 개군레포츠공원에서는 축제도 개최된다."
   },
   {
    "placeId": "tour_1807162",
@@ -120,7 +121,7 @@
     "experience",
     "kid_friendly"
    ],
-   "reviewSummary": "사계절 다양한 축제와 문화 경험이 가득한 수미마을에서 즐거운 시간을 보내보세요."
+   "reviewSummary": "계절별 축제가 열리는 수미마을은 다양한 농촌 문화를 경험할 수 있는 체험휴양마을이다."
   },
   {
    "placeId": "tour_2754413",
@@ -135,11 +136,11 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%ED%8C%8C%EB%A8%B8%EC%8A%A4%EA%B0%80%EB%93%A0%EB%B4%84",
    "tags": [
-    "nature",
     "romantic",
-    "aesthetic"
+    "aesthetic",
+    "photo_spot"
    ],
-   "reviewSummary": "남한강변의 아름다운 정원과 미술관, 레스토랑이 어우러진 파머스가든봄에서 휴식을 취해보세요."
+   "reviewSummary": "남한강 변에 위치한 파머스가든봄은 정원, 레스토랑, 작은 미술관을 갖춘 복합 문화 공간이다."
   },
   {
    "placeId": "tour_407051",
@@ -155,10 +156,10 @@
    "mapUrl": "https://map.naver.com/p/search/%EC%84%B8%EB%AF%B8%EC%9B%90",
    "tags": [
     "nature",
-    "romantic",
-    "photo_spot"
+    "photo_spot",
+    "healing"
    ],
-   "reviewSummary": "팔당호에 둘러싸인 물과 꽃의 정원 세미원에서 다양한 수생식물과 역사의 숨결을 느껴보세요."
+   "reviewSummary": "물과 꽃의 정원인 세미원은 팔당호 주변에서 다양한 수생식물과 역사 문화를 만날 수 있는 곳이다."
   },
   {
    "placeId": "tour_1553085",
@@ -175,7 +176,7 @@
    "tags": [
     "experience"
    ],
-   "reviewSummary": "칠보산 산자락의 아름다운 골짜기에 위치한 가루매마을에서 특별한 체험을 즐겨보세요."
+   "reviewSummary": "의향의 고장 양평에 위치한 가루매마을은 여러 골짜기 부락이 모여 단결을 이루는 체험마을이다."
   },
   {
    "placeId": "tour_2683997",
@@ -194,7 +195,7 @@
     "photo_spot",
     "romantic"
    ],
-   "reviewSummary": "모던한 건축물과 갤러리, 정원이 어우러진 복합문화시설 카포레에서 자연과 문화를 즐겨보세요."
+   "reviewSummary": "모던한 건축물과 갤러리, 카페가 어우러진 카포레는 자연 속에서 전시와 음료를 즐길 수 있는 복합문화시설이다."
   },
   {
    "placeId": "tour_2554274",
@@ -208,8 +209,11 @@
     "http://tong.visitkorea.or.kr/cms/resource/30/3078430_image3_1.jpg"
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%B9%9C%ED%99%98%EA%B2%BD%EB%86%8D%EC%97%85%EB%B0%95%EB%AC%BC%EA%B4%80",
-   "tags": [],
-   "reviewSummary": "양평의 역사와 친환경농업의 가치를 담은 친환경농업박물관에서 다양한 전시와 교육을 만나보세요."
+   "tags": [
+    "indoor",
+    "experience"
+   ],
+   "reviewSummary": "용문산 초입에 위치한 친환경 농업박물관은 양평의 역사와 친환경농업을 다루는 전시 및 교육 공간이다."
   },
   {
    "placeId": "tour_2755846",
@@ -225,10 +229,10 @@
    "mapUrl": "https://map.naver.com/p/search/%EB%AF%B8%EB%A6%AC%EB%82%B4%EB%A6%AC%EC%A1%B0%ED%8A%B8",
    "tags": [
     "healing",
-    "lively_food",
+    "nature",
     "group"
    ],
-   "reviewSummary": "캠프와 카라반, 바비큐를 즐기며 단체 연수나 휴식을 취하기 좋은 리조트입니다."
+   "reviewSummary": "다양한 숙박과 부대시설을 갖추고 있어 힐링과 단체 연수에 좋은 리조트입니다."
   },
   {
    "placeId": "tour_2846008",
@@ -243,10 +247,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%B2%97%EA%B3%A0%EA%B0%9C",
    "tags": [
-    "photo_spot",
-    "romantic"
+    "nature",
+    "photo_spot"
    ],
-   "reviewSummary": "서울 근교에서 머리 위로 쏟아지는 아름다운 별을 조망할 수 있는 유명 명소입니다."
+   "reviewSummary": "서울 근교 3대 별 조망 명소로 손꼽히는 아름다운 고개입니다."
   },
   {
    "placeId": "tour_407259",
@@ -262,9 +266,10 @@
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%20%EB%B0%B1%EC%9A%B4%EB%B4%89%EC%9E%90%EC%97%B0%ED%9C%B4%EC%96%91%EB%A6%BC",
    "tags": [
     "healing",
-    "nature"
+    "nature",
+    "kid_friendly"
    ],
-   "reviewSummary": "용문산 백운봉 등산로 입구에 위치해 숲속에서 힐링과 산림욕을 즐길 수 있는 휴양림입니다."
+   "reviewSummary": "용문산줄기 백운봉 아래에 위치해 숲속에서 힐링과 휴식을 즐길 수 있는 휴양림입니다."
   },
   {
    "placeId": "tour_3014808",
@@ -282,7 +287,7 @@
     "experience",
     "kid_friendly"
    ],
-   "reviewSummary": "자연 속에서 온 가족이 다채로운 농촌 전통음식과 농사 체험을 즐길 수 있는 마을입니다."
+   "reviewSummary": "계절별 다양한 농촌 체험과 전통음식 만들기를 즐길 수 있는 휴양마을입니다."
   },
   {
    "placeId": "tour_612693",
@@ -297,10 +302,9 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%9A%A9%EB%AC%B8%EC%82%B0%20%ED%86%A0%EC%86%8D%EC%9D%8C%EC%8B%9D%EB%A7%88%EC%9D%84",
    "tags": [
-    "local_food",
-    "group"
+    "local_food"
    ],
-   "reviewSummary": "용문산 관광단지 초입에서 더덕불고기와 산채나물 등 다양한 향토 음식을 맛볼 수 있습니다."
+   "reviewSummary": "용문산관광단지 초입에 위치해 산채나물과 더덕불고기 등 다양한 토속 한식을 맛볼 수 있습니다."
   },
   {
    "placeId": "tour_2765225",
@@ -318,7 +322,7 @@
     "activity",
     "kid_friendly"
    ],
-   "reviewSummary": "다양한 생활체육 경기장과 어린이 모래놀이터가 조성되어 있는 다목적 체육공원입니다."
+   "reviewSummary": "축구장, 테니스장 등 다양한 체육시설과 어린이 모래놀이터가 있는 다목적 생활체육공원입니다."
   },
   {
    "placeId": "tour_2765231",
@@ -336,7 +340,7 @@
     "activity",
     "nature"
    ],
-   "reviewSummary": "강변의 맑은 공기 속에서 축구, 야구 등 각종 체육활동과 카약을 즐길 수 있는 공원입니다."
+   "reviewSummary": "맑은 공기 속에서 축구장, 야구장 등의 체육시설과 카약을 즐길 수 있는 강변 공원입니다."
   },
   {
    "placeId": "tour_127692",
@@ -352,10 +356,9 @@
    "mapUrl": "https://map.naver.com/p/search/%EC%A4%91%EB%AF%B8%EC%82%B0%EC%9E%90%EC%97%B0%ED%9C%B4%EC%96%91%EB%A6%BC",
    "tags": [
     "healing",
-    "nature",
-    "experience"
+    "nature"
    ],
-   "reviewSummary": "울창한 숲과 남한강 조망을 품고 있으며 유익한 숲 해설과 체험 프로그램을 운영하는 휴양림입니다."
+   "reviewSummary": "울창한 숲과 남한강 조망을 즐기며 숲해설과 산림 체험을 할 수 있는 휴양림입니다."
   },
   {
    "placeId": "tour_2757697",
@@ -373,7 +376,7 @@
     "healing",
     "nature"
    ],
-   "reviewSummary": "기존 숲을 활용해 평화롭고 완만한 산책로와 피크닉을 즐기기 좋은 쉼터 공원입니다."
+   "reviewSummary": "기존 숲을 활용하여 조용하고 평화롭게 산책과 피크닉을 즐기기 좋은 공원입니다."
   },
   {
    "placeId": "tour_2792937",
@@ -388,7 +391,7 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%85%B8%EC%82%B0%EC%82%AC%EC%A7%80",
    "tags": [],
-   "reviewSummary": "주자, 송시열, 이항로의 영정과 위패를 모시고 매년 제사를 지내는 사당입니다."
+   "reviewSummary": "주자, 송시열, 화서 이항로의 영정과 위패를 모신 사당입니다."
   },
   {
    "placeId": "tour_2397543",
@@ -406,7 +409,7 @@
     "experience",
     "kid_friendly"
    ],
-   "reviewSummary": "딸기 따기, 물놀이, 얼음썰매 등 사계절 내내 풍성한 농촌 체험을 즐길 수 있는 마을입니다."
+   "reviewSummary": "사계절 내내 딸기 따기, 물놀이, 얼음 썰매 등 다양한 농촌 체험을 즐길 수 있는 마을입니다."
   },
   {
    "placeId": "tour_2765216",
@@ -423,7 +426,7 @@
    "tags": [
     "nature"
    ],
-   "reviewSummary": "맑은 계곡물이 모이는 준계곡형 저수지로 수변에 임진 의병 전적지 공원이 조성되어 있습니다."
+   "reviewSummary": "우두산과 매봉산 사이에 맑은 계곡물이 모이는 1964년 준공된 저수지입니다."
   },
   {
    "placeId": "tour_1955902",
@@ -438,7 +441,7 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%88%98%EA%B3%A1%EC%84%9C%EC%9B%90",
    "tags": [],
-   "reviewSummary": "조선 전기의 문신 권경우, 권경유 형제의 위패를 모신 유서 깊은 사당이다."
+   "reviewSummary": "조선 전기의 문신 권경우, 권경유 형제의 위패를 모신 사당입니다."
   },
   {
    "placeId": "tour_1566740",
@@ -455,10 +458,10 @@
    "tags": [
     "healing",
     "nature",
-    "group",
-    "kid_friendly"
+    "kid_friendly",
+    "group"
    ],
-   "reviewSummary": "맑은 자연 속에서 야생화와 계곡을 즐기며 단체로 방문하기 좋은 힐링 캠프다."
+   "reviewSummary": "자연이 잘 보존된 양평 청운면에서 찜질과 야외 물놀이를 즐길 수 있습니다."
   },
   {
    "placeId": "tour_2755489",
@@ -476,7 +479,7 @@
     "nature",
     "kid_friendly"
    ],
-   "reviewSummary": "흑천과 갈지산 사이에 위치하여 조용히 산책과 운동을 즐기기 좋은 체육공원이다."
+   "reviewSummary": "흑천과 갈지산 사이에 위치해 조용히 산책과 운동을 즐기기 좋은 곳입니다."
   },
   {
    "placeId": "tour_127365",
@@ -492,9 +495,9 @@
    "mapUrl": "https://map.naver.com/p/search/%EC%82%AC%EB%82%98%EC%82%AC%20%EA%B3%84%EA%B3%A1",
    "tags": [
     "nature",
-    "activity"
+    "photo_spot"
    ],
-   "reviewSummary": "깨끗하고 수량이 풍부한 계곡과 울창한 숲이 어우러져 피서와 산행을 즐기기 좋다."
+   "reviewSummary": "수량이 풍부하고 물이 깨끗한 용문산 계곡으로 울창한 숲 절경을 자랑합니다."
   },
   {
    "placeId": "tour_1104314",
@@ -509,7 +512,7 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%A7%80%ED%8F%89%EC%A7%80%EA%B5%AC%EC%A0%84%ED%88%AC%EC%A0%84%EC%A0%81%EB%B9%84",
    "tags": [],
-   "reviewSummary": "지평리전투의 승리를 기념하고 전사한 장병의 영령을 추모하기 위해 세워진 전적비이다."
+   "reviewSummary": "한국전쟁 당시 지평리전투의 승리를 기념하고 전사한 장병들을 추모하는 곳입니다."
   },
   {
    "placeId": "tour_129331",
@@ -524,9 +527,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%20%EC%98%B9%EB%8B%AC%EC%83%98%EA%BD%83%EB%88%84%EB%A6%84%EB%A7%88%EC%9D%84",
    "tags": [
-    "nature"
+    "nature",
+    "experience"
    ],
-   "reviewSummary": "지하수와 오리 농법을 활용한 친환경농업을 실천하는 자연 친화적인 마을이다."
+   "reviewSummary": "지하수로 농사를 지으며 친환경 오리 농법을 실천하는 청정 마을입니다."
   },
   {
    "placeId": "tour_2755829",
@@ -541,10 +545,9 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EA%B0%88%EC%82%B0%EA%B3%B5%EC%9B%90",
    "tags": [
-    "nature",
-    "photo_spot"
+    "nature"
    ],
-   "reviewSummary": "남한강변을 따라 조성되어 아름다운 벚꽃과 산책로를 즐길 수 있는 공원이다."
+   "reviewSummary": "남한강변에 위치하며 벚꽃 명소이자 자전거 길과 산책로가 조성된 공원입니다."
   },
   {
    "placeId": "tour_2755456",
@@ -559,10 +562,11 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%EC%96%91%EB%96%BC%EB%AA%A9%EC%9E%A5",
    "tags": [
+    "nature",
     "experience",
     "kid_friendly"
    ],
-   "reviewSummary": "건초 주기와 아기 동물 교감 등 다양한 체험을 자유롭게 즐길 수 있는 목장이다."
+   "reviewSummary": "건초 먹이기와 아기 동물 교감 체험을 자유롭게 즐길 수 있는 양떼목장입니다."
   },
   {
    "placeId": "tour_2605339",
@@ -581,7 +585,7 @@
     "nature",
     "photo_spot"
    ],
-   "reviewSummary": "북한강 경관과 생태연못을 감상하며 여유롭게 산책하기 좋은 생태공원이다."
+   "reviewSummary": "북한강 경관과 생태연못을 감상하며 여유롭게 산책하기 좋은 생태공원입니다."
   },
   {
    "placeId": "tour_2789673",
@@ -596,10 +600,9 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%86%8C%EB%A6%AC%EC%82%B0%EB%A7%88%EC%9D%84",
    "tags": [
-    "nature",
-    "local_food"
+    "nature"
    ],
-   "reviewSummary": "석산계곡과 소리산이 자리하며 고로쇠 물로 유명한 아름다운 마을이다."
+   "reviewSummary": "소리산과 석산계곡이 자리하고 매년 고로쇠 축제가 열리는 마을입니다."
   },
   {
    "placeId": "tour_129398",
@@ -614,10 +617,11 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%20%EB%A7%88%EB%93%A4%EA%B0%80%EB%A6%AC%EB%A7%88%EC%9D%84",
    "tags": [
+    "nature",
     "experience",
-    "nature"
+    "kid_friendly"
    ],
-   "reviewSummary": "깨끗한 자연 속에서 전통 음식을 만들고 농산물 수확을 체험할 수 있는 농촌마을이다."
+   "reviewSummary": "청정 자연 속에서 전통 기구와 농산물 수확 등 다양한 체험을 할 수 있습니다."
   },
   {
    "placeId": "tour_2755483",
@@ -632,9 +636,9 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%A7%80%ED%8F%89%EB%A0%88%ED%8F%AC%EC%B8%A0%EA%B3%B5%EC%9B%90",
    "tags": [
-    "activity"
+    "kid_friendly"
    ],
-   "reviewSummary": "갈지산 아래 쾌적한 환경에서 다양한 운동과 산책을 즐길 수 있는 레포츠공원이다."
+   "reviewSummary": "갈지산 아래 다양한 체육 시설을 갖추어 쾌적하게 운동하고 걷기 좋은 곳입니다."
   },
   {
    "placeId": "tour_3448778",
@@ -648,8 +652,10 @@
     "http://tong.visitkorea.or.kr/cms/resource/39/3452139_image3_1.jpg"
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%20%EC%83%9D%ED%99%9C%EB%AC%B8%ED%99%94%EC%84%BC%ED%84%B0",
-   "tags": [],
-   "reviewSummary": "다양한 문화 프로그램과 교육 활동을 제공하는 주민들의 문화 공간이다."
+   "tags": [
+    "indoor"
+   ],
+   "reviewSummary": "다양한 문화 프로그램과 교육 활동, 전시를 즐길 수 있는 실내 문화 공간입니다."
   },
   {
    "placeId": "tour_127171",
@@ -665,7 +671,7 @@
     "nature",
     "experience"
    ],
-   "reviewSummary": "맑은 계곡과 치유의 숲이 어우러져 숲속체험과 힐링을 즐길 수 있는 휴양림이다."
+   "reviewSummary": "맑은 계곡과 치유의 숲이 어우러져 숲속체험과 힐링을 즐길 수 있는 휴양림입니다."
   },
   {
    "placeId": "tour_125474",
@@ -679,7 +685,7 @@
    "tags": [
     "nature"
    ],
-   "reviewSummary": "수려한 계곡과 폭포를 품고 있어 아름다운 자연경관을 자랑하는 바위산이다."
+   "reviewSummary": "수려한 계곡과 폭포를 품고 있어 아름다운 자연경관을 자랑하는 바위산입니다."
   },
   {
    "placeId": "tour_125470",
@@ -691,10 +697,9 @@
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%9A%A9%EB%AC%B8%EC%82%B0%20%EB%B0%B1%EC%9A%B4%EB%B4%89",
    "tags": [
-    "nature",
-    "photo_spot"
+    "nature"
    ],
-   "reviewSummary": "남한강과 양평읍내가 한눈에 내려다보이는 화려한 암봉으로 등산객이 많이 찾는 명소이다."
+   "reviewSummary": "정상에서 남한강과 양평읍내가 한눈에 내려다보이는 화려한 암봉입니다."
   },
   {
    "placeId": "naver_1274817523_374970050",
@@ -735,10 +740,11 @@
    "mapUrl": "https://map.naver.com/p/search/%EC%B9%B8%ED%8A%B8%EC%9D%98%EB%A7%88%EC%9D%84%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%ED%95%98%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%20102-10%20%EC%B9%B8%ED%8A%B8%EC%9D%98%EB%A7%88%EC%9D%84",
    "tags": [
     "healing",
-    "aesthetic",
-    "photo_spot"
+    "view_cafe",
+    "photo_spot",
+    "aesthetic"
    ],
-   "reviewSummary": "넓은 정원과 앤티크한 인테리어 속에서 여유롭게 자연을 만끽하며 힐링할 수 있는 베이커리 카페이다."
+   "reviewSummary": "초록빛 자연 속에서 여유를 즐길 수 있는 앤티크한 분위기의 대형 정원 카페입니다."
   },
   {
    "placeId": "naver_1273172732_375466530",
@@ -778,11 +784,11 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%ED%95%98%EC%9A%B0%EC%8A%A4%20%EB%B2%A0%EC%9D%B4%EC%BB%A4%EB%A6%AC%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%84%9C%EC%A2%85%EB%A9%B4%20%EB%B6%81%ED%95%9C%EA%B0%95%EB%A1%9C%20684%20%ED%95%98%EC%9A%B0%EC%8A%A4%EB%B2%A0%EC%9D%B4%EC%BB%A4%EB%A6%AC",
    "tags": [
-    "kid_friendly",
-    "aesthetic"
+    "aesthetic",
+    "kid_friendly"
    ],
    "petFriendly": true,
-   "reviewSummary": "당일 구운 건강한 빵과 한옥 감성을 즐길 수 있으며 아이들이 뛰어놀기 좋은 카페이다."
+   "reviewSummary": "유기농 베이커리와 넓은 마당이 있어 아이와 함께 방문하기 좋은 한옥 감성 카페입니다."
   },
   {
    "placeId": "naver_1276620122_375073093",
@@ -988,10 +994,9 @@
    "mapUrl": "https://map.naver.com/p/search/%ED%97%A4%EB%A6%AC%EB%B2%A0%EB%A5%B4%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%ED%95%98%EB%A9%B4%20%EC%82%B0%EC%88%98%EB%A1%9C%203096",
    "tags": [
     "view_cafe",
-    "healing",
-    "romantic"
+    "nature"
    ],
-   "reviewSummary": "남한강이 내려다보이는 대형 베이커리 카페로, 탁 트인 전경과 함께 신선한 유기농 빵과 커피를 즐길 수 있습니다."
+   "reviewSummary": "한강 수변공원 옆 남한강 전망과 녹색 정원을 즐길 수 있는 대형 베이커리 카페입니다."
   },
   {
    "placeId": "naver_1273282488_375571760",
@@ -1027,7 +1032,9 @@
    "address": "경기도 양평군 단월면 대부록길 71 빨간지붕",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%89%AC%EC%96%B4%EA%B0%84%EB%93%A4%EC%96%B4%EB%96%A0%ED%95%98%EB%A6%AC%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EB%8B%A8%EC%9B%94%EB%A9%B4%20%EB%8C%80%EB%B6%80%EB%A1%9D%EA%B8%B8%2071%20%EB%B9%A8%EA%B0%84%EC%A7%80%EB%B6%95",
-   "tags": []
+   "tags": [
+    "healing"
+   ]
   },
   {
    "placeId": "naver_1277699364_375414427",
@@ -1067,12 +1074,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%ED%94%8C%EB%A1%9C%EB%9D%BC%EB%8A%98%EC%B9%B4%ED%8E%98%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%9A%A9%EB%AC%B8%EB%A9%B4%20%EC%9A%A9%EB%AC%B8%EC%82%B0%EB%A1%9C%20133",
    "tags": [
-    "view_cafe",
-    "nature",
-    "healing"
+    "view_cafe"
    ],
    "petFriendly": true,
-   "reviewSummary": "사계절 용문산 전망을 즐길 수 있는 대형 베이커리 카페로, 반려동물과 함께 방문할 수 있습니다."
+   "reviewSummary": "용문산 전망과 야외 정원을 갖춘 반려동물 동반 가능 대형 베이커리 카페입니다."
   },
   {
    "placeId": "naver_1275309263_374318844",
@@ -1163,7 +1168,7 @@
     "healing",
     "view_cafe"
    ],
-   "reviewSummary": "북한강 앞 테라스에서 스페셜 커피와 갓 구운 빵을 즐기며 물멍하기 좋은 곳입니다."
+   "reviewSummary": "북한강 바로 앞 수려한 자연 속에서 맛있는 빵과 커피를 즐기며 휴식하기 좋은 베이커리 카페입니다."
   },
   {
    "placeId": "naver_1276675294_375549647",
@@ -1187,9 +1192,7 @@
    "address": "경기도 양평군 청운면 경강로 4907",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%EC%B0%90%EB%B9%B5%EC%96%91%ED%8F%89%EA%B0%90%EC%9E%90%EB%96%A1%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%B2%AD%EC%9A%B4%EB%A9%B4%20%EA%B2%BD%EA%B0%95%EB%A1%9C%204907",
-   "tags": [
-    "local_food"
-   ]
+   "tags": []
   },
   {
    "placeId": "naver_1275882734_375385157",
@@ -1303,7 +1306,7 @@
     "view_cafe",
     "aesthetic"
    ],
-   "reviewSummary": "전층 통유리창을 통해 아름다운 풍경과 햇살을 즐기며 화덕피자와 치킨을 맛볼 수 있는 대형 카페입니다."
+   "reviewSummary": "전층 통유리창을 통해 풍경을 즐길 수 있는 넓고 아름다운 대형 카페입니다."
   },
   {
    "placeId": "tour_2773710",
@@ -1318,9 +1321,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%ED%88%AC%EC%8A%A4%ED%8A%B8%EB%A1%9D",
    "tags": [
-    "aesthetic"
+    "aesthetic",
+    "group"
    ],
-   "reviewSummary": "자동차와 오토바이 소품으로 꾸며진 수제 버거 전문 카페로, 저녁에는 화려한 조명 속에서 세련된 분위기를 즐길 수 있습니다."
+   "reviewSummary": "자동차와 오토바이 소품으로 꾸며진 세련된 분위기의 수제 버거 전문 카페입니다."
   },
   {
    "placeId": "tour_2792660",
@@ -1335,13 +1339,13 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%AC%B8%EB%A6%BF",
    "tags": [
-    "healing",
     "nature",
-    "romantic",
-    "photo_spot"
+    "aesthetic",
+    "healing",
+    "romantic"
    ],
    "petFriendly": true,
-   "reviewSummary": "넓은 야외 정원과 계곡 뷰가 어우러진 이국적이고 감성적인 공간입니다."
+   "reviewSummary": "넓은 야외 정원과 계곡 뷰를 갖춘 이국적인 감성의 휴식 공간입니다."
   },
   {
    "placeId": "tour_2788203",
@@ -1357,10 +1361,11 @@
    "mapUrl": "https://map.naver.com/p/search/%EB%8D%94%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8%EC%B9%B4%ED%8E%98",
    "tags": [
     "healing",
-    "aesthetic",
-    "photo_spot"
+    "nature",
+    "photo_spot",
+    "aesthetic"
    ],
-   "reviewSummary": "좋은 재료로 만든 빵과 음료를 즐기며 아기자기한 꽃이 만개한 정원을 산책하기 좋은 베이커리 카페입니다."
+   "reviewSummary": "아기자기한 꽃들이 만개한 정원에서 좋은 재료로 만든 빵과 음료를 즐길 수 있습니다."
   },
   {
    "placeId": "tour_2853598",
@@ -1375,10 +1380,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%97%94%EB%A1%9C%EC%A0%9C",
    "tags": [
-    "nature",
-    "healing"
+    "healing",
+    "nature"
    ],
-   "reviewSummary": "계곡과 산이 평화로운 분위기를 자아내는 대형 카페로, 핸드드립 커피와 따뜻한 화목 난로를 즐길 수 있습니다."
+   "reviewSummary": "계곡과 산이 평화로운 분위기를 자아내며 핸드드립 커피를 맛볼 수 있는 대형 카페입니다."
   },
   {
    "placeId": "tour_2853508",
@@ -1392,8 +1397,10 @@
     "http://tong.visitkorea.or.kr/cms/resource/07/2853507_image3_1.jpg"
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%B9%B4%ED%8E%98%20%ED%94%BC%ED%8A%B8",
-   "tags": [],
-   "reviewSummary": "라이더들이 편하게 쉬어갈 수 있도록 음료와 쉼터를 제공하며 바이크 관련 용품과 서비스를 갖춘 곳입니다."
+   "tags": [
+    "view_cafe"
+   ],
+   "reviewSummary": "루프탑과 테라스를 갖추고 라이더들이 편하게 쉬어 갈 수 있는 쉼터입니다."
   },
   {
    "placeId": "tour_2842754",
@@ -1410,9 +1417,10 @@
    "tags": [
     "view_cafe",
     "photo_spot",
+    "aesthetic",
     "romantic"
    ],
-   "reviewSummary": "북한강을 배경으로 한 포토존과 야외 테이블이 가득하여 아름다운 강을 가까이서 바라볼 수 있는 디저트 카페입니다."
+   "reviewSummary": "북한강을 바라보며 커피와 브런치를 즐길 수 있는 포토존 가득한 디저트 카페입니다."
   },
   {
    "placeId": "tour_2831223",
@@ -1431,7 +1439,7 @@
     "nature"
    ],
    "petFriendly": true,
-   "reviewSummary": "잔잔한 계곡물이 흐르는 숲속에서 직접 구운 빵과 커피를 즐기며 편안한 휴식을 취할 수 있는 카페입니다."
+   "reviewSummary": "잔잔한 계곡물이 흐르는 우거진 숲속에서 휴식을 취할 수 있는 카페입니다."
   },
   {
    "placeId": "tour_3355714",
@@ -1448,7 +1456,7 @@
    "tags": [
     "kid_friendly"
    ],
-   "reviewSummary": "직접 볶은 신선한 원두로 만든 커피와 수제 호두파이를 즐길 수 있으며 아기와 함께 방문하기 좋은 카페입니다."
+   "reviewSummary": "직접 볶은 원두로 만든 커피와 수제 호두파이를 즐길 수 있는 디저트 카페입니다."
   },
   {
    "placeId": "naver_1274670218_374913575",
@@ -1512,7 +1520,7 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%9A%A9%EB%91%90%EB%A6%AC%EC%A7%AC%EB%BD%95%EC%A0%84%EB%AC%B8%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%B2%AD%EC%9A%B4%EB%A9%B4%20%EC%9A%A9%EB%91%90%EB%A1%9C%20148%20%EC%9A%A9%EB%91%90%EB%A6%AC%EC%A7%AC%EB%BD%95%EC%A0%84%EB%AC%B8%EC%A0%90",
    "tags": [],
-   "reviewSummary": "신선한 재료로 정성껏 끓여내는 매콤한 해물짬뽕이 입소문 난 청운면의 중화요리 전문점이다."
+   "reviewSummary": "신선한 해물과 채소가 푸짐하게 들어가며 매콤한 국물이 일품인 용두리의 짬뽕 전문점이다."
   },
   {
    "placeId": "naver_1276296907_375072938",
@@ -1539,10 +1547,8 @@
     "http://tong.visitkorea.or.kr/cms/resource/99/2853499_image3_1.jpg"
    ],
    "mapUrl": "https://map.naver.com/p/search/%ED%98%B8%EB%82%A8%EB%AC%B5%EC%9D%80%EC%A7%80%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%ED%8F%89%EC%9D%8D%20%EB%8C%80%ED%9D%A5%EB%A1%9C%20204%20%ED%98%B8%EB%82%A8%EB%AC%B5%EC%9D%80%EC%A7%80",
-   "tags": [
-    "lively_food"
-   ],
-   "reviewSummary": "직접 담근 묵은지와 초벌구이 삼겹살, 묵은지 닭볶음탕을 돌판에 즐길 수 있는 양평읍의 고기 요리 전문점이다."
+   "tags": [],
+   "reviewSummary": "직접 담근 묵은지와 불향 가득한 초벌구이 삼겹살 및 묵은지 닭볶음탕을 즐길 수 있는 곳이다."
   },
   {
    "placeId": "naver_1274711310_374908248",
@@ -1573,7 +1579,7 @@
     "romantic",
     "lively_food"
    ],
-   "reviewSummary": "산이 보이는 산비탈에서 참나무로 훈연한 항아리 바비큐를 캠핑 감성과 함께 즐길 수 있는 옥천면의 바비큐 전문점이다."
+   "reviewSummary": "산비탈에서 참나무로 훈연한 항아리 바비큐를 캠핑 감성과 함께 즐길 수 있는 바비큐 전문점이다."
   },
   {
    "placeId": "naver_1276414885_375157826",
@@ -1597,9 +1603,7 @@
    "address": "경기도 양평군 지평면 지평로 396",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%A7%80%ED%8F%89%EB%B3%B4%EB%A6%AC%EB%B0%A5%EC%A7%91%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%A7%80%ED%8F%89%EB%A9%B4%20%EC%A7%80%ED%8F%89%EB%A1%9C%20396",
-   "tags": [
-    "local_food"
-   ]
+   "tags": []
   },
   {
    "placeId": "naver_1275376247_374257530",
@@ -1635,9 +1639,7 @@
    "address": "경기도 양평군 옥천면 고읍로 140",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%98%A5%EC%B2%9C%EB%83%89%EB%A9%B4%20%ED%99%A9%ED%95%B4%EC%8B%9D%EB%8B%B9%20%EB%B3%B8%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%98%A5%EC%B2%9C%EB%A9%B4%20%EA%B3%A0%EC%9D%8D%EB%A1%9C%20140",
-   "tags": [
-    "local_food"
-   ]
+   "tags": []
   },
   {
    "placeId": "naver_1277322617_375627039",
@@ -1649,9 +1651,7 @@
    "address": "경기도 양평군 청운면 오목골길 33-1 1층",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%EC%86%A5%EB%9A%9C%EA%BB%91%EB%8B%AD%EB%B3%B6%EC%9D%8C%ED%83%95%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%B2%AD%EC%9A%B4%EB%A9%B4%20%EC%98%A4%EB%AA%A9%EA%B3%A8%EA%B8%B8%2033-1%201%EC%B8%B5",
-   "tags": [
-    "lively_food"
-   ]
+   "tags": []
   },
   {
    "placeId": "naver_1276369452_374744965",
@@ -1679,9 +1679,9 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%8F%97%EA%B0%80%EB%B9%84%20%EB%B6%88%EC%AD%88%EA%BE%B8%EB%AF%B8%20%EB%B3%B8%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%9A%A9%EB%AC%B8%EB%A9%B4%20%EC%9A%A9%EB%AC%B8%EC%82%B0%EB%A1%9C%20207",
    "tags": [
-    "local_food"
+    "group"
    ],
-   "reviewSummary": "화학조미료 대신 특제소스를 사용해 깔끔한 직화 불주꾸미를 선보이는 용문면 맛집이다."
+   "reviewSummary": "용문산 관광지 근처에서 화학조미료 없는 깔끔한 직화 불주꾸미와 들깨 요리를 즐길 수 있는 전문점이다."
   },
   {
    "placeId": "naver_1275278849_374650707",
@@ -1693,9 +1693,7 @@
    "address": "경기도 양평군 개군면 신내길 16",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%EC%8B%A0%EB%82%B4%EC%84%9C%EC%9A%B8%ED%95%B4%EC%9E%A5%EA%B5%AD%20%EB%B3%B8%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%9C%EA%B5%B0%EB%A9%B4%20%EC%8B%A0%EB%82%B4%EA%B8%B8%2016",
-   "tags": [
-    "local_food"
-   ]
+   "tags": []
   },
   {
    "placeId": "naver_1274946094_374911048",
@@ -1713,7 +1711,7 @@
    "tags": [
     "aesthetic"
    ],
-   "reviewSummary": "카페 같은 실내에서 얼큰한 차돌양지와 꼬막 짬뽕, 중화 비빔면을 즐길 수 있는 중식당이다."
+   "reviewSummary": "카페 같은 인테리어 속에서 중화 비빔면과 얼큰한 짬뽕을 즐길 수 있는 양평읍 중식 맛집이다."
   },
   {
    "placeId": "naver_1274724753_374905187",
@@ -1725,9 +1723,7 @@
    "address": "경기도 양평군 강상면 강남로 851",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%EC%B6%95%ED%98%91%ED%95%9C%EC%9A%B0%ED%94%84%EB%9D%BC%EC%9E%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%EC%83%81%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%20851",
-   "tags": [
-    "lively_food"
-   ]
+   "tags": []
   },
   {
    "placeId": "naver_1274423732_375042162",
@@ -1739,9 +1735,7 @@
    "address": "경기도 양평군 강하면 강남로 520 쏭바베큐 양평본점",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%8F%AD%EB%B0%94%EB%B2%A0%ED%81%90%20%EC%96%91%ED%8F%89%EB%B3%B8%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%ED%95%98%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%20520%20%EC%8F%AD%EB%B0%94%EB%B2%A0%ED%81%90%20%EC%96%91%ED%8F%89%EB%B3%B8%EC%A0%90",
-   "tags": [
-    "lively_food"
-   ]
+   "tags": []
   },
   {
    "placeId": "naver_1275005216_375485858",
@@ -1757,11 +1751,11 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%98%88%EC%82%AC%EB%9E%91%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%98%A5%EC%B2%9C%EB%A9%B4%20%EC%9A%A9%EC%B2%9C%EB%A1%9C%20333",
    "tags": [
+    "healing",
     "nature",
-    "kid_friendly",
-    "healing"
+    "kid_friendly"
    ],
-   "reviewSummary": "계곡 옆 산장 분위기에서 시원한 물소리를 들으며 누룽지 백숙을 즐길 수 있다."
+   "reviewSummary": "계곡 옆 산장 분위기에서 시원한 물소리를 들으며 누룽지 백숙과 물놀이를 즐길 수 있는 곳이다."
   },
   {
    "placeId": "naver_1277746571_374689608",
@@ -1776,10 +1770,8 @@
     "http://tong.visitkorea.or.kr/cms/resource/10/2757710_image3_1.jpg"
    ],
    "mapUrl": "https://map.naver.com/p/search/%EA%B3%84%EC%A0%95%ED%9A%9F%EC%A7%91%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%EB%8F%99%EB%A9%B4%20%EC%96%91%EC%84%9C%EB%B6%81%EB%A1%9C%20666-13%20%EA%B3%84%EC%A0%95%ED%9A%9F%EC%A7%91",
-   "tags": [
-    "local_food"
-   ],
-   "reviewSummary": "식당 옆 양어장에서 직접 키운 신선한 송어회와 얼큰한 매운탕을 맛볼 수 있는 횟집이다."
+   "tags": [],
+   "reviewSummary": "식당 옆 양어장에서 직접 키운 신선한 송어회와 얼큰한 매운탕을 맛볼 수 있는 오랜 전통의 횟집이다."
   },
   {
    "placeId": "naver_1274930038_374902752",
@@ -1791,9 +1783,7 @@
    "address": "경기도 양평군 양평읍 양평장터길 9-1 양평오일장 장터 몽실식당",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%AA%BD%EC%8B%A4%EC%8B%9D%EB%8B%B9%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%ED%8F%89%EC%9D%8D%20%EC%96%91%ED%8F%89%EC%9E%A5%ED%84%B0%EA%B8%B8%209-1%20%EC%96%91%ED%8F%89%EC%98%A4%EC%9D%BC%EC%9E%A5%20%EC%9E%A5%ED%84%B0%20%EB%AA%BD%EC%8B%A4%EC%8B%9D%EB%8B%B9",
-   "tags": [
-    "lively_food"
-   ]
+   "tags": []
   },
   {
    "placeId": "naver_1274857339_374700839",
@@ -1821,9 +1811,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%AC%B8%EB%A6%AC%EB%B2%84%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%ED%95%98%EB%A9%B4%20%EC%A0%84%EC%9D%981%EA%B8%B8%208%20%EB%AC%B8%EB%A6%AC%EB%B2%84",
    "tags": [
-    "healing"
+    "healing",
+    "group"
    ],
-   "reviewSummary": "100년 가량 된 통나무집에서 13가지 한방 약재를 넣은 한방 오리 백숙을 맛볼 수 있다."
+   "reviewSummary": "100년 된 통나무집에서 조미료 없이 13가지 한방 약재로 끓여낸 건강한 한방 오리 백숙을 맛볼 수 있는 곳이다."
   },
   {
    "placeId": "naver_1273255953_375502790",
@@ -1908,7 +1899,7 @@
    "tags": [
     "local_food"
    ],
-   "reviewSummary": "새벽부터 문을 열어 푸짐한 순대국과 뼈해장국 등으로 아침 식사를 즐길 수 있는 정겨운 맛집이다."
+   "reviewSummary": "새벽부터 문을 열어 푸짐한 순대국과 뼈해장국 등을 즐길 수 있는 정겨운 현지인 맛집입니다."
   },
   {
    "placeId": "tour_809302",
@@ -1923,10 +1914,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%A7%88%EB%8B%B9%EA%B3%A4%EB%93%9C%EB%A0%88%EB%B0%A5",
    "tags": [
-    "healing",
-    "local_food"
+    "local_food",
+    "healing"
    ],
-   "reviewSummary": "직영농장 곤드레로 만든 정성스러운 반찬과 곤드레밥정식, 대나무통밥을 맛볼 수 있는 경기으뜸음식점이다."
+   "reviewSummary": "직영농장 곤드레와 대나무통밥, 21가지 반찬을 맛보고 다양한 차를 즐길 수 있는 곤드레밥 전문점입니다."
   },
   {
    "placeId": "tour_3358870",
@@ -1941,7 +1932,7 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%A7%80%ED%8F%89%EB%8F%88%EA%B0%80%EC%8A%A4%EC%86%A5%EB%B0%A5",
    "tags": [],
-   "reviewSummary": "돈가스와 솥밥, 다양한 파스타를 한꺼번에 즐길 수 있는 양평의 돈가스 전문점이다."
+   "reviewSummary": "돈가스와 솥밥, 다양한 파스타 메뉴를 함께 즐길 수 있는 양평의 돈가스 전문점입니다."
   },
   {
    "placeId": "tour_3456270",
@@ -1955,8 +1946,10 @@
     "http://tong.visitkorea.or.kr/cms/resource/07/3456207_image3_1.jpg"
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%A7%84%EC%84%A0%EB%AF%B8%EA%B0%80",
-   "tags": [],
-   "reviewSummary": "해풍으로 말린 꾸덕꾸덕한 코다리를 사용하여 쫄깃한 식감과 깊은 풍미의 코다리찜을 선보인다."
+   "tags": [
+    "local_food"
+   ],
+   "reviewSummary": "해풍으로 말린 꾸덕꾸덕한 코다리를 사용하여 쫄깃하고 깊은 풍미의 코다리찜을 선보이는 맛집입니다."
   },
   {
    "placeId": "tour_2754402",
@@ -1973,7 +1966,7 @@
    "tags": [
     "local_food"
    ],
-   "reviewSummary": "남한강 명소 인근에 위치하며 큼직한 그릇에 담긴 얼큰한 파육칼과 칼국수를 즐길 수 있는 육개장 전문점이다."
+   "reviewSummary": "남한강 명소 근처에 위치해 깊고 진한 육개장과 칼국수를 파육칼 메뉴로 맛볼 수 있는 곳입니다."
   },
   {
    "placeId": "tour_3093991",
@@ -1988,10 +1981,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%8B%9C%EC%9B%94%EC%95%A0",
    "tags": [
-    "group",
-    "local_food"
+    "local_food",
+    "group"
    ],
-   "reviewSummary": "용문사 가는 길에 위치하여 토종닭 능이버섯백숙과 황태요리 등 깔끔한 한식을 단체로 맛볼 수 있는 식당이다."
+   "reviewSummary": "용문사 가는 길에 위치하여 토종닭 능이버섯백숙과 깔끔한 한식, 돌솥밥을 즐기기 좋은 넓은 식당입니다."
   },
   {
    "placeId": "tour_2757538",
@@ -2008,7 +2001,7 @@
    "tags": [
     "local_food"
    ],
-   "reviewSummary": "국수역 인근에서 자극적이지 않은 국물과 쫄깃한 칼국수 및 수제비를 보리밥과 함께 맛볼 수 있는 국숫집이다."
+   "reviewSummary": "국수역 근처에서 자극적이지 않은 쫄깃한 칼국수와 수제비, 보리밥을 맛볼 수 있는 국숫집입니다."
   },
   {
    "placeId": "tour_2755793",
@@ -2026,7 +2019,7 @@
     "lively_food",
     "local_food"
    ],
-   "reviewSummary": "여주 참숯과 참나무 장작으로 초벌하여 표고 양념을 곁들인 등갈비 바비큐를 맛볼 수 있습니다."
+   "reviewSummary": "참나무 장작에 초벌하고 양평 표고 양념을 더한 등갈비 바비큐를 즐길 수 있는 곳이다."
   },
   {
    "placeId": "tour_2754412",
@@ -2043,7 +2036,7 @@
    "tags": [
     "local_food"
    ],
-   "reviewSummary": "직접 재배한 신선한 돌미나리와 도톰한 장어를 함께 곁들여 먹을 수 있는 장어 전문점입니다."
+   "reviewSummary": "신선한 돌미나리와 도톰한 장어를 함께 곁들여 먹을 수 있는 장어 전문점이다."
   },
   {
    "placeId": "tour_582936",
@@ -2061,7 +2054,7 @@
     "nature",
     "romantic"
    ],
-   "reviewSummary": "용천계곡 끝 지점에 위치하여 자연을 살린 목조 건물들이 어우러진 아름다운 풍광의 공간입니다."
+   "reviewSummary": "풍광이 빼어난 용천계곡 끝 지점에 자연과 어우러져 자리 잡은 목조 건물 산장이다."
   },
   {
    "placeId": "tour_2836534",
@@ -2077,9 +2070,9 @@
    "mapUrl": "https://map.naver.com/p/search/%ED%86%A0%EB%B0%A9",
    "tags": [
     "local_food",
-    "healing"
+    "nature"
    ],
-   "reviewSummary": "20년 전통을 이어오며 직접 띄운 청국장과 계절별 밑반찬이 나오는 건강한 한정식 전문점입니다."
+   "reviewSummary": "북한강 인근에서 20년 동안 전통의 맛을 지켜온 건강한 한정식 전문점이다."
   },
   {
    "placeId": "tour_2854346",
@@ -2094,10 +2087,11 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%B3%B4%EA%B4%91%EC%A0%95%EA%B0%80%EB%93%A0",
    "tags": [
+    "lively_food",
     "local_food",
-    "lively_food"
+    "kid_friendly"
    ],
-   "reviewSummary": "주인이 직접 키운 암탉과 식재료로 조리하는 토종닭 볶음탕과 백숙을 맛볼 수 있는 맛집입니다."
+   "reviewSummary": "주인이 직접 키운 암탉과 재료로 조리하는 토종닭 요리 전문점이다."
   },
   {
    "placeId": "tour_2854246",
@@ -2112,11 +2106,12 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%98%88%EB%A7%88%EB%8B%B9",
    "tags": [
-    "aesthetic",
-    "experience"
+    "nature",
+    "experience",
+    "aesthetic"
    ],
    "petFriendly": true,
-   "reviewSummary": "식사와 커피, 갤러리 감상과 산책을 한곳에서 즐길 수 있는 버섯 지붕 모양의 복합문화공간입니다."
+   "reviewSummary": "식사와 커피, 갤러리 감상과 산책을 한곳에서 즐길 수 있는 복합문화공간이다."
   },
   {
    "placeId": "tour_2854157",
@@ -2132,9 +2127,9 @@
    "mapUrl": "https://map.naver.com/p/search/%EB%8B%A4%EC%9A%B0%EB%A6%AC",
    "tags": [
     "local_food",
-    "group"
+    "kid_friendly"
    ],
-   "reviewSummary": "얼리지 않은 국내산 알배기 암꽃게로 담근 신선하고 푸짐한 간장게장과 양념게장 정식 전문점입니다."
+   "reviewSummary": "국내산 알배기 암꽃게로 담근 명품 간장·양념게장 정식을 맛볼 수 있는 곳이다."
   },
   {
    "placeId": "tour_2854120",
@@ -2148,10 +2143,8 @@
     "http://tong.visitkorea.or.kr/cms/resource/07/2854107_image3_1.jpg"
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%85%B9%EC%88%98%EC%B2%AD%EC%82%B0%EC%8B%9D%EB%8B%B9",
-   "tags": [
-    "local_food"
-   ],
-   "reviewSummary": "대평저수지 인근에 위치해 골퍼들이 이른 아침부터 찾아와 김치찌개와 해장국을 즐기는 식당입니다."
+   "tags": [],
+   "reviewSummary": "대평저수지 인근에 위치해 골퍼들이 아침 식사로 자주 찾는 한식당이다."
   },
   {
    "placeId": "tour_2853622",
@@ -2166,10 +2159,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%EC%88%98%EB%A6%AC%ED%95%9C%EC%98%A5%EC%A7%91",
    "tags": [
-    "local_food",
-    "group"
+    "group",
+    "local_food"
    ],
-   "reviewSummary": "신선한 해물과 아귀를 푸짐하게 넣은 찜 요리와 들깨 칼국수를 한옥에서 맛볼 수 있는 곳입니다."
+   "reviewSummary": "싱싱한 해물과 아귀를 푸짐하게 넣은 찜 요리와 들깨 칼국수를 맛볼 수 있는 한옥 식당이다."
   },
   {
    "placeId": "tour_2853532",
@@ -2186,7 +2179,7 @@
    "tags": [
     "local_food"
    ],
-   "reviewSummary": "소박한 한옥에서 쫄깃한 가자미회냉면과 수육, 완자를 온돌방과 입식 테이블에서 즐길 수 있습니다."
+   "reviewSummary": "쫄깃한 회냉면과 수육, 완자를 맛볼 수 있는 규모 있는 함흥냉면 전문점이다."
   },
   {
    "placeId": "tour_2853279",
@@ -2203,7 +2196,7 @@
    "tags": [
     "local_food"
    ],
-   "reviewSummary": "주문 즉시 면을 뽑아 쫄깃함을 살리고 직접 담근 동치미 육수를 곁들이는 메밀막국수 전문점입니다."
+   "reviewSummary": "주문 즉시 반죽하여 뽑아낸 쫄깃한 면과 동치미 육수로 만든 막국수를 맛볼 수 있다."
   },
   {
    "placeId": "tour_2852773",
@@ -2221,7 +2214,7 @@
     "lively_food",
     "group"
    ],
-   "reviewSummary": "정육점에서 직접 고기를 골라 합리적인 가격에 신선한 소고기를 구워 먹을 수 있는 정육식당입니다."
+   "reviewSummary": "정육점에서 직접 고른 신선한 소고기를 합리적인 가격에 구워 먹을 수 있는 정육식당이다."
   },
   {
    "placeId": "tour_2842742",
@@ -2236,11 +2229,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%B8%94%EB%9E%99%EB%B0%A4%EB%B6%80",
    "tags": [
-    "romantic",
     "aesthetic",
-    "photo_spot"
+    "romantic"
    ],
-   "reviewSummary": "유리온실 외관과 모던한 실내에서 북한강 경치를 즐기며 동남아 음식을 맛볼 수 있는 곳이다."
+   "reviewSummary": "북한강 경치를 바라보며 모던한 인테리어 속에서 아시안 푸드를 즐길 수 있는 음식점이다."
   },
   {
    "placeId": "tour_2842724",
@@ -2255,11 +2247,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%EC%88%98%EB%A6%AC%20%EC%86%A1%EC%96%B4%ED%9A%9F%EC%A7%91",
    "tags": [
-    "kid_friendly",
-    "group",
-    "local_food"
+    "nature",
+    "kid_friendly"
    ],
-   "reviewSummary": "넓은 정원과 북한강 조망을 갖춘 곳에서 싱싱한 송어회와 매운탕을 즐길 수 있다."
+   "reviewSummary": "북한강이 보이는 쾌적한 정원에서 싱싱한 송어회와 다양한 메뉴를 즐길 수 있는 횟집이다."
   },
   {
    "placeId": "tour_2836977",
@@ -2276,7 +2267,7 @@
    "tags": [
     "local_food"
    ],
-   "reviewSummary": "푸짐한 부속과 고기가 들어간 진한 국물의 해장국을 맛볼 수 있는 전문점이다."
+   "reviewSummary": "푸짐한 고기와 쫄깃한 식감의 양이 들어간 진한국물의 해장국을 맛볼 수 있는 전문점이다."
   },
   {
    "placeId": "tour_2836963",
@@ -2291,11 +2282,11 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%EC%88%98%EB%A6%AC%EC%98%A4%EB%A6%AC%ED%95%99%EA%B5%90",
    "tags": [
+    "nature",
     "activity",
-    "experience",
-    "romantic"
+    "lively_food"
    ],
-   "reviewSummary": "계곡을 끼고 있어 물놀이를 즐기거나 모닥불로 캠핑 분위기를 느낄 수 있는 오리 요리 전문점이다."
+   "reviewSummary": "계곡을 끼고 있어 물놀이와 캠핑 분위기를 함께 즐길 수 있는 가성비 좋은 오리 요리 전문점이다."
   },
   {
    "placeId": "tour_2836946",
@@ -2310,9 +2301,9 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%AC%B8%ED%98%B8%EB%A6%AC%EC%8C%80%EA%B5%AD%EC%88%98",
    "tags": [
-    "nature"
+    "local_food"
    ],
-   "reviewSummary": "북한강 강가에서 사골 양지 육수로 우려낸 남녀노소 편하게 먹기 좋은 쌀국수를 판매한다."
+   "reviewSummary": "북한강 강가에 위치하여 남녀노소 편하게 즐길 수 있는 베트남 쌀국수를 판매하는 곳이다."
   },
   {
    "placeId": "tour_2831170",
@@ -2328,10 +2319,9 @@
    "mapUrl": "https://map.naver.com/p/search/%EC%95%8C%EB%A1%9C%ED%95%98%EC%98%A4%EC%97%90",
    "tags": [
     "romantic",
-    "aesthetic",
-    "view_cafe"
+    "aesthetic"
    ],
-   "reviewSummary": "유럽풍 외관과 탁 트인 강 전망 테라스에서 건강한 이탈리아 음식을 즐길 수 있다."
+   "reviewSummary": "유유히 흐르는 강 전망의 테라스에서 건강한 이탈리아 요리를 즐길 수 있는 이국적인 음식점이다."
   },
   {
    "placeId": "tour_2754403",
@@ -2350,7 +2340,7 @@
     "romantic",
     "aesthetic"
    ],
-   "reviewSummary": "고즈넉한 산자락 연못 분수를 바라보며 퓨전 한정식 코스요리를 즐길 수 있는 곳이다."
+   "reviewSummary": "고즈넉한 산자락에서 분수를 바라보며 맛있는 퓨전 한정식 코스요리와 정원 산책을 즐길 수 있다."
   },
   {
    "placeId": "tour_133214",
@@ -2365,10 +2355,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%ED%95%9C%EB%A7%88%EB%8B%B9%EC%8B%9D%EB%8B%B9",
    "tags": [
-    "local_food",
-    "lively_food"
+    "lively_food",
+    "local_food"
    ],
-   "reviewSummary": "용문산 경치와 함께 참숯에 구워 먹는 화로구이와 산나물 요리를 맛볼 수 있는 전통 기와집이다."
+   "reviewSummary": "전통 기와집 분위기 속에서 용문산 경치를 감상하며 참숯 화로구이와 산나물 요리를 맛볼 수 있다."
   },
   {
    "placeId": "tour_1660508",
@@ -2383,11 +2373,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%86%8C%EB%82%98%EB%AC%B4%EC%A7%91",
    "tags": [
-    "healing",
-    "activity",
+    "nature",
     "kid_friendly"
    ],
-   "reviewSummary": "돼지왕갈비와 즉석 냉면을 맛보고 앞개울에서 물놀이를 즐길 수 있는 고기 전문점이다."
+   "reviewSummary": "돼지왕갈비와 직접 뽑은 냉면을 맛보고 맑은 개울가에서 물놀이를 즐길 수 있는 고깃집이다."
   },
   {
    "placeId": "tour_133171",
@@ -2404,7 +2393,7 @@
    "tags": [
     "group"
    ],
-   "reviewSummary": "참숯 향이 배어나는 암소 한우를 맛볼 수 있으며 단체 모임이나 가족 행사에 적합한 곳이다."
+   "reviewSummary": "참숯 향이 가득한 암소 한우를 맛볼 수 있으며 별도 룸이 있어 단체 모임이나 가족 행사에 적합하다."
   },
   {
    "placeId": "tour_133215",
@@ -2421,7 +2410,7 @@
    "tags": [
     "local_food"
    ],
-   "reviewSummary": "어부 집안의 전통 비법으로 끓여낸 오랜 전통의 민물매운탕 전문식당이다."
+   "reviewSummary": "3대째 이어져 온 전통적인 비법으로 깊은 맛의 민물매운탕을 끓여내는 유서 깊은 식당이다."
   },
   {
    "placeId": "tour_3355615",
@@ -2438,7 +2427,7 @@
    "tags": [
     "local_food"
    ],
-   "reviewSummary": "주문 즉시 면을 직접 뽑아 만드는 막국수와 차돌해장국 등을 맛볼 수 있는 곳이다."
+   "reviewSummary": "주문 즉시 면을 뽑아 신선하고 쫄깃한 막국수를 맛볼 수 있는 전문점이다."
   },
   {
    "placeId": "tour_134461",
@@ -2450,10 +2439,9 @@
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EA%B8%B8%EC%A1%B0",
    "tags": [
-    "romantic",
-    "local_food"
+    "romantic"
    ],
-   "reviewSummary": "남한강 전망을 바라보며 신선한 회와 초밥을 즐길 수 있는 일본 료칸 콘셉트의 일식당이다."
+   "reviewSummary": "남한강 전망을 바라보며 신선한 회와 초밥을 즐길 수 있는 일본 료칸풍의 일식당이다."
   },
   {
    "placeId": "tour_943362",
@@ -2471,7 +2459,7 @@
     "healing",
     "nature"
    ],
-   "reviewSummary": "용문산 자락 맑은 계곡과 소나무 숲속에 위치해 자연을 만끽하며 휴식하기 좋은 통나무집 펜션이다."
+   "reviewSummary": "용문산 계곡과 소나무 숲에 둘러싸인 수공식 통나무집에서 자연을 만끽하며 휴식할 수 있는 펜션이다."
   },
   {
    "placeId": "tour_990201",
@@ -2486,10 +2474,9 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%ED%86%A0%EB%B8%8C%EC%9D%98%20%EA%B0%95%EA%B0%80",
    "tags": [
-    "group",
-    "kid_friendly"
+    "group"
    ],
-   "reviewSummary": "칠읍산 기슭에 위치하며 단체동과 가족동, 수영장, 노래방 등 다양한 부대시설을 갖춘 펜션이다."
+   "reviewSummary": "칠읍산 기슭에 위치하며 단체동과 커플동을 갖추고 다양한 부대시설을 제공하는 펜션이다."
   },
   {
    "placeId": "tour_700278",
@@ -2505,9 +2492,9 @@
    "mapUrl": "https://map.naver.com/p/search/%EB%AC%BC%EC%86%8C%EB%A6%AC%EC%83%88%EC%86%8C%EB%A6%AC",
    "tags": [
     "nature",
-    "kid_friendly"
+    "experience"
    ],
-   "reviewSummary": "북한강과 벽계천이 보이는 곳에 위치해 족구와 계곡 물고기 잡기 등 특별한 경험을 할 수 있다."
+   "reviewSummary": "북한강과 벽계천이 보이는 곳에서 족구와 계곡 물고기 잡기 체험을 즐길 수 있는 펜션이다."
   },
   {
    "placeId": "tour_700255",
@@ -2522,10 +2509,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%AC%BC%EC%86%8C%EB%A6%AC%ED%8E%9C%EC%85%98",
    "tags": [
-    "nature",
-    "healing"
+    "healing",
+    "nature"
    ],
-   "reviewSummary": "어비계곡 상류에 자리 잡고 있어 여름철 물놀이와 텃밭 채취, 캠프파이어를 즐길 수 있는 펜션이다."
+   "reviewSummary": "어비계곡 상류에 위치해 물놀이와 텃밭 채취, 캠프파이어를 즐길 수 있는 펜션이다."
   },
   {
    "placeId": "tour_397867",
@@ -2541,9 +2528,9 @@
    "mapUrl": "https://map.naver.com/p/search/%ED%96%87%EC%82%B4%EC%A2%8B%EC%9D%80%EB%82%A0",
    "tags": [
     "group",
-    "aesthetic"
+    "romantic"
    ],
-   "reviewSummary": "넓은 잔디마당과 수영장, 다양한 부대시설을 갖추어 단체 행사이벤트에 적합한 고급 독채 펜션이다."
+   "reviewSummary": "넓은 정원과 다양한 부대시설을 갖추고 있어 워크숍이나 가족 행사 등에 이용하기 좋은 독채 펜션이다."
   },
   {
    "placeId": "tour_945085",
@@ -2558,10 +2545,10 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%97%90%EB%8D%B8%EB%B0%94%EC%9D%B4%EC%8A%A4",
    "tags": [
-    "nature",
-    "healing"
+    "healing",
+    "nature"
    ],
-   "reviewSummary": "용문산과 중원산의 맑은 물과 공기를 즐기며 도심을 벗어나 편안한 휴식을 취할 수 있는 펜션이다."
+   "reviewSummary": "용문산과 중원산의 맑은 물과 공기를 즐기며 편안한 휴식을 취할 수 있는 펜션이다."
   },
   {
    "placeId": "tour_397692",
@@ -2577,9 +2564,9 @@
    "mapUrl": "https://map.naver.com/p/search/%ED%8E%9C%EC%85%98%EB%B7%B0",
    "tags": [
     "healing",
-    "group"
+    "nature"
    ],
-   "reviewSummary": "용문산 주변의 뛰어난 자연 경관 속에서 여유와 프라이버시를 누리며 모임을 갖기 좋은 펜션이다."
+   "reviewSummary": "뛰어난 자연 경관 속에서 여유를 즐길 수 있으며 계곡 낚시와 다슬기 채집이 가능한 펜션이다."
   },
   {
    "placeId": "tour_697068",
@@ -2594,10 +2581,11 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EC%9E%90%EC%97%B0%ED%96%A5%EA%B8%B0%ED%8E%9C%EC%85%98",
    "tags": [
+    "healing",
     "nature",
     "group"
    ],
-   "reviewSummary": "자연 속에서 다른 사람의 방해 없이 가족 모임이나 워크숍을 즐기기 좋은 독채형 펜션이다."
+   "reviewSummary": "자연 속에 위치해 방해받지 않고 모임을 가지며 잔디 정원에서 뛰어놀 수 있는 독채 펜션이다."
   },
   {
    "placeId": "tour_2814153",
@@ -2612,10 +2600,9 @@
    ],
    "mapUrl": "https://map.naver.com/p/search/%EB%A0%88%EB%AA%AC%EA%B7%B8%EB%9D%BC%EC%8A%A4",
    "tags": [
-    "nature",
-    "healing"
+    "nature"
    ],
-   "reviewSummary": "소리산 자락 맑은 계곡에 위치하여 아름다운 산자락 풍경을 감상할 수 있는 독채 펜션이다."
+   "reviewSummary": "소리산 계곡에 위치하며 전면 창으로 산자락 풍경을 감상할 수 있는 복층 구조의 독채 펜션이다."
   },
   {
    "placeId": "tour_3532665",
@@ -2628,10 +2615,11 @@
    "mapUrl": "https://map.naver.com/p/search/%ED%97%A4%EC%9C%B0%2C%20%EC%86%8C",
    "tags": [
     "healing",
+    "nature",
     "aesthetic",
     "kid_friendly"
    ],
-   "reviewSummary": "하루 두 팀만을 위한 프라이빗한 공간에서 숲과 계곡의 물소리를 들으며 휴식할 수 있는 감성 숙소이다."
+   "reviewSummary": "하루 두 팀만을 위한 프라이빗한 공간에서 계곡 체험과 감성적인 휴식을 즐길 수 있는 펜션이다."
   },
   {
    "placeId": "tour_3532732",
@@ -2646,7 +2634,7 @@
     "healing"
    ],
    "petFriendly": true,
-   "reviewSummary": "넓은 잔디밭과 대형 자쿠지 욕조를 갖추어 온전한 쉼을 누릴 수 있는 애견 동반 가능 독채 펜션이다."
+   "reviewSummary": "넓은 잔디밭과 대형 자쿠지를 갖추고 온전한 쉼을 누릴 수 있는 애견 동반 가능 독채 펜션이다."
   },
   {
    "placeId": "tour_3532734",
@@ -2662,7 +2650,7 @@
     "nature"
    ],
    "petFriendly": true,
-   "reviewSummary": "넓은 애견 플레이그라운드와 수영장, 전용 어메니티를 갖춘 반려견 전문 펜션입니다."
+   "reviewSummary": "넓은 애견 플레이그라운드와 수영장, 사우나를 갖춘 진정한 애견 전문 펜션입니다."
   },
   {
    "placeId": "tour_3532756",
@@ -2678,7 +2666,7 @@
     "nature",
     "romantic"
    ],
-   "reviewSummary": "자연과 예술이 머무는 프라이빗 독채 스테이로 사계절 정원과 야외 갤러리를 즐길 수 있습니다."
+   "reviewSummary": "자연과 예술이 머무는 프라이빗 독채 스테이로 사계절 정원과 야외 갤러리가 있습니다."
   },
   {
    "placeId": "tour_3532772",
@@ -2691,9 +2679,10 @@
    "mapUrl": "https://map.naver.com/p/search/%EC%82%B0%EC%98%A8%EC%9E%94%EB%93%B1",
    "tags": [
     "healing",
-    "nature"
+    "nature",
+    "group"
    ],
-   "reviewSummary": "포근한 산으로 둘러싸인 고요한 공간에서 가족, 친구들과 위로와 휴식을 얻을 수 있습니다."
+   "reviewSummary": "포근한 산으로 둘러싸인 고요한 공간에서 가족이나 친구들과 편안한 시간을 보낼 수 있습니다."
   },
   {
    "placeId": "tour_3533005",
@@ -2706,11 +2695,10 @@
    "mapUrl": "https://map.naver.com/p/search/%EC%8A%AC%EB%A1%9C%EC%9A%B0%EC%9D%B8%ED%92%80%EB%B9%8C%EB%9D%BC",
    "tags": [
     "healing",
-    "nature",
-    "aesthetic"
+    "nature"
    ],
    "petFriendly": true,
-   "reviewSummary": "잣나무 숲 인근 조용한 산속 마을에 위치해 개별 수영장과 맑은 공기를 즐길 수 있는 풀빌라입니다."
+   "reviewSummary": "잣나무 숲 인근 조용한 산속에 위치해 개별 수영장과 반려견과 함께 휴식을 즐길 수 있는 독채 풀빌라입니다."
   },
   {
    "placeId": "tour_3533129",
@@ -2725,7 +2713,7 @@
     "healing",
     "romantic"
    ],
-   "reviewSummary": "자쿠지, 미니 수영장, 레트로 포장마차 등을 단독으로 이용하는 200평 규모의 독채 한옥입니다."
+   "reviewSummary": "자쿠지, 레트로 포장마차, 바비큐 공간을 단독으로 이용하는 하루 한 팀 전용 한옥 숙소입니다."
   },
   {
    "placeId": "tour_2918674",
@@ -2740,7 +2728,7 @@
     "healing",
     "nature"
    ],
-   "reviewSummary": "탁 트인 자연 조망과 야외수영장을 갖추어 편안한 휴식을 누릴 수 있는 리조트 내 숙소입니다."
+   "reviewSummary": "탁 트인 조망과 야외수영장, 휴가든을 갖춘 리조트 내 빌리지에서 편안한 휴식을 즐길 수 있습니다."
   },
   {
    "placeId": "tour_2853502",
@@ -2755,7 +2743,7 @@
     "healing",
     "romantic"
    ],
-   "reviewSummary": "전 객실 통창과 발코니를 통해 여유롭게 남한강 조망을 즐길 수 있는 드라이브인 무인텔입니다."
+   "reviewSummary": "전 객실 통창과 발코니를 통해 남한강 조망을 즐길 수 있는 드라이브인 무인텔입니다."
   },
   {
    "placeId": "tour_3438041",
@@ -2767,10 +2755,9 @@
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%9C%A0%EC%84%A0%EC%9E%AC",
    "tags": [
-    "healing",
-    "aesthetic"
+    "healing"
    ],
-   "reviewSummary": "100년 된 전통 한옥의 고즈넉함과 호텔의 정갈함을 하루 한 가족만 프라이빗하게 누릴 수 있습니다."
+   "reviewSummary": "하루 한 가족만 예약받는 100년 전통의 고즈넉하고 평화로운 고택 한옥 독채입니다."
   },
   {
    "placeId": "tour_3438560",
@@ -2785,7 +2772,7 @@
     "healing",
     "nature"
    ],
-   "reviewSummary": "뒤로는 숲, 정면으로는 봉미산 봉우리가 펼쳐져 타인의 시선 없이 평화와 여유를 누리는 공간입니다."
+   "reviewSummary": "뒷편의 작은 산과 정면의 봉미산 봉우리를 바라보며 고요한 여유를 즐길 수 있는 풀빌라입니다."
   }
  ]
 }

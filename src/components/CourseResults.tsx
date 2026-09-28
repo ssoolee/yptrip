@@ -10,10 +10,13 @@ export default function CourseResults({
   presetType,
   initialCourses,
   showMbtiInput,
+  query,
 }: {
   presetType: PresetType;
   initialCourses: Course[];
   showMbtiInput?: boolean;
+  // 자연어 요청(/course/search) — "더 보기" 때 같은 조건으로 이어서 생성
+  query?: string;
 }) {
   const [courses, setCourses] = useState(initialCourses);
   const [mbti, setMbti] = useState("");
@@ -23,7 +26,7 @@ export default function CourseResults({
 
   const handleLoadMore = () => {
     startTransition(async () => {
-      const more = await loadMoreCourses(presetType, courses.length, mbti || undefined);
+      const more = await loadMoreCourses(presetType, courses.length, mbti || undefined, query);
       const shown = new Set(courses.map((c) => courseSignature(c.days)));
       const fresh = more.filter((c) => !shown.has(courseSignature(c.days)));
       if (fresh.length === 0) setExhausted(true);
@@ -33,7 +36,7 @@ export default function CourseResults({
 
   const handleApplyMbti = () => {
     startTransition(async () => {
-      const fresh = await loadMoreCourses(presetType, 0, mbti || undefined);
+      const fresh = await loadMoreCourses(presetType, 0, mbti || undefined, query);
       setCourses(fresh);
       setExhausted(false);
     });

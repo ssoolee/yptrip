@@ -17,8 +17,13 @@ function normalizeName(name: string): string {
 const SNAPSHOT_IDS = new Set(SNAPSHOT_PLACES.map((p) => p.placeId));
 const SNAPSHOT_NAMES = new Set(SNAPSHOT_PLACES.map((p) => normalizeName(p.name)));
 
+// 취향이 아니라 조건에 가까운 태그는 가중치를 높인다. "비 오는 날 아이랑"에서
+// indoor를 다른 태그와 같은 1점으로 치면 healing·kid_friendly가 붙은 계곡이
+// 실내 박물관보다 앞선다 (실측).
+const TAG_WEIGHT: Record<string, number> = { indoor: 3 };
+
 function scorePlace(place: Place, tags: string[]): number {
-  return place.tags.reduce((acc, t) => acc + (tags.includes(t) ? 1 : 0), 0);
+  return place.tags.reduce((acc, t) => acc + (tags.includes(t) ? (TAG_WEIGHT[t] ?? 1) : 0), 0);
 }
 
 // docs/agents/02-place-retrieval-agent.md 참조.
