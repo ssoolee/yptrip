@@ -3,10 +3,10 @@ import { Category, Place } from "@/types/travel";
 // docs/prd/07-external-api-integration.md, docs/agents/02-place-retrieval-agent.md 참조.
 // 한국관광공사 TourAPI 4.0 (KorService2) 연동.
 //
-// 네이버 검색 API(NAVER_SEARCH_CLIENT_ID/SECRET)가 아직 미발급이라 맛집/카페
-// 검색도 TourAPI로 대체한다 — areaBasedList2의 contentTypeId=39(음식점)는
-// cat3 코드로 "카페/전통찻집"과 일반 식당이 구분되므로(CAFE_CAT3), 별도
-// 데이터 소스 없이도 category=cafe/restaurant를 모두 커버할 수 있다.
+// 맛집/카페는 네이버 지역 검색(src/lib/api/naverSearch.ts)이 우선이고, TourAPI는
+// 그 뒤를 보충한다 — areaBasedList2의 contentTypeId=39(음식점)는 cat3 코드로
+// "카페/전통찻집"과 일반 식당이 구분되므로(CAFE_CAT3) category=cafe/restaurant를
+// 모두 커버할 수 있다.
 const TOUR_API_BASE = "https://apis.data.go.kr/B551011/KorService2";
 const MOBILE_APP = "ypaicourse";
 

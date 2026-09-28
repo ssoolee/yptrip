@@ -1,5 +1,6 @@
 import { MOCK_PLACES } from "@/lib/mock/places";
 import { getActiveFestivals, searchTourApiPlaces } from "@/lib/api/tourApi";
+import { searchNaverPlaces } from "@/lib/api/naverSearch";
 import { Category, Place } from "@/types/travel";
 
 // TourAPI에서 한 번에 가져올 카테고리별 후보 풀 크기. 목업(카테고리당
@@ -7,18 +8,23 @@ import { Category, Place } from "@/types/travel";
 // 넉넉하게 가져온다 (Next.js fetch 캐시로 동일 카테고리 재호출은 저렴함).
 const TOUR_API_POOL_SIZE = 24;
 
+function normalizeName(name: string): string {
+  return name.replace(/\s+/g, "").toLowerCase();
+}
+
 function scorePlace(place: Place, tags: string[]): number {
   return place.tags.reduce((acc, t) => acc + (tags.includes(t) ? 1 : 0), 0) + (place.rating ?? 0) / 10;
 }
 
 // docs/agents/02-place-retrieval-agent.md 참조.
 // MOCK_PLACES를 "자체 캐시 DB(취향 태그 큐레이션 우선순위)"로 쓰고, 그
-// 뒤에 TourAPI 실데이터를 이어 붙여 후보 풀을 구성한다. 목업은 태그
-// 점수순으로 앞에 오고, TourAPI 항목은 태그가 없어 항상 그 뒤에 온다 —
-// 그래서 offset이 작을 땐 큐레이션된 목업이, offset이 목업 개수를
-// 넘어서면(예: "더 보기" 반복 클릭) 실제 TourAPI 장소가 노출된다.
+// 뒤에 실데이터(음식점/카페는 네이버 지역 검색 → TourAPI, 그 외는 TourAPI)를
+// 이어 붙여 후보 풀을 구성한다. 목업은 태그 점수순으로 앞에 오고, 실데이터
+// 항목은 태그가 없어 항상 그 뒤에 온다 — 그래서 offset이 작을 땐 큐레이션된
+// 목업이, offset이 목업 개수를 넘어서면(예: "더 보기" 반복 클릭) 실제 장소가
+// 노출된다.
 //
-// 반려동물 동반 여부는 TourAPI 기본 목록으로 검증할 수 없어(detailPetTour2
+// 반려동물 동반 여부는 네이버 검색·TourAPI 기본 목록으로 검증할 수 없어(detailPetTour2
 // 별도 호출 필요) requirePetFriendly 조건에서는 목업 데이터만 사용한다.
 // detailPetTour2를 양평군 표본으로 실제 호출해본 결과 등록된 반려동물
 // 동반 업체가 전무해(PRD-07 §5 오픈 이슈에서 우려한 커버리지 문제가
@@ -52,12 +58,25 @@ export async function retrievePlaces(params: {
     }
   }
 
-  let pool = scoredMock.sort((a, b) => b.score - a.score).map((s) => s.place);
+  const pool = scoredMock.sort((a, b) => b.score - a.score).map((s) => s.place);
 
   if (!requirePetFriendly) {
-    const apiCandidates = await searchTourApiPlaces({ category, count: TOUR_API_POOL_SIZE });
-    const known = new Set([...excludePlaceIds, ...pool.map((p) => p.placeId)]);
-    pool = [...pool, ...apiCandidates.filter((p) => !known.has(p.placeId))];
+    // 음식점/카페는 네이버 지역 검색(리뷰 많은 순)을 TourAPI보다 앞에 둔다 —
+    // TourAPI 음식점 목록은 등록 업체 위주라 실제 인기 업체 커버리지가 낮다.
+    // 같은 업체가 양쪽에 있으면 이름(공백 제거)으로 중복을 거른다.
+    const [naverCandidates, tourCandidates] = await Promise.all([
+      searchNaverPlaces(category),
+      searchTourApiPlaces({ category, count: TOUR_API_POOL_SIZE }),
+    ]);
+    const knownIds = new Set([...excludePlaceIds, ...pool.map((p) => p.placeId)]);
+    const knownNames = new Set(pool.map((p) => normalizeName(p.name)));
+    for (const candidate of [...naverCandidates, ...tourCandidates]) {
+      const name = normalizeName(candidate.name);
+      if (knownIds.has(candidate.placeId) || knownNames.has(name)) continue;
+      knownIds.add(candidate.placeId);
+      knownNames.add(name);
+      pool.push(candidate);
+    }
   }
 
   if (pool.length === 0) return [];

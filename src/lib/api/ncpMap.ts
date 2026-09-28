@@ -7,7 +7,9 @@
 // null을 반환해 호출부가 직선거리(haversine) 등으로 fallback하도록 한다.
 const NCP_MAPS_API_BASE = "https://maps.apigw.ntruss.com";
 
-function getHeaders(): Record<string, string> | null {
+// NCP API Gateway 공통 인증 헤더. 같은 NCP 애플리케이션 키로 NAVER API HUB
+// (지역 검색, src/lib/api/naverSearch.ts)도 호출하므로 export한다.
+export function getNcpApiHeaders(): Record<string, string> | null {
   const keyId = process.env.NCP_MAP_CLIENT_ID;
   const key = process.env.NCP_MAP_CLIENT_SECRET;
   if (!keyId || !key) return null;
@@ -25,7 +27,7 @@ export interface LatLng {
 // 주소 → 좌표. TourAPI/캐시 데이터가 좌표를 이미 갖고 있어 지금은 좌표
 // 누락 시 보완용으로만 쓰인다.
 export async function geocodeAddress(address: string): Promise<LatLng | null> {
-  const headers = getHeaders();
+  const headers = getNcpApiHeaders();
   if (!headers) return null;
 
   try {
@@ -49,7 +51,7 @@ export interface DrivingRoute {
 // 두 지점 간 자동차 이동거리/시간. 실패 시 null — 호출부가
 // haversineDistanceKm 등으로 직선거리 fallback 처리.
 export async function getDrivingRoute(from: LatLng, to: LatLng): Promise<DrivingRoute | null> {
-  const headers = getHeaders();
+  const headers = getNcpApiHeaders();
   if (!headers) return null;
 
   try {
