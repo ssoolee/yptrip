@@ -15,13 +15,15 @@ export async function generateCourses(params: {
   count?: number;
   offsetStart?: number;
   mbti?: string;
+  // 프리셋 화면의 일정 탭(당일치기=1, 1박 2일=2). 자연어 요청은 conditions의 일정을 쓴다.
+  durationDays?: number;
   conditions?: TripConditions;
 }): Promise<Course[]> {
   const { presetType, count = 3, offsetStart = 0, mbti, conditions } = params;
   const preset = getPreset(presetType);
   const tags = conditions?.tags ?? (presetType === "mbti" ? tagsForMbti(mbti) : preset?.tags ?? []);
   const requirePetFriendly = conditions?.requirePetFriendly ?? presetType === "pet";
-  const durationDays = conditions?.durationDays ?? 2;
+  const durationDays = conditions?.durationDays ?? params.durationDays ?? 2;
   const label =
     conditions?.companionLabel ??
     (presetType === "mbti" && mbti ? `${mbti.toUpperCase()} 성향` : preset?.label) ??

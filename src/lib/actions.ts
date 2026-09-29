@@ -12,8 +12,9 @@ export async function loadMoreCourses(
   offsetStart: number,
   mbti?: string,
   query?: string,
+  durationDays?: number,
 ): Promise<Course[]> {
   // 자연어 요청은 해석 결과가 캐시되어 있어 "더 보기"마다 LLM을 다시 부르지 않는다.
   const conditions = presetType === "custom" && query ? await interpretRequest(query) : undefined;
-  return await generateCourses({ presetType, offsetStart, count: 3, mbti, conditions });
+  return await generateCourses({ presetType, offsetStart, count: 3, mbti, conditions, durationDays });
 }

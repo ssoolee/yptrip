@@ -14,6 +14,7 @@ export default function CourseResults({
   initialCourses,
   mbti,
   query,
+  durationDays,
 }: {
   presetType: PresetType;
   initialCourses: Course[];
@@ -21,6 +22,8 @@ export default function CourseResults({
   mbti?: string;
   // 자연어 요청(/course/search) — "더 보기" 때 같은 조건으로 이어서 생성
   query?: string;
+  // 프리셋 화면의 일정 탭 — "더 보기"도 같은 일정으로 생성
+  durationDays?: number;
 }) {
   const [courses, setCourses] = useState(initialCourses);
   // 생성 파이프라인의 다음 offset. 요청마다 중복 제거 전 기준으로 COURSES_PER_LOAD개를
@@ -34,7 +37,7 @@ export default function CourseResults({
 
   const handleLoadMore = () => {
     startTransition(async () => {
-      const more = await loadMoreCourses(presetType, nextOffset, mbti, query);
+      const more = await loadMoreCourses(presetType, nextOffset, mbti, query, durationDays);
       const shown = new Set(courses.map((c) => courseSignature(c.days)));
       const fresh = more.filter((c) => !shown.has(courseSignature(c.days)));
       if (fresh.length === 0) setExhausted(true);

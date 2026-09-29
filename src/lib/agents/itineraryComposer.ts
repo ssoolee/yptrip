@@ -6,7 +6,10 @@ import { Category, ItineraryDay, ItineraryStop } from "@/types/travel";
 // (NCP Directions는 발급받은 키에 아직 상품 구독이 안 되어 있어 대기 중 —
 // docs/prd/02-map-realtime-location-prd.md §5의 "직선거리 fallback" 요건대로
 // 현재는 좌표 기반 순서(방문 순서)만 사용하고 실제 이동시간은 계산하지 않는다.)
-const DAY_TEMPLATES: { category: Category; timeSlot: string; skipOnLastDay?: boolean }[][] = [
+type DayTemplate = { category: Category; timeSlot: string; skipOnLastDay?: boolean }[];
+
+// 1박 이상 일정의 일차별 템플릿 (1일차는 오후 도착, 마지막 날은 숙소 제외).
+const DAY_TEMPLATES: DayTemplate[] = [
   [
     { category: "cafe", timeSlot: "14:00-15:00" },
     { category: "attraction", timeSlot: "15:30-17:00" },
@@ -19,6 +22,20 @@ const DAY_TEMPLATES: { category: Category; timeSlot: string; skipOnLastDay?: boo
     { category: "cafe", timeSlot: "14:00-15:00" },
   ],
 ];
+
+// 당일치기는 오전부터 시작한다. 1박용 1일차 템플릿을 쓰면 오전이 비고, 반려동물처럼
+// 동반 가능 관광지가 없는 조건에선 카페·식당 2곳짜리 코스가 된다 — 점심·저녁을 둬 3곳 이상 확보.
+const DAY_TRIP_TEMPLATE: DayTemplate = [
+  { category: "attraction", timeSlot: "10:30-12:00" },
+  { category: "restaurant", timeSlot: "12:00-13:30" },
+  { category: "cafe", timeSlot: "14:00-15:00" },
+  { category: "restaurant", timeSlot: "18:00-19:30" },
+];
+
+function templateFor(day: number, durationDays: number): DayTemplate {
+  if (durationDays === 1) return DAY_TRIP_TEMPLATE;
+  return DAY_TEMPLATES[Math.min(day - 1, DAY_TEMPLATES.length - 1)];
+}
 
 export async function composeItinerary(params: {
   durationDays: number;
@@ -36,7 +53,7 @@ export async function composeItinerary(params: {
   // offset을 1씩만 밀면 코스 N의 두 번째 카페가 코스 N+1의 첫 카페가 된다.
   const slotsPerCategory = new Map<Category, number>();
   for (let day = 1; day <= durationDays; day++) {
-    const template = DAY_TEMPLATES[Math.min(day - 1, DAY_TEMPLATES.length - 1)];
+    const template = templateFor(day, durationDays);
     for (const slot of template) {
       if (day === durationDays && slot.skipOnLastDay) continue;
       slotsPerCategory.set(slot.category, (slotsPerCategory.get(slot.category) ?? 0) + 1);
@@ -45,7 +62,7 @@ export async function composeItinerary(params: {
 
   for (let day = 1; day <= durationDays; day++) {
     const isLastDay = day === durationDays;
-    const template = DAY_TEMPLATES[Math.min(day - 1, DAY_TEMPLATES.length - 1)];
+    const template = templateFor(day, durationDays);
     const stops: ItineraryStop[] = [];
 
     for (const slot of template) {

@@ -1,0 +1,34 @@
+# Firebase App Hosting 설정 (docs/prd/06-infra-deployment-prd.md).
+# API 키는 파일에 적지 않고 Cloud Secret Manager의 시크릿을 참조한다
+# (등록: npx firebase-tools apphosting:secrets:set <이름>).
+
+runConfig:
+  cpu: 1
+  memoryMiB: 512
+  minInstances: 0
+  # 비용 관리 — 트래픽이 늘면 올린다.
+  maxInstances: 2
+  concurrency: 80
+
+env:
+  - variable: LLM_PROVIDER
+    value: gemini
+  - variable: GEMINI_API_KEY
+    secret: gemini-api-key
+  - variable: TOUR_API_KEY
+    secret: tour-api-key
+  # NAVER API HUB 지역 검색용 키
+  - variable: NCP_MAP_CLIENT_ID
+    secret: ncp-map-client-id
+  - variable: NCP_MAP_CLIENT_SECRET
+    secret: ncp-map-client-secret
+  - variable: NCP_MAPS_API_KEY_ID
+    secret: ncp-maps-api-key-id
+  - variable: NCP_MAPS_API_KEY
+    secret: ncp-maps-api-key
+  # 브라우저 지도 SDK용 — 빌드 때 번들에 들어가므로 BUILD에도 필요. Maps 키의 Client ID와 같은 값.
+  - variable: NEXT_PUBLIC_NCP_MAP_CLIENT_ID
+    secret: ncp-maps-api-key-id
+    availability:
+      - BUILD
+      - RUNTIME

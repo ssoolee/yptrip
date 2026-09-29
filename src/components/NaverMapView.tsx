@@ -10,6 +10,12 @@ export interface MapStop {
   lng: number;
   name: string;
   order: number;
+  // 있으면 마커 정보창에 네이버 지도 링크를 붙인다 (반려동물 동반 업소 지도)
+  url?: string;
+}
+
+function escapeHtml(text: string): string {
+  return text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 }
 
 interface NaverLatLng {
@@ -26,7 +32,7 @@ interface NaverMapInstance {
 }
 
 interface NaverMapsNamespace {
-  maps: {
+  maps: null | {
     Map: new (el: HTMLElement, opts: Record<string, unknown>) => NaverMapInstance;
     LatLng: new (lat: number, lng: number) => NaverLatLng;
     LatLngBounds: new (a: NaverLatLng, b: NaverLatLng) => NaverBounds;
@@ -56,36 +62,43 @@ export default function NaverMapView({
   const clientId = process.env.NEXT_PUBLIC_NCP_MAP_CLIENT_ID;
 
   useEffect(() => {
-    if (!sdkReady || !mapElRef.current || !window.naver || stops.length === 0) return;
+    // 인증 실패(키·도메인 설정, 네이버 서버 오류) 시 SDK가 naver.maps를 null로 비운다.
+    // 그 상태로 다시 그리면 페이지 전체가 깨지므로 지도만 건너뛰고 목록·링크는 살린다.
+    if (!sdkReady || !mapElRef.current || !window.naver?.maps || stops.length === 0) return;
 
-    const { naver } = window;
-    const positions = stops.map((s) => new naver.maps.LatLng(s.lat, s.lng));
-    const map = new naver.maps.Map(mapElRef.current, {
+    const maps = window.naver.maps;
+    const positions = stops.map((s) => new maps.LatLng(s.lat, s.lng));
+    const map = new maps.Map(mapElRef.current, {
       center: positions[0],
       zoom: 13,
     });
 
     stops.forEach((stop, i) => {
       const position = positions[i];
-      const marker = new naver.maps.Marker({
+      const marker = new maps.Marker({
         position,
         map,
         icon: {
           content: `<div style="background:#2f6f4f;color:#fff;border-radius:9999px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;box-shadow:0 1px 4px rgba(0,0,0,.35)">${stop.order}</div>`,
-          anchor: new naver.maps.Point(13, 13),
+          anchor: new maps.Point(13, 13),
         },
       });
-      const infoWindow = new naver.maps.InfoWindow({
-        content: `<div style="padding:6px 10px;font-size:12px;white-space:nowrap;">${stop.name}</div>`,
+      const infoWindow = new maps.InfoWindow({
+        content:
+          `<div style="padding:6px 10px;font-size:12px;white-space:nowrap;">${escapeHtml(stop.name)}` +
+          (stop.url
+            ? ` <a href="${escapeHtml(stop.url)}" target="_blank" rel="noreferrer" style="margin-left:6px;color:#2f6f4f;font-weight:700;">네이버 지도 →</a>`
+            : "") +
+          `</div>`,
         borderWidth: 0,
       });
-      naver.maps.Event.addListener(marker, "click", () => {
+      maps.Event.addListener(marker, "click", () => {
         infoWindow.open(map, marker);
       });
     });
 
     if (showRoute && positions.length > 1) {
-      new naver.maps.Polyline({
+      new maps.Polyline({
         map,
         path: positions,
         strokeColor: "#2f6f4f",
@@ -95,7 +108,7 @@ export default function NaverMapView({
     }
 
     if (positions.length > 1) {
-      const bounds = new naver.maps.LatLngBounds(positions[0], positions[0]);
+      const bounds = new maps.LatLngBounds(positions[0], positions[0]);
       positions.forEach((p) => bounds.extend(p));
       map.fitBounds(bounds);
     }
