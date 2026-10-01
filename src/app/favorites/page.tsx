@@ -8,6 +8,7 @@ import {
   removeFavoriteCourse,
   subscribeFavorites,
 } from "@/lib/favorites";
+import { useAuth } from "@/lib/auth/AuthProvider";
 
 export default function FavoritesPage() {
   const favorites = useSyncExternalStore(
@@ -15,10 +16,28 @@ export default function FavoritesPage() {
     getFavoritesSnapshot,
     getFavoritesServerSnapshot,
   );
+  const { user, loading, configured } = useAuth();
+  // 비로그인 상태에서 찜이 쌓이면 브라우저 데이터와 함께 사라질 수 있다 -
+  // docs/prd/04-favorites-prd.md 10 오픈 이슈의 로그인 유도 배너.
+  const showLoginBanner = configured && !loading && !user && favorites.length > 0;
 
   return (
     <div className="mx-auto max-w-2xl px-4 pb-6 pt-8">
       <h1 className="mb-4 text-xl font-bold">찜한 코스</h1>
+
+      {showLoginBanner && (
+        <div className="mb-4 flex items-center justify-between gap-3 rounded-[var(--radius-card)] bg-[var(--color-primary)]/10 p-4">
+          <p className="text-xs text-[var(--color-primary)]">
+            이 브라우저에만 저장돼 있어요. 로그인하면 다른 기기에서도 볼 수 있어요.
+          </p>
+          <Link
+            href="/login"
+            className="shrink-0 rounded-[var(--radius-button)] bg-[var(--color-primary)] px-3 py-2 text-xs font-semibold text-white"
+          >
+            로그인
+          </Link>
+        </div>
+      )}
 
       {favorites.length === 0 && (
         <div className="rounded-[var(--radius-card)] border border-dashed border-[var(--color-border)] p-8 text-center">

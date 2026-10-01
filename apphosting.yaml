@@ -32,3 +32,26 @@ env:
     availability:
       - BUILD
       - RUNTIME
+
+  # Firebase 웹 앱 설정 (docs/prd/06-infra-deployment-prd.md) - 공개 전제 값이라
+  # 시크릿이 아니라 평문으로 둔다. 브라우저 번들에 들어가므로 BUILD에도 필요.
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: AIzaSyCuG_kmM9alwxdCuyYzcoED9X-tUWNq14I
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: ypcourse.firebaseapp.com
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: ypcourse
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: "1:1017077064373:web:48fd9476515f64d489d4fc"
+    availability:
+      - BUILD
+      - RUNTIME
