@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import BottomNav from "@/components/BottomNav";
+import { AuthProvider } from "@/lib/auth/AuthProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,8 +26,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <main className="flex-1 pb-16">{children}</main>
-        <BottomNav />
+        {/* 로그인 상태와 찜 동기화는 클라이언트에서만 다룬다 — Provider를 body 안쪽에 둬
+            서버 컴포넌트의 정적 부분을 최대한 유지한다. */}
+        <AuthProvider>
+          <main className="flex-1 pb-16">{children}</main>
+          <BottomNav />
+        </AuthProvider>
       </body>
     </html>
   );

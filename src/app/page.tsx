@@ -1,5 +1,6 @@
 import PresetGrid from "@/components/PresetGrid";
 import TripSearchBox from "@/components/TripSearchBox";
+import PetPlacesLink from "@/components/PetPlacesLink";
 
 export default function Home() {
   return (
@@ -14,6 +15,9 @@ export default function Home() {
         <TripSearchBox showExamples />
       </div>
       <PresetGrid />
+      <div className="mt-4 px-4">
+        <PetPlacesLink />
+      </div>
     </div>
   );
 }
