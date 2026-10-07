@@ -1,7 +1,14 @@
+"use client";
+
+import { useState } from "react";
+import PlaceDetailSheet from "@/components/PlaceDetailSheet";
+import { CATEGORY_EMOJI } from "@/lib/categories";
 import { LodgingPick } from "@/types/travel";
 
 // MBTI 유형별 숙소·펜션 추천 — 코스 카드와 따로, 코스 목록 아래에 보여준다.
 export default function LodgingPicks({ title, picks }: { title: string; picks: LodgingPick[] }) {
+  const [openPick, setOpenPick] = useState<LodgingPick | null>(null);
+
   if (picks.length === 0) return null;
 
   return (
@@ -18,7 +25,7 @@ export default function LodgingPicks({ title, picks }: { title: string; picks: L
               <img src={pick.photos[0]} alt={pick.name} loading="lazy" className="h-36 w-full object-cover" />
             ) : (
               <div className="flex h-24 items-center justify-center bg-[var(--color-primary)]/5 text-3xl" aria-hidden>
-                🏡
+                {CATEGORY_EMOJI.lodging}
               </div>
             )}
             <div className="p-4">
@@ -42,19 +49,22 @@ export default function LodgingPicks({ title, picks }: { title: string; picks: L
                     전화하기
                   </a>
                 )}
-                <a
-                  href={pick.mapUrl}
-                  target="_blank"
-                  rel="noreferrer"
+                <button
+                  type="button"
+                  onClick={() => setOpenPick(pick)}
+                  aria-haspopup="dialog"
+                  aria-label={`${pick.name} 상세정보 보기`}
                   className="flex min-h-11 flex-1 items-center justify-center rounded-[var(--radius-button)] border border-[var(--color-primary)] text-[var(--color-primary)]"
                 >
-                  네이버 지도
-                </a>
+                  상세정보
+                </button>
               </div>
             </div>
           </li>
         ))}
       </ul>
+
+      {openPick && <PlaceDetailSheet place={openPick} onClose={() => setOpenPick(null)} />}
     </section>
   );
 }
