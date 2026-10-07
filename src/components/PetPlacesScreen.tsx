@@ -3,22 +3,17 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import NaverMapView, { MapStop } from "@/components/NaverMapView";
+import PlaceDetailSheet from "@/components/PlaceDetailSheet";
+import { CATEGORY_LABEL } from "@/lib/categories";
 import { Category, Place } from "@/types/travel";
-
-export type PetPlace = Pick<Place, "placeId" | "name" | "category" | "lat" | "lng" | "address" | "phone" | "mapUrl">;
-
-const CATEGORY_LABEL: Record<Category, string> = {
-  restaurant: "식당",
-  cafe: "카페",
-  attraction: "관광지",
-  lodging: "숙소",
-};
 
 // 칩 순서. 해당 카테고리 장소가 없으면 칩을 숨긴다 (현재 동반 가능 관광지 데이터는 없음).
 const FILTERS: (Category | "all")[] = ["all", "restaurant", "cafe", "attraction", "lodging"];
 
-export default function PetPlacesScreen({ places }: { places: PetPlace[] }) {
+export default function PetPlacesScreen({ places }: { places: Place[] }) {
   const [filter, setFilter] = useState<Category | "all">("all");
+  // 열린 상세 시트의 장소. null이면 닫힌 상태.
+  const [openPlace, setOpenPlace] = useState<Place | null>(null);
   const visible = useMemo(
     () => (filter === "all" ? places : places.filter((p) => p.category === filter)),
     [places, filter],
@@ -96,18 +91,21 @@ export default function PetPlacesScreen({ places }: { places: PetPlace[] }) {
                   전화하기
                 </a>
               )}
-              <a
-                href={place.mapUrl}
-                target="_blank"
-                rel="noreferrer"
+              <button
+                type="button"
+                onClick={() => setOpenPlace(place)}
+                aria-haspopup="dialog"
+                aria-label={`${place.name} 상세정보 보기`}
                 className="flex min-h-11 flex-1 items-center justify-center rounded-[var(--radius-button)] border border-[var(--color-primary)] text-[var(--color-primary)]"
               >
-                네이버 지도
-              </a>
+                상세정보
+              </button>
             </div>
           </li>
         ))}
       </ul>
+
+      {openPlace && <PlaceDetailSheet place={openPlace} onClose={() => setOpenPlace(null)} />}
     </div>
   );
 }
