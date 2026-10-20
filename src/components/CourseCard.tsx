@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import FavoriteButton from "@/components/FavoriteButton";
+import { cacheCourse } from "@/lib/courseCache";
 import PlaceDetailSheet, { DetailPlace } from "@/components/PlaceDetailSheet";
 import { Course, ItineraryStop } from "@/types/travel";
 
@@ -41,7 +43,12 @@ export default function CourseCard({ course }: { course: Course }) {
             {course.source === "curated" ? "추천 코스" : "AI 추천"}
           </span>
         )}
-        <h3 className="mb-1 font-semibold leading-snug">{course.title}</h3>
+        <h3 className="mb-1 font-semibold leading-snug">
+          {/* 코스는 서버에 저장되지 않으므로, 상세 화면이 읽을 수 있게 담아 두고 이동한다. */}
+          <Link href={`/course/detail/${course.courseId}`} onClick={() => cacheCourse(course)}>
+            {course.title}
+          </Link>
+        </h3>
         <p className="mb-3 text-xs text-[var(--color-muted)]">{course.days.length}일 코스</p>
         {course.notice && (
           // 검증 에이전트가 대체 후보를 찾지 못해 남긴 주의사항
@@ -64,6 +71,14 @@ export default function CourseCard({ course }: { course: Course }) {
             +{hiddenCount}곳 더 보기
           </button>
         )}
+
+        <Link
+          href={`/course/detail/${course.courseId}`}
+          onClick={() => cacheCourse(course)}
+          className="mt-3 flex min-h-11 items-center justify-center rounded-[var(--radius-button)] border border-[var(--color-primary)] text-sm font-semibold text-[var(--color-primary)]"
+        >
+          지도로 코스 보기 →
+        </Link>
       </div>
 
       {openStop && <PlaceDetailSheet place={openStop} onClose={() => setOpenStop(null)} />}

@@ -63,9 +63,12 @@ export default function NaverMapView({
   showRoute = true,
   userPosition,
   onSelectPlace,
+  heightClass = "h-64 sm:h-96",
 }: {
   stops: MapStop[];
   showRoute?: boolean;
+  // 화면마다 지도 높이가 다르다 (코스 상세는 모바일에서 화면의 45%).
+  heightClass?: string;
   // 현재 위치 — 권한을 받은 뒤에만 들어온다 (PRD-02 §3 Must).
   userPosition?: LatLng | null;
   // 마커 정보창의 "상세보기"에서 호출된다. 지도를 다시 그리지 않도록 호출자가 메모해 넘긴다.
@@ -159,7 +162,7 @@ export default function NaverMapView({
         strategy="afterInteractive"
         onReady={() => setSdkReady(true)}
       />
-      <div ref={mapElRef} className="h-64 w-full overflow-hidden rounded-[var(--radius-card)] sm:h-96" />
+      <div ref={mapElRef} className={`w-full overflow-hidden rounded-[var(--radius-card)] ${heightClass}`} />
     </>
   );
 }

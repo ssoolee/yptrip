@@ -55,7 +55,9 @@ export default function FavoritesPage() {
             className="rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-card)] p-4"
           >
             <div className="mb-2 flex items-start justify-between gap-2">
-              <h2 className="font-semibold leading-snug">{fav.title}</h2>
+              <h2 className="font-semibold leading-snug">
+                <Link href={`/course/detail/${fav.courseId}`}>{fav.title}</Link>
+              </h2>
               <button
                 type="button"
                 onClick={() => removeFavoriteCourse(fav.courseId)}
@@ -74,6 +76,13 @@ export default function FavoritesPage() {
                   </li>
                 ))}
             </ul>
+            {/* 찜한 코스는 저장돼 있어 링크만으로 다시 열 수 있다 (src/lib/favorites.ts). */}
+            <Link
+              href={`/course/detail/${fav.courseId}`}
+              className="mt-3 flex min-h-11 items-center justify-center rounded-[var(--radius-button)] border border-[var(--color-primary)] text-sm font-semibold text-[var(--color-primary)]"
+            >
+              지도로 코스 보기 →
+            </Link>
           </li>
         ))}
       </ul>
