@@ -42,7 +42,7 @@ function sleep(ms: number) {
 async function main() {
   // env 로드 뒤에 import해야 모듈이 키를 읽는다.
   const { searchNaverPlaces } = await import("@/lib/api/naverSearch");
-  const { searchTourApiPlaces, getTourApiOverview } = await import("@/lib/api/tourApi");
+  const { searchTourApiPlaces, getTourApiOverview, getTourApiBusinessHours } = await import("@/lib/api/tourApi");
   const { generateJson } = await import("@/lib/llm");
   const { PLACE_TAGS, isPlaceTag } = await import("@/lib/placeTags");
 
@@ -80,13 +80,25 @@ async function main() {
     console.log(`${category}: 네이버 ${naver.length}, TourAPI ${tour.length} → ${added}곳 (중복 병합 ${merged})`);
   }
 
-  // 2. TourAPI 장소 소개글 (태깅·요약 근거)
+  // 2. TourAPI 장소 소개글(태깅·요약 근거)과 영업시간
+  // 네이버 장소라도 TourAPI에 같은 곳이 있으면(위에서 contentId를 합쳐 둔다) 영업시간을
+  // 받아올 수 있다. 영업시간만 다시 받고 싶을 때는 npm run build:hours.
+  const byId = new Map(places.map((p) => [p.placeId, p]));
   const overviews = new Map<string, string>();
+  let hoursFilled = 0;
   for (const [placeId, contentId] of tourContentIds) {
-    const overview = await getTourApiOverview(contentId);
+    const place = byId.get(placeId);
+    const [overview, hours] = await Promise.all([
+      getTourApiOverview(contentId),
+      place ? getTourApiBusinessHours(contentId, place.category) : undefined,
+    ]);
     if (overview) overviews.set(placeId, overview);
+    if (place && hours) {
+      place.businessHoursRaw = hours;
+      hoursFilled += 1;
+    }
   }
-  console.log(`소개글 ${overviews.size}건`);
+  console.log(`소개글 ${overviews.size}건, 영업시간 ${hoursFilled}건`);
 
   // 3. LLM 태깅 (배치)
   const vocabulary = Object.entries(PLACE_TAGS)

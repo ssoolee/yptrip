@@ -1,5 +1,6 @@
 import curation from "@/lib/data/mbtiCourses.json";
-import { Course, LodgingPick } from "@/types/travel";
+import { SNAPSHOT_PLACES } from "@/lib/data/placeSnapshot";
+import { Course, ItineraryStop, LodgingPick, Place } from "@/types/travel";
 
 // docs/prd/01-ai-course-recommendation-prd.md §3.1 MBTI-취향 매핑표
 // "더 보기"로 추가 생성하는 코스(에이전트 파이프라인)의 취향 태그로 쓴다.
@@ -44,13 +45,36 @@ export interface MbtiCuration {
   lodging: LodgingPick[];
 }
 
+// 큐레이션 파일은 만들어진 시점의 장소 사본을 담고 있어, 그 뒤에 스냅샷으로 들어온
+// 영업시간·전화번호가 빠져 있다. 큐레이션의 고유 정보(추천 이유, 시간대)는 그대로 두고
+// 자주 바뀌는 사실만 스냅샷 값으로 덮어 쓴다 — build:mbti를 다시 돌리지 않아도 반영된다.
+const SNAPSHOT_BY_ID = new Map(SNAPSHOT_PLACES.map((p) => [p.placeId, p]));
+
+function withFreshFacts<T extends Place>(place: T): T {
+  const fresh = SNAPSHOT_BY_ID.get(place.placeId);
+  if (!fresh) return place;
+  return {
+    ...place,
+    businessHoursRaw: fresh.businessHoursRaw ?? place.businessHoursRaw,
+    phone: fresh.phone ?? place.phone,
+    rating: fresh.rating ?? place.rating,
+    photos: place.photos.length > 0 ? place.photos : fresh.photos,
+  };
+}
+
 // scripts/build-mbti-courses.ts(npm run build:mbti)가 만든 유형별 큐레이션 코스.
 // 해당 유형 자료가 아직 없으면 빈 값 — 화면은 자동 생성 코스로 대체한다.
 export function getMbtiCuration(type: string): MbtiCuration {
   const entry = (curation.types as Record<string, Partial<MbtiCuration>>)[type];
   return {
     summary: entry?.summary,
-    courses: entry?.courses ?? [],
-    lodging: entry?.lodging ?? [],
+    courses: (entry?.courses ?? []).map((course) => ({
+      ...course,
+      days: course.days.map((day) => ({
+        ...day,
+        stops: day.stops.map((stop) => withFreshFacts<ItineraryStop>(stop)),
+      })),
+    })),
+    lodging: (entry?.lodging ?? []).map((pick) => withFreshFacts<LodgingPick>(pick)),
   };
 }

@@ -48,6 +48,34 @@ interface TourApiItem {
   mapy?: string;
   cat3?: string;
   overview?: string;
+  // detailIntro2의 영업시간 필드 — 이름이 contentTypeId마다 다르다.
+  usetime?: string; // 관광지(12)
+  restdate?: string;
+  opentimefood?: string; // 음식점·카페(39)
+  restdatefood?: string;
+}
+
+// 숙소(32)는 checkintime/checkouttime만 있어 영업시간으로 쓸 수 없으므로 뺀다.
+const HOURS_FIELDS: Record<string, { open: keyof TourApiItem; rest: keyof TourApiItem }> = {
+  "12": { open: "usetime", rest: "restdate" },
+  "39": { open: "opentimefood", rest: "restdatefood" },
+};
+
+// "전화 문의", "없음"처럼 내용이 없는 값 — 저장하면 화면에 쓸모없는 문구만 남는다.
+const EMPTY_VALUE_RE = /^(?:전화\s*문의|문의\s*바람|문의|없음|미정|-+|\.)$/;
+
+function stripHtml(value: string | undefined): string {
+  return (value ?? "")
+    .replace(/<br\s*\/?>/gi, " ")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function meaningful(value: string | undefined): string | undefined {
+  const text = stripHtml(value);
+  return text && !EMPTY_VALUE_RE.test(text) ? text : undefined;
 }
 
 async function callTourApi(
@@ -184,10 +212,28 @@ export async function getActiveFestivals(count = 10): Promise<Place[]> {
 // 원문 전체를 반환한다 — 길이 조절은 호출부(LLM 요약 또는 잘라내기)가 맡는다.
 export async function getTourApiOverview(contentId: string): Promise<string | undefined> {
   const items = await callTourApi("detailCommon2", { contentId });
-  const overview = items[0]?.overview
-    ?.replace(/<br\s*\/?>/gi, " ")
-    .replace(/<[^>]+>/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-  return overview || undefined;
+  return stripHtml(items[0]?.overview) || undefined;
+}
+
+// PRD-03 "오늘 방문 가능한지 바로 확인" — Place.businessHoursRaw를 채운다.
+// detailIntro2의 영업시간·휴무일을 합쳐 한 줄로 돌려준다. 예:
+//   "09:00~18:00 / 휴무: 매주 수요일"
+// 표기가 제각각이라 구조화는 하지 않고, 해석은 src/lib/businessHours.ts가 맡는다.
+// 숙소는 영업시간 개념이 없어 undefined.
+export async function getTourApiBusinessHours(
+  contentId: string,
+  category: Category,
+): Promise<string | undefined> {
+  const contentTypeId = CONTENT_TYPE_ID[category];
+  const fields = HOURS_FIELDS[contentTypeId];
+  if (!fields) return undefined;
+
+  const item = (await callTourApi("detailIntro2", { contentId, contentTypeId }))[0];
+  if (!item) return undefined;
+
+  const hours = meaningful(item[fields.open] as string | undefined);
+  const restDate = meaningful(item[fields.rest] as string | undefined);
+  // 휴무일만 있어도 "오늘 쉬는 날"은 알려줄 수 있으므로 저장한다.
+  if (!hours && !restDate) return undefined;
+  return [hours, restDate && `휴무: ${restDate}`].filter(Boolean).join(" / ");
 }
