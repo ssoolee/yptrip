@@ -1,9 +1,11 @@
+import { after } from "next/server";
 import { composeItinerary } from "@/lib/agents/itineraryComposer";
 import { ValidationResult, validateItinerary } from "@/lib/agents/validation";
 import { enrichCourse } from "@/lib/agents/enrichment";
 import { getPreset } from "@/lib/presets";
 import { tagsForMbti } from "@/lib/mbti";
 import { courseSignature } from "@/lib/courseSignature";
+import { saveCourses } from "@/lib/courseStore";
 import { TripConditions } from "@/lib/agents/requestInterpreter";
 import { Course, ItineraryDay, PresetType } from "@/types/travel";
 
@@ -58,7 +60,7 @@ export async function generateCourses(params: {
       return true;
     });
 
-  return Promise.all(
+  const courses = await Promise.all(
     approved.map(({ result, offset }) =>
       enrichCourse({
         days: result.days,
@@ -69,6 +71,15 @@ export async function generateCourses(params: {
       }),
     ),
   );
+
+  // 코스 상세 URL을 나중에 다시 열 수 있도록 남긴다. 응답을 늦추지 않게 after로 미룬다.
+  try {
+    after(() => saveCourses(courses));
+  } catch {
+    // 요청 바깥(스크립트·테스트)에서 부르면 after가 던진다 — 그때는 저장하지 않는다.
+  }
+
+  return courses;
 }
 
 interface ComposedCourse {

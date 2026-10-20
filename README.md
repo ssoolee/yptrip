@@ -54,7 +54,8 @@ npm run dev
   `NCP_MAPS_API_KEY_ID`·`NCP_MAPS_API_KEY`(Geocoding·Directions),
   `NEXT_PUBLIC_NCP_MAP_CLIENT_ID`(브라우저 지도 SDK)
 - **공공 데이터** — `TOUR_API_KEY`(필수), `ODSAY_API_KEY`·`WEATHER_API_KEY`(선택)
-- **Firebase** — `NEXT_PUBLIC_FIREBASE_API_KEY`, `..._AUTH_DOMAIN`, `..._PROJECT_ID`, `..._APP_ID`
+- **Firebase** — `NEXT_PUBLIC_FIREBASE_API_KEY`, `..._AUTH_DOMAIN`, `..._PROJECT_ID`, `..._APP_ID`,
+  `FIREBASE_SERVICE_ACCOUNT_KEY`(선택 — 아래 "코스 저장" 참조)
 
 `NEXT_PUBLIC_*`은 브라우저 번들에 들어가는 공개 값이고, 나머지는 서버 전용이다.
 `.env.local`은 커밋하지 않는다.
@@ -97,6 +98,20 @@ LLM 호출이 실패하면 규칙 기반 결과로 폴백한다.
 비로그인 상태에서는 `localStorage`에만 저장하고, 로그인하면 로컬 데이터를
 `users/{uid}/favoriteCourses`로 한 번 병합한 뒤 Firestore를 기준으로 동기화한다.
 보안 규칙은 `firestore.rules` — 사용자 문서는 본인만, 공용 참조 데이터는 읽기 전용.
+
+## 코스 저장
+
+추천 코스는 요청마다 새로 만들어지므로, 생성 직후 Firestore `precomputedCourses`에
+남겨 `/course/detail/[courseId]`를 나중에 다시 열 수 있게 한다
+(`src/lib/courseStore.ts`, 응답을 늦추지 않도록 `after()`로 미뤄 쓴다).
+
+쓰기는 Admin SDK만 한다 — App Hosting에서는 서비스 계정이 자동으로 붙어 설정이 없고,
+로컬에서 저장까지 보려면 `FIREBASE_SERVICE_ACCOUNT_KEY`에 서비스 계정 키의 경로나 JSON을
+넣는다. 자격증명이 없으면 저장만 건너뛰고, 상세 화면은 찜 목록과 세션 저장소
+(`src/lib/courseCache.ts`)에 남은 코스로 열린다.
+
+문서에는 30일 뒤 시각을 `expiresAt`으로 넣어 둔다. Firestore 콘솔에서 이 필드에
+TTL 정책을 걸면 지난 코스가 자동으로 지워진다 (걸지 않으면 계속 쌓인다).
 
 ## 배포
 

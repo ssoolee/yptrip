@@ -1,10 +1,13 @@
 import CourseDetailScreen from "@/components/CourseDetailScreen";
+import { loadCourse } from "@/lib/courseStore";
 import { findCuratedCourse } from "@/lib/mbti";
 
 // 코스 상세 — 지도 동선과 일정을 한 화면에서 본다 (docs/prd/02-map-realtime-location-prd.md).
-// 큐레이션 코스는 ID가 고정이라 서버에서 찾아 넘기고, 파이프라인이 만든 코스는
-// 사용자가 카드를 누를 때 세션에 담아 둔 값을 화면이 읽는다 (src/lib/courseCache.ts).
+// 코스를 찾는 순서: ① 큐레이션(ID 고정) ② 서버에 저장된 생성 코스(src/lib/courseStore.ts)
+// ③ 화면에서 찜 목록·세션 저장소(src/lib/courseCache.ts). 서버 저장은 자격증명이 없으면
+// 건너뛰므로, 로컬에서도 ③으로 열린다.
 export default async function CourseDetailPage({ params }: { params: Promise<{ courseId: string }> }) {
   const { courseId } = await params;
-  return <CourseDetailScreen courseId={courseId} initialCourse={findCuratedCourse(courseId)} />;
+  const course = findCuratedCourse(courseId) ?? (await loadCourse(courseId)) ?? undefined;
+  return <CourseDetailScreen courseId={courseId} initialCourse={course} />;
 }
