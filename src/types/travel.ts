@@ -48,6 +48,9 @@ export interface Course {
   days: ItineraryDay[];
   // curated: 미리 만들어 둔 코스, generated: 에이전트 파이프라인이 만든 코스
   source?: "curated" | "generated";
+  // 검증에서 걸러내지 못한 주의사항 (영업시간이 일정과 맞지 않을 수 있는 장소 등).
+  // Firestore에 코스 전체가 저장되므로(src/lib/favorites.ts) 없을 때는 필드를 넣지 않는다.
+  notice?: string;
 }
 
 // MBTI 유형별로 코스와 따로 보여주는 숙소·펜션 추천

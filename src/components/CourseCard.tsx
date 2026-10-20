@@ -43,6 +43,11 @@ export default function CourseCard({ course }: { course: Course }) {
         )}
         <h3 className="mb-1 font-semibold leading-snug">{course.title}</h3>
         <p className="mb-3 text-xs text-[var(--color-muted)]">{course.days.length}일 코스</p>
+        {course.notice && (
+          // 검증 에이전트가 대체 후보를 찾지 못해 남긴 주의사항
+          // (docs/agents/04-validation-agent.md "실패/재시도 처리")
+          <p className="mb-3 rounded-lg bg-amber-50 px-2.5 py-2 text-xs text-amber-900">⚠️ {course.notice}</p>
+        )}
         <ul className="space-y-1 text-sm">
           {visibleStops.map(({ stop, day }) => (
             <li key={stop.placeId}>
