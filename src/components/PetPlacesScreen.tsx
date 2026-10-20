@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import NaverMapView, { MapStop } from "@/components/NaverMapView";
-import PlaceDetailSheet from "@/components/PlaceDetailSheet";
+import PlaceDetailSheet, { DetailPlace } from "@/components/PlaceDetailSheet";
 import { CATEGORY_LABEL } from "@/lib/categories";
 import { Category, Place } from "@/types/travel";
 
@@ -19,9 +19,11 @@ export default function PetPlacesScreen({ places }: { places: Place[] }) {
     [places, filter],
   );
   const stops: MapStop[] = useMemo(
-    () => visible.map((p, i) => ({ lat: p.lat, lng: p.lng, name: p.name, order: i + 1, url: p.mapUrl })),
+    () => visible.map((p, i) => ({ lat: p.lat, lng: p.lng, name: p.name, order: i + 1, place: p })),
     [visible],
   );
+  // 지도를 다시 그리지 않도록 핸들러를 고정한다 (NaverMapView의 effect 의존성).
+  const handleSelectPlace = useCallback((place: DetailPlace) => setOpenPlace(place), []);
 
   return (
     <div className="mx-auto max-w-2xl px-4 pb-6 pt-6">
@@ -60,7 +62,7 @@ export default function PetPlacesScreen({ places }: { places: Place[] }) {
         })}
       </div>
 
-      <NaverMapView stops={stops} showRoute={false} />
+      <NaverMapView stops={stops} showRoute={false} onSelectPlace={handleSelectPlace} />
 
       <ul className="mt-4 space-y-2">
         {visible.map((place, i) => (
