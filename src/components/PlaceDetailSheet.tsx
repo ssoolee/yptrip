@@ -13,6 +13,7 @@ import {
   type ParsedBusinessHours,
 } from "@/lib/businessHours";
 import { PLACE_TAGS, isPlaceTag } from "@/lib/placeTags";
+import { RouteButtons } from "@/components/RouteLinks";
 import { ItineraryStop, Place } from "@/types/travel";
 
 // 코스 스팟(시간대·추천 이유 포함)과 일반 장소를 모두 받는다.
@@ -134,7 +135,12 @@ export default function PlaceDetailSheet({ place, onClose }: { place: DetailPlac
             </ul>
           )}
 
-          <div className="mt-5 flex gap-2 text-sm font-semibold">
+          {/* 길찾기는 외부 지도 앱으로 넘긴다 (PRD-02 §3 Should — 네이버 우선, 티맵 차순위) */}
+          <div className="mt-5">
+            <RouteButtons dest={{ lat: place.lat, lng: place.lng, name: place.name }} />
+          </div>
+
+          <div className="mt-2 flex gap-2 text-sm font-semibold">
             {place.phone && (
               <a
                 href={`tel:${place.phone}`}
@@ -147,7 +153,7 @@ export default function PlaceDetailSheet({ place, onClose }: { place: DetailPlac
               href={place.mapUrl}
               target="_blank"
               rel="noreferrer"
-              className="flex min-h-11 flex-1 items-center justify-center rounded-[var(--radius-button)] bg-[var(--color-primary)] text-white"
+              className="flex min-h-11 flex-1 items-center justify-center rounded-[var(--radius-button)] border border-[var(--color-border)]"
             >
               네이버 지도에서 보기
             </a>
