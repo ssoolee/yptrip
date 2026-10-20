@@ -24,8 +24,10 @@ export async function enrichCourse(params: {
   // 제목에 쓰는 동행 표현 — 프리셋 이름(예: "연인과 함께") 또는 자연어 해석 결과
   label: string;
   courseId: string;
+  // 검증 에이전트가 남긴 주의사항 (docs/agents/04-validation-agent.md "실패/재시도 처리")
+  notice?: string;
 }): Promise<Course> {
-  const { presetType, label, courseId } = params;
+  const { presetType, label, courseId, notice } = params;
 
   // placeId → TourAPI 소개 원문 (요약이 아직 없는 TourAPI 장소만)
   const overviews = new Map<string, string>();
@@ -65,7 +67,15 @@ export async function enrichCourse(params: {
   const highlight = days[0]?.stops[0]?.name ?? "양평";
   const fallbackTitle = `${label} 코스: ${withJosa(highlight, "와", "과")} 함께하는 ${days.length}일 여행`;
 
-  return { courseId, title: title ?? fallbackTitle, presetType, days, source: "generated" };
+  return {
+    courseId,
+    title: title ?? fallbackTitle,
+    presetType,
+    days,
+    source: "generated",
+    // undefined를 넣으면 Firestore 저장이 거부된다 — 값이 있을 때만 필드를 만든다.
+    ...(notice ? { notice } : {}),
+  };
 }
 
 function truncate(text: string, max: number): string {

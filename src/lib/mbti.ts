@@ -1,5 +1,6 @@
 import curation from "@/lib/data/mbtiCourses.json";
 import { SNAPSHOT_PLACES } from "@/lib/data/placeSnapshot";
+import { validateItinerary } from "@/lib/agents/validation";
 import { Course, ItineraryStop, LodgingPick, Place } from "@/types/travel";
 
 // docs/prd/01-ai-course-recommendation-prd.md §3.1 MBTI-취향 매핑표
@@ -62,13 +63,25 @@ function withFreshFacts<T extends Place>(place: T): T {
   };
 }
 
+/**
+ * 큐레이션 코스는 사람이 고른 조합이라 장소를 바꿀 수 없다. 그래서 파이프라인 코스처럼
+ * 재구성하지 않고, 오늘 방문했을 때 닫혀 있을 장소만 주의 문구로 알린다
+ * (docs/agents/04-validation-agent.md "실패/재시도 처리"와 같은 처리).
+ */
+function withHoursNotice(course: Course): Course {
+  const { issues } = validateItinerary(course.days);
+  if (issues.length === 0) return course;
+  const names = [...new Set(issues.map((issue) => issue.placeName))];
+  return { ...course, notice: `${names.join(", ")} — 오늘은 문을 닫을 수 있어요. 가기 전에 확인해 주세요.` };
+}
+
 // scripts/build-mbti-courses.ts(npm run build:mbti)가 만든 유형별 큐레이션 코스.
 // 해당 유형 자료가 아직 없으면 빈 값 — 화면은 자동 생성 코스로 대체한다.
 export function getMbtiCuration(type: string): MbtiCuration {
   const entry = (curation.types as Record<string, Partial<MbtiCuration>>)[type];
   return {
     summary: entry?.summary,
-    courses: (entry?.courses ?? []).map((course) => ({
+    courses: (entry?.courses ?? []).map((course) => withHoursNotice({
       ...course,
       days: course.days.map((day) => ({
         ...day,
