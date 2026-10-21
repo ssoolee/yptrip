@@ -16,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "양평 여행 코스 추천",
-  description: "AI가 추천하는 양평군 맛집·카페·관광명소·숙소 여행 코스",
+  description:
+    "MBTI 성향별·반려동물 동반까지, AI가 영업시간과 동선을 확인해 짜주는 양평 여행 코스",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

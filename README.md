@@ -74,7 +74,7 @@ TourAPI 항목이 있으면 함께 채운다(현재 숙소를 뺀 157곳 중 89�
 
 | 경로 | 화면 |
 |---|---|
-| `/` | 자연어 검색창 + 동행 유형 프리셋 |
+| `/` | 평안이 히어로 + 자연어 검색창 + 동행 유형 프리셋 + 서비스 소개 3단계 |
 | `/course/search` | 자연어 요청 기반 코스 추천 결과 (당일치기/1박 탭) |
 | `/course/[preset]` | 프리셋별 코스 추천 결과 |
 | `/course/mbti`, `/course/mbti/[type]` | MBTI 유형 선택 및 큐레이션 코스 |
@@ -95,8 +95,16 @@ src/lib/llm/        LLM 공급자 추상화 (gemini / anthropic)
 src/lib/data/       커밋된 장소·코스 스냅샷
 src/lib/firebase/   Firebase 클라이언트, 인증(auth/), 찜(favorites.ts)
 scripts/            스냅샷 생성 스크립트
+public/character/   마스코트 '평안이' 그림 (PNG)
 docs/               PRD, 에이전트 설계, 리서치 자료
 ```
+
+첫 화면의 캐릭터는 양평 마스코트 **평안이**(직접 제작)다. 그림 파일은
+`public/character/`에 두고 `next/image`로 쓴다 — 외부 호스트 사진에 쓰는
+`<img>` 관례와 달리 로컬 파일은 설정 없이 srcset·WebP 변환을 받는다.
+캐릭터 색은 `src/app/globals.css`의 `--color-character-*` 토큰에 적어 두었고,
+히어로 배경 틴트(`--color-hero-*`)는 배경색에 섞어 만들어 다크모드에서도
+그대로 동작한다.
 
 추천 흐름: 사용자 입력 → `requestInterpreter`(조건 구조화) → `placeRetrieval`(후보 검색)
 → `itineraryComposer`(동선·시간대 배치) → `validation`(영업시간·휴무 검증) →

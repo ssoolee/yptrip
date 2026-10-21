@@ -1,16 +1,18 @@
+import Image from "next/image";
+import HomeHero from "@/components/HomeHero";
+import HomeSteps from "@/components/HomeSteps";
 import PresetGrid from "@/components/PresetGrid";
 import TripSearchBox from "@/components/TripSearchBox";
 import PetPlacesLink from "@/components/PetPlacesLink";
 
+// 이 페이지에는 가로 여백(px-4)을 두지 않는다 — PresetGrid의 가로 스크롤이 화면
+// 끝까지 흐르도록 각 섹션이 자기 여백을 직접 갖는 기존 규칙을 따른다.
 export default function Home() {
   return (
-    <div className="mx-auto max-w-2xl pb-6 pt-8">
-      <header className="mb-6 px-4">
-        <h1 className="text-2xl font-bold">양평, 어떤 여행을 떠나볼까요?</h1>
-        <p className="mt-1 text-sm text-[var(--color-muted)]">
-          원하는 여행을 적거나 어울리는 유형을 고르면 AI가 코스를 바로 추천해드려요.
-        </p>
-      </header>
+    <div className="mx-auto max-w-2xl pb-6 pt-6">
+      <div className="mb-5">
+        <HomeHero />
+      </div>
       <div className="mb-6">
         <TripSearchBox showExamples />
       </div>
@@ -18,6 +20,20 @@ export default function Home() {
       <div className="mt-4 px-4">
         <PetPlacesLink />
       </div>
+      <div className="mt-6">
+        <HomeSteps />
+      </div>
+      <p className="mt-6 flex items-center justify-center gap-2 text-xs text-[var(--color-muted)]">
+        <Image
+          src="/character/pose-heart.png"
+          alt=""
+          width={117}
+          height={159}
+          sizes="32px"
+          className="h-auto w-8"
+        />
+        오늘도, 마음이 평안한 양평 💙
+      </p>
     </div>
   );
 }
