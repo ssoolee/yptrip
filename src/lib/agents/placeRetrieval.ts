@@ -22,13 +22,23 @@ const SNAPSHOT_NAMES = new Set(SNAPSHOT_PLACES.map((p) => normalizeName(p.name))
 // 실내 박물관보다 앞선다 (실측).
 const TAG_WEIGHT: Record<string, number> = { indoor: 3 };
 
+// 영업시간을 아는 곳에 주는 가산점. 태그 점수는 정수이므로 1보다 작은 값을 쓰면
+// "취향 점수가 같을 때만 영업시간을 아는 곳을 앞세운다"가 된다. 영업시간을 모르는
+// 장소는 검증(src/lib/agents/validation.ts)이 반려하지 못하고 주의 문구만 남기므로,
+// 같은 조건이면 문 여는 시간을 확인한 곳을 코스에 넣는 편이 낫다.
+// (스냅샷 177곳 중 영업시간 출처가 있는 곳이 아직 절반이라 가산점으로만 둔다 —
+// 모르는 곳을 후보에서 빼면 카페처럼 후보가 적은 카테고리가 바닥난다.)
+const HOURS_KNOWN_BONUS = 0.5;
+
 function scorePlace(place: Place, tags: string[]): number {
-  return place.tags.reduce((acc, t) => acc + (tags.includes(t) ? (TAG_WEIGHT[t] ?? 1) : 0), 0);
+  const tagScore = place.tags.reduce((acc, t) => acc + (tags.includes(t) ? (TAG_WEIGHT[t] ?? 1) : 0), 0);
+  return tagScore + (place.businessHoursRaw ? HOURS_KNOWN_BONUS : 0);
 }
 
 // docs/agents/02-place-retrieval-agent.md 참조.
 // 후보 풀 = ① 스냅샷(src/lib/data/places.json — LLM 태그가 붙은 실제 장소)을
-// 취향 태그 점수순으로, 점수가 같으면 원래 순서(네이버 리뷰 많은 순/TourAPI 인기순)대로
+// 취향 태그 점수순으로, 점수가 같으면 영업시간을 아는 곳(HOURS_KNOWN_BONUS)이 먼저,
+// 그래도 같으면 원래 순서(네이버 리뷰 많은 순/TourAPI 인기순)대로
 // ② 진행 중 축제(festival 프리셋) ③ 스냅샷에 없는 실시간 조회 결과(태그 없음).
 // offset은 "더 보기" 요청 시 다른 후보를 앞으로 돌리는 데 쓴다.
 //
