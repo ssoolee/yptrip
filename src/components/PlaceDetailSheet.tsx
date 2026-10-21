@@ -14,6 +14,8 @@ import {
 } from "@/lib/businessHours";
 import { PLACE_TAGS, isPlaceTag } from "@/lib/placeTags";
 import { RouteButtons } from "@/components/RouteLinks";
+import HoursStatusBadge from "@/components/HoursStatusBadge";
+import FavoritePlaceButton from "@/components/FavoritePlaceButton";
 import { ItineraryStop, Place } from "@/types/travel";
 
 // 코스 스팟(시간대·추천 이유 포함)과 일반 장소를 모두 받는다.
@@ -64,14 +66,18 @@ export default function PlaceDetailSheet({ place, onClose }: { place: DetailPlac
       >
         <PhotoGallery photos={place.photos} name={place.name} category={place.category} />
 
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="닫기"
-          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-lg leading-none text-white"
-        >
-          ✕
-        </button>
+        <div className="absolute right-3 top-3 flex gap-2">
+          {/* 장소 찜 (PRD-04 §3) — 코스 찜과 별도로 쌓이고 찜 목록의 "장소" 탭에 모인다. */}
+          <FavoritePlaceButton place={place} />
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="닫기"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-lg leading-none text-white"
+          >
+            ✕
+          </button>
+        </div>
 
         <div className="p-4">
           <div className="flex items-baseline gap-2">
@@ -188,34 +194,6 @@ function PhotoGallery({ photos, name, category }: Pick<DetailPlace, "photos" | "
       ))}
     </div>
   );
-}
-
-function HoursStatusBadge({ status }: { status: HoursStatus }) {
-  const base = "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold";
-  switch (status.kind) {
-    case "open":
-      return (
-        <span className={`${base} bg-[var(--color-primary)] text-white`}>
-          영업 중{status.closesAt ? ` · ${status.closesAt} 마감` : " · 24시간"}
-        </span>
-      );
-    case "closed":
-      return (
-        <span className={`${base} bg-[var(--color-border)] text-[var(--color-muted)]`}>
-          영업 종료
-          {status.opensAt &&
-            ` · ${status.opensWeekday != null ? `${WEEKDAY_LABELS[status.opensWeekday]} ` : ""}${status.opensAt} 오픈`}
-        </span>
-      );
-    case "dayoff":
-      return <span className={`${base} bg-[var(--color-accent)]/25`}>오늘 정기휴무</span>;
-    default:
-      return (
-        <span className={`${base} border border-[var(--color-border)] text-[var(--color-muted)]`}>
-          영업시간 정보 없음
-        </span>
-      );
-  }
 }
 
 function HoursTable({ parsedHours, raw }: { parsedHours: ParsedBusinessHours | null; raw: string | undefined }) {

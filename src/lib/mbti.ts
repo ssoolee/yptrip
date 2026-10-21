@@ -75,6 +75,17 @@ function withHoursNotice(course: Course): Course {
   return { ...course, notice: `${names.join(", ")} — 오늘은 문을 닫을 수 있어요. 가기 전에 확인해 주세요.` };
 }
 
+// 큐레이션 코스의 courseId는 "mbti_ISTJ_curated_1"처럼 고정이라, 코스 상세 화면이
+// URL만으로 다시 찾을 수 있다 (파이프라인 코스는 요청마다 새로 만들어져 불가능 —
+// src/lib/courseCache.ts 참조).
+const CURATED_COURSE_ID = /^mbti_([A-Z]{4})_curated_\d+$/;
+
+export function findCuratedCourse(courseId: string): Course | undefined {
+  const match = CURATED_COURSE_ID.exec(courseId);
+  if (!match) return undefined;
+  return getMbtiCuration(match[1]).courses.find((course) => course.courseId === courseId);
+}
+
 // scripts/build-mbti-courses.ts(npm run build:mbti)가 만든 유형별 큐레이션 코스.
 // 해당 유형 자료가 아직 없으면 빈 값 — 화면은 자동 생성 코스로 대체한다.
 export function getMbtiCuration(type: string): MbtiCuration {

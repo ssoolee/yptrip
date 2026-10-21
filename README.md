@@ -35,13 +35,23 @@ npm run dev
 | `npm run dev` | 개발 서버 |
 | `npm run build` / `npm start` | 프로덕션 빌드 / 실행 |
 | `npm run lint` | ESLint |
+| `npm test` | 단위 테스트 (영업시간 파서·검증·거리 계산) |
 | `npm run build:places` | 장소 스냅샷 `src/lib/data/places.json` 재생성 |
 | `npm run build:mbti` | MBTI 큐레이션 코스 `src/lib/data/mbtiCourses.json` 재생성 |
 | `npm run build:pet` | 반려동물 동반 업소 `src/lib/data/petPlaces.json` 재생성 |
+| `npm run build:hours` | 장소 스냅샷의 영업시간만 다시 수집 |
 
 `build:*` 스크립트는 외부 API와 LLM을 호출하므로 `.env.local`이 채워져 있어야 한다.
 요청마다 검색·태깅하지 않도록 **오프라인에서 한 번 만들어 커밋하는** 캐시이며,
 자료가 바뀔 때만 다시 실행한다. 원천 자료는 `data/*.source.json`.
+
+영업시간은 TourAPI에서 모은다 — 네이버 지역 검색으로 찾은 업체도 이름·좌표가 맞는
+TourAPI 항목이 있으면 함께 채운다(현재 숙소를 뺀 157곳 중 89곳). 어느 API에도 없는
+업체는 `build:hours`가 `data/hours.source.json`에 빈 항목으로 적어 두니, `hours`를
+손으로 채우고(`"09:00~18:00 / 휴무: 매주 수요일"` 형식) 다시 실행하면 스냅샷에
+반영된다 — 손으로 채운 값이 TourAPI 값보다 우선한다. 영업시간을 모르는 장소는
+코스 추천에서 뒤로 밀리고(`src/lib/agents/placeRetrieval.ts`), 상세 화면에는
+"방문 전 확인" 안내가 붙는다.
 
 ## 환경 변수
 
@@ -54,7 +64,8 @@ npm run dev
   `NCP_MAPS_API_KEY_ID`·`NCP_MAPS_API_KEY`(Geocoding·Directions),
   `NEXT_PUBLIC_NCP_MAP_CLIENT_ID`(브라우저 지도 SDK)
 - **공공 데이터** — `TOUR_API_KEY`(필수), `ODSAY_API_KEY`·`WEATHER_API_KEY`(선택)
-- **Firebase** — `NEXT_PUBLIC_FIREBASE_API_KEY`, `..._AUTH_DOMAIN`, `..._PROJECT_ID`, `..._APP_ID`
+- **Firebase** — `NEXT_PUBLIC_FIREBASE_API_KEY`, `..._AUTH_DOMAIN`, `..._PROJECT_ID`, `..._APP_ID`,
+  `FIREBASE_SERVICE_ACCOUNT_KEY`(선택 — 아래 "코스 저장" 참조)
 
 `NEXT_PUBLIC_*`은 브라우저 번들에 들어가는 공개 값이고, 나머지는 서버 전용이다.
 `.env.local`은 커밋하지 않는다.
@@ -69,7 +80,7 @@ npm run dev
 | `/course/mbti`, `/course/mbti/[type]` | MBTI 유형 선택 및 큐레이션 코스 |
 | `/map` | 지도 + 실시간 위치 |
 | `/pet-places` | 반려동물 동반 가능 업소 |
-| `/favorites` | 찜한 코스 |
+| `/favorites` | 찜한 코스 / 장소 (탭) |
 | `/login`, `/profile` | 로그인 / 내 정보 |
 
 ## 코드 구조
@@ -94,9 +105,25 @@ LLM 호출이 실패하면 규칙 기반 결과로 폴백한다.
 
 ## 찜(즐겨찾기) 동작
 
-비로그인 상태에서는 `localStorage`에만 저장하고, 로그인하면 로컬 데이터를
-`users/{uid}/favoriteCourses`로 한 번 병합한 뒤 Firestore를 기준으로 동기화한다.
+찜은 코스 찜과 장소 찜 두 종류이고(찜 목록 화면의 탭), 비로그인 상태에서는
+`localStorage`에만 저장한다. 로그인하면 로컬 데이터를 `users/{uid}/favoriteCourses`와
+`users/{uid}/favoritePlaces`로 한 번 병합한 뒤 Firestore를 기준으로 동기화한다
+(`src/lib/favorites.ts` — 두 종류가 같은 스토어 구현을 공유한다).
 보안 규칙은 `firestore.rules` — 사용자 문서는 본인만, 공용 참조 데이터는 읽기 전용.
+
+## 코스 저장
+
+추천 코스는 요청마다 새로 만들어지므로, 생성 직후 Firestore `precomputedCourses`에
+남겨 `/course/detail/[courseId]`를 나중에 다시 열 수 있게 한다
+(`src/lib/courseStore.ts`, 응답을 늦추지 않도록 `after()`로 미뤄 쓴다).
+
+쓰기는 Admin SDK만 한다 — App Hosting에서는 서비스 계정이 자동으로 붙어 설정이 없고,
+로컬에서 저장까지 보려면 `FIREBASE_SERVICE_ACCOUNT_KEY`에 서비스 계정 키의 경로나 JSON을
+넣는다. 자격증명이 없으면 저장만 건너뛰고, 상세 화면은 찜 목록과 세션 저장소
+(`src/lib/courseCache.ts`)에 남은 코스로 열린다.
+
+문서에는 30일 뒤 시각을 `expiresAt`으로 넣어 둔다. Firestore 콘솔에서 이 필드에
+TTL 정책을 걸면 지난 코스가 자동으로 지워진다 (걸지 않으면 계속 쌓인다).
 
 ## 배포
 
