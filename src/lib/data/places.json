@@ -242,7 +242,8 @@
     "nature",
     "group"
    ],
-   "reviewSummary": "다양한 숙박과 부대시설을 갖추고 있어 힐링과 단체 연수에 좋은 리조트입니다."
+   "reviewSummary": "다양한 숙박과 부대시설을 갖추고 있어 힐링과 단체 연수에 좋은 리조트입니다.",
+   "businessHoursRaw": "00:00~24:00"
   },
   {
    "placeId": "tour_2846008",
@@ -688,7 +689,8 @@
    "tags": [
     "indoor"
    ],
-   "reviewSummary": "다양한 문화 프로그램과 교육 활동, 전시를 즐길 수 있는 실내 문화 공간입니다."
+   "reviewSummary": "다양한 문화 프로그램과 교육 활동, 전시를 즐길 수 있는 실내 문화 공간입니다.",
+   "businessHoursRaw": "화~금 10:00~21:00, 토 10:00~18:00 / 휴무: 매주 일요일, 월요일"
   },
   {
    "placeId": "tour_127171",
@@ -747,7 +749,8 @@
    "address": "경기도 양평군 양평읍 양근로 76",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%8A%A4%ED%83%80%EB%B2%85%EC%8A%A4%20%EB%8D%94%EC%96%91%ED%8F%89DT%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%ED%8F%89%EC%9D%8D%20%EC%96%91%EA%B7%BC%EB%A1%9C%2076",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~금 09:00~20:00, 토 일 08:30~21:00"
   },
   {
    "placeId": "naver_1274912005_374345480",
@@ -759,7 +762,8 @@
    "address": "경기도 양평군 강상면 강남로 1604 1층 로우드",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%A1%9C%EC%9A%B0%EB%93%9C%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%EC%83%81%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%201604%201%EC%B8%B5%20%EB%A1%9C%EC%9A%B0%EB%93%9C",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "토 일 11:00~19:00 / 휴무: 매주 월요일, 화요일, 수요일, 목요일, 금요일"
   },
   {
    "placeId": "naver_1273999723_374922473",
@@ -793,7 +797,8 @@
    "address": "경기도 양평군 양서면 양수로152번길 32-1",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%B9%B4%ED%8E%98%EB%A6%AC%EB%85%B8%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%EC%84%9C%EB%A9%B4%20%EC%96%91%EC%88%98%EB%A1%9C152%EB%B2%88%EA%B8%B8%2032-1",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "09:00~23:00, 22:30 라스트오더"
   },
   {
    "placeId": "naver_1274249258_375088187",
@@ -805,7 +810,8 @@
    "address": "경기도 양평군 옥천면 남한강변길 123-19",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EA%B5%AC%EB%B2%BC%EC%9A%B8%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%98%A5%EC%B2%9C%EB%A9%B4%20%EB%82%A8%ED%95%9C%EA%B0%95%EB%B3%80%EA%B8%B8%20123-19",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:00~21:00"
   },
   {
    "placeId": "naver_1273529941_375984976",
@@ -825,7 +831,8 @@
     "kid_friendly"
    ],
    "petFriendly": true,
-   "reviewSummary": "유기농 베이커리와 넓은 마당이 있어 아이와 함께 방문하기 좋은 한옥 감성 카페입니다."
+   "reviewSummary": "유기농 베이커리와 넓은 마당이 있어 아이와 함께 방문하기 좋은 한옥 감성 카페입니다.",
+   "businessHoursRaw": "월~금 10:30~20:00, 토 일 10:00~20:00"
   },
   {
    "placeId": "naver_1276620122_375073093",
@@ -837,7 +844,8 @@
    "address": "경기도 양평군 단월면 곱다니길 151-1 도토리골 양평정원카페",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%8F%84%ED%86%A0%EB%A6%AC%EA%B3%A8%20%EC%96%91%ED%8F%89%EC%A0%95%EC%9B%90%EC%B9%B4%ED%8E%98%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EB%8B%A8%EC%9B%94%EB%A9%B4%20%EA%B3%B1%EB%8B%A4%EB%8B%88%EA%B8%B8%20151-1%20%EB%8F%84%ED%86%A0%EB%A6%AC%EA%B3%A8%20%EC%96%91%ED%8F%89%EC%A0%95%EC%9B%90%EC%B9%B4%ED%8E%98",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:00~20:00, 19:30 라스트오더"
   },
   {
    "placeId": "naver_1276940227_375420645",
@@ -849,7 +857,8 @@
    "address": "경기도 양평군 청운면 경강로 4069 Cafe La Neve",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%9D%BC%20%EB%84%A4%EB%B2%A0%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%B2%AD%EC%9A%B4%EB%A9%B4%20%EA%B2%BD%EA%B0%95%EB%A1%9C%204069%20Cafe%20La%20Neve",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "화~일 10:30~20:00, 19:30 라스트오더 / 휴무: 매주 월요일"
   },
   {
    "placeId": "naver_1276010620_375177271",
@@ -861,7 +870,8 @@
    "address": "경기도 양평군 용문면 용문산로 235",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%9A%A9%EB%AC%B8%EC%82%B0%EB%B9%B5%EA%B3%B5%EC%9E%A5%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%9A%A9%EB%AC%B8%EB%A9%B4%20%EC%9A%A9%EB%AC%B8%EC%82%B0%EB%A1%9C%20235",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "09:00~21:00"
   },
   {
    "placeId": "naver_1275309985_374677896",
@@ -873,7 +883,8 @@
    "address": "경기도 양평군 개군면 신내길7번길 36 흑유재",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%ED%9D%91%EC%9C%A0%EC%9E%AC%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%9C%EA%B5%B0%EB%A9%B4%20%EC%8B%A0%EB%82%B4%EA%B8%B87%EB%B2%88%EA%B8%B8%2036%20%ED%9D%91%EC%9C%A0%EC%9E%AC",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:00~23:00"
   },
   {
    "placeId": "naver_1274999390_374910640",
@@ -885,7 +896,8 @@
    "address": "경기도 양평군 양평읍 시민로 75",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%8A%A4%ED%83%80%EB%B2%85%EC%8A%A4%20%EA%B2%BD%EA%B8%B0%EC%96%91%ED%8F%89%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%ED%8F%89%EC%9D%8D%20%EC%8B%9C%EB%AF%BC%EB%A1%9C%2075",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "07:00~22:00"
   },
   {
    "placeId": "naver_1274267948_375041384",
@@ -919,7 +931,8 @@
    "address": "경기도 양평군 양서면 북한강로89번길 19",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%88%98%EC%88%98%EC%B9%B4%ED%8E%98%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%EC%84%9C%EB%A9%B4%20%EB%B6%81%ED%95%9C%EA%B0%95%EB%A1%9C89%EB%B2%88%EA%B8%B8%2019",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~금 10:00~22:00, 토 일 08:30~22:00"
   },
   {
    "placeId": "naver_1273547638_376249287",
@@ -931,7 +944,8 @@
    "address": "경기도 양평군 서종면 북한강로 990",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%ED%85%8C%EB%9D%BC%EB%A1%9C%EC%82%AC%20%EC%84%9C%EC%A2%85%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%84%9C%EC%A2%85%EB%A9%B4%20%EB%B6%81%ED%95%9C%EA%B0%95%EB%A1%9C%20990",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "09:00~21:00"
   },
   {
    "placeId": "naver_1276739858_375553492",
@@ -943,7 +957,8 @@
    "address": "경기도 양평군 단월면 점골길 41",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%9B%94%ED%99%94%EC%88%98%20%EB%94%94%EC%A0%80%ED%8A%B8%EC%B9%B4%ED%8E%98%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EB%8B%A8%EC%9B%94%EB%A9%B4%20%EC%A0%90%EA%B3%A8%EA%B8%B8%2041",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~수 금~일 10:00~20:00 / 휴무: 매주 목요일"
   },
   {
    "placeId": "naver_1277655086_375679343",
@@ -955,7 +970,8 @@
    "address": "경기도 양평군 청운면 신론로 231",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%B0%94%EB%9E%8C%EA%B8%B8%EC%B9%B4%ED%8E%98%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%B2%AD%EC%9A%B4%EB%A9%B4%20%EC%8B%A0%EB%A1%A0%EB%A1%9C%20231",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~금 10:00~19:00, 토 08:30~20:00, 일 08:30~19:00"
   },
   {
    "placeId": "naver_1276318595_375011652",
@@ -967,7 +983,8 @@
    "address": "경기도 양평군 지평면 지평로 76",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%A7%80%ED%8F%89%EB%A1%9C76%EC%B9%B4%ED%8E%98%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%A7%80%ED%8F%89%EB%A9%B4%20%EC%A7%80%ED%8F%89%EB%A1%9C%2076",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "07:00~21:00"
   },
   {
    "placeId": "naver_1275700064_374827673",
@@ -979,7 +996,8 @@
    "address": "경기도 양평군 용문면 용문로 116",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%BD%98%ED%81%AC%EB%A6%AC%ED%8A%B8%EC%A0%95%EA%B8%80%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%9A%A9%EB%AC%B8%EB%A9%B4%20%EC%9A%A9%EB%AC%B8%EB%A1%9C%20116",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:00~20:00"
   },
   {
    "placeId": "naver_1275259770_374600959",
@@ -991,7 +1009,8 @@
    "address": "경기도 양평군 개군면 개군산로 32",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EA%B7%B8%EB%A6%B0%EB%A7%9D%EA%B3%A0%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%9C%EA%B5%B0%EB%A9%B4%20%EA%B0%9C%EA%B5%B0%EC%82%B0%EB%A1%9C%2032",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월 화 목~일 09:00~18:00 / 휴무: 매주 수요일"
   },
   {
    "placeId": "naver_1274796632_374981478",
@@ -1003,7 +1022,8 @@
    "address": "경기도 양평군 양평읍 물안개공원길 5-1 양평빵공장",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%EB%B9%B5%EA%B3%B5%EC%9E%A5%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%ED%8F%89%EC%9D%8D%20%EB%AC%BC%EC%95%88%EA%B0%9C%EA%B3%B5%EC%9B%90%EA%B8%B8%205-1%20%EC%96%91%ED%8F%89%EB%B9%B5%EA%B3%B5%EC%9E%A5",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "08:00~01:00"
   },
   {
    "placeId": "naver_1274860212_374777703",
@@ -1015,7 +1035,8 @@
    "address": "경기도 양평군 강상면 강남로 1052-2",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%A7%88%EC%9D%B4%EB%A6%AC%ED%8B%80%ED%98%B8%EC%A3%BC%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%EC%83%81%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%201052-2",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~금 08:00~17:00, 토 일 09:00~18:00"
   },
   {
    "placeId": "naver_1273896739_374924028",
@@ -1047,7 +1068,8 @@
    "address": "경기도 양평군 양서면 골용진길 21 소풍",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%86%8C%ED%92%8D%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%EC%84%9C%EB%A9%B4%20%EA%B3%A8%EC%9A%A9%EC%A7%84%EA%B8%B8%2021%20%EC%86%8C%ED%92%8D",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~목 08:00~21:30, 금 07:00~23:00, 토 일 07:00~24:00"
   },
   {
    "placeId": "naver_1274740894_375333890",
@@ -1059,7 +1081,8 @@
    "address": "경기도 양평군 옥천면 신복동촌길14번길 26-10 신복리709카페",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%8B%A0%EB%B3%B5%EB%A6%AC709%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%98%A5%EC%B2%9C%EB%A9%B4%20%EC%8B%A0%EB%B3%B5%EB%8F%99%EC%B4%8C%EA%B8%B814%EB%B2%88%EA%B8%B8%2026-10%20%EC%8B%A0%EB%B3%B5%EB%A6%AC709%EC%B9%B4%ED%8E%98",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~금 11:00~20:00, 토 일 10:00~21:00"
   },
   {
    "placeId": "naver_1276842272_375817960",
@@ -1073,7 +1096,8 @@
    "mapUrl": "https://map.naver.com/p/search/%EC%89%AC%EC%96%B4%EA%B0%84%EB%93%A4%EC%96%B4%EB%96%A0%ED%95%98%EB%A6%AC%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EB%8B%A8%EC%9B%94%EB%A9%B4%20%EB%8C%80%EB%B6%80%EB%A1%9D%EA%B8%B8%2071%20%EB%B9%A8%EA%B0%84%EC%A7%80%EB%B6%95",
    "tags": [
     "healing"
-   ]
+   ],
+   "businessHoursRaw": "수~일 11:00~18:00 / 휴무: 매주 월요일, 화요일"
   },
   {
    "placeId": "naver_1277699364_375414427",
@@ -1085,7 +1109,8 @@
    "address": "경기도 양평군 청운면 갈운양지마을1길 7",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%B9%B4%ED%8E%98%EB%A3%B0%EB%A3%A8%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%B2%AD%EC%9A%B4%EB%A9%B4%20%EA%B0%88%EC%9A%B4%EC%96%91%EC%A7%80%EB%A7%88%EC%9D%841%EA%B8%B8%207",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "화 09:00~15:00, 월 목~일 09:00~20:00"
   },
   {
    "placeId": "naver_1276304617_374741538",
@@ -1097,7 +1122,8 @@
    "address": "경기도 양평군 지평면 지평1로 209-22 앵무타운",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%95%B5%EB%AC%B4%ED%83%80%EC%9A%B4%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%A7%80%ED%8F%89%EB%A9%B4%20%EC%A7%80%ED%8F%891%EB%A1%9C%20209-22%20%EC%95%B5%EB%AC%B4%ED%83%80%EC%9A%B4",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "11:00~22:00"
   },
   {
    "placeId": "naver_1276042495_375094839",
@@ -1129,7 +1155,8 @@
    "address": "경기도 양평군 개군면 자진개1길 85-10",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%B9%B4%ED%8E%98%EC%9D%B4%EC%97%B0%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%9C%EA%B5%B0%EB%A9%B4%20%EC%9E%90%EC%A7%84%EA%B0%9C1%EA%B8%B8%2085-10",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:00~20:00, 19:30 라스트오더"
   },
   {
    "placeId": "naver_1274913228_375085245",
@@ -1141,7 +1168,8 @@
    "address": "경기도 양평군 양평읍 마유산로 197 좋은아침페스츄리 양평점",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%A7%88%EB%A3%A8%EC%A0%95%EC%9B%90%EC%A0%9C%EB%B9%B5%EC%86%8C%20%EC%96%91%ED%8F%89%EB%B3%B8%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%ED%8F%89%EC%9D%8D%20%EB%A7%88%EC%9C%A0%EC%82%B0%EB%A1%9C%20197%20%EC%A2%8B%EC%9D%80%EC%95%84%EC%B9%A8%ED%8E%98%EC%8A%A4%EC%B8%84%EB%A6%AC%20%EC%96%91%ED%8F%89%EC%A0%90",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "08:30~21:00, 20:30 라스트오더"
   },
   {
    "placeId": "naver_1274714717_374907347",
@@ -1153,7 +1181,8 @@
    "address": "경기도 양평군 강상면 강남로 841",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%BB%A4%ED%94%BC%EC%95%A4%EA%B0%80%EB%93%A0%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%EC%83%81%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%20841",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~금 10:00~18:00, 토 일 09:00~19:00"
   },
   {
    "placeId": "naver_1274098107_374971433",
@@ -1165,7 +1194,8 @@
    "address": "경기도 양평군 강하면 강남로 208 비아베네또",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%B9%84%EC%95%84%EB%B2%A0%EB%84%A4%EB%98%90%20%EC%88%98%EC%9E%85%EA%B0%80%EA%B5%AC%26%EC%B9%B4%ED%8E%98%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%ED%95%98%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%20208%20%EB%B9%84%EC%95%84%EB%B2%A0%EB%84%A4%EB%98%90",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:00~19:00"
   },
   {
    "placeId": "naver_1273227950_375432960",
@@ -1177,7 +1207,8 @@
    "address": "경기도 양평군 양서면 양수로118번길 9",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%EC%88%98%EB%A6%AC%EB%B9%B5%EA%B3%B5%EC%9E%A5%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%EC%84%9C%EB%A9%B4%20%EC%96%91%EC%88%98%EB%A1%9C118%EB%B2%88%EA%B8%B8%209",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "08:00~24:00"
   },
   {
    "placeId": "naver_1274960336_375421827",
@@ -1189,7 +1220,8 @@
    "address": "경기도 양평군 옥천면 용천로219번길 21 가동, 나동",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%ED%95%98%EB%A1%9D%EC%88%98%EB%A6%BC%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%98%A5%EC%B2%9C%EB%A9%B4%20%EC%9A%A9%EC%B2%9C%EB%A1%9C219%EB%B2%88%EA%B8%B8%2021%20%EA%B0%80%EB%8F%99%2C%20%EB%82%98%EB%8F%99",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월 화 목~일 11:00~19:00 / 휴무: 매주 수요일"
   },
   {
    "placeId": "naver_1273593186_376320611",
@@ -1221,7 +1253,8 @@
    "address": "경기도 양평군 단월면 석산로 12-1 1층",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%8D%A8%EB%8B%88%ED%94%8C%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EB%8B%A8%EC%9B%94%EB%A9%B4%20%EC%84%9D%EC%82%B0%EB%A1%9C%2012-1%201%EC%B8%B5",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~토 08:00~18:00 / 휴무: 매주 일요일"
   },
   {
    "placeId": "naver_1277723035_375405995",
@@ -1245,7 +1278,8 @@
    "address": "경기도 양평군 용문면 용문산로 543",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EA%B5%AC%EB%A6%84%EC%A0%95%EC%9B%90%EC%A0%9C%EB%B9%B5%EC%86%8C%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%9A%A9%EB%AC%B8%EB%A9%B4%20%EC%9A%A9%EB%AC%B8%EC%82%B0%EB%A1%9C%20543",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월 목 금 10:00~19:00, 토 일 10:00~20:00 / 휴무: 매주 화요일, 수요일"
   },
   {
    "placeId": "naver_1275110468_374428633",
@@ -1257,7 +1291,8 @@
    "address": "경기도 양평군 개군면 앙덕길69번길 11 하얀건물",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%A3%A8%EB%A3%A8%EB%A3%A8%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%9C%EA%B5%B0%EB%A9%B4%20%EC%95%99%EB%8D%95%EA%B8%B869%EB%B2%88%EA%B8%B8%2011%20%ED%95%98%EC%96%80%EA%B1%B4%EB%AC%BC",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "목~일 10:00~18:00 / 휴무: 매주 월요일, 화요일, 수요일"
   },
   {
    "placeId": "naver_1275099358_374610457",
@@ -1269,7 +1304,8 @@
    "address": "경기도 양평군 양평읍 충신로 172",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EA%B0%80%EC%86%8C%EB%8B%B4%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%ED%8F%89%EC%9D%8D%20%EC%B6%A9%EC%8B%A0%EB%A1%9C%20172",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:00~21:00"
   },
   {
    "placeId": "naver_1274796309_374872813",
@@ -1281,7 +1317,8 @@
    "address": "경기도 양평군 강상면 강남로 922",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%A0%95%EC%95%A0%EA%B0%80%EC%8B%9D%EB%B9%B5%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%EC%83%81%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%20922",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~토 08:00~20:00 / 휴무: 매주 일요일"
   },
   {
    "placeId": "naver_1273183136_375469053",
@@ -1293,7 +1330,8 @@
    "address": "경기도 양평군 양서면 양수로152번길 32-18 그림정원",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%B9%B4%ED%8E%98%20%EA%B7%B8%EB%A6%BC%EC%A0%95%EC%9B%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%EC%84%9C%EB%A9%B4%20%EC%96%91%EC%88%98%EB%A1%9C152%EB%B2%88%EA%B8%B8%2032-18%20%EA%B7%B8%EB%A6%BC%EC%A0%95%EC%9B%90",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:30~19:00"
   },
   {
    "placeId": "naver_1274330368_375103107",
@@ -1305,7 +1343,8 @@
    "address": "경기도 양평군 옥천면 남한강변길 209 1층 비마이가든 양평본점",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%B9%84.%EB%A7%88%EC%9D%B4%EA%B0%80%EB%93%A0%20%EC%96%91%ED%8F%89%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%98%A5%EC%B2%9C%EB%A9%B4%20%EB%82%A8%ED%95%9C%EA%B0%95%EB%B3%80%EA%B8%B8%20209%201%EC%B8%B5%20%EB%B9%84%EB%A7%88%EC%9D%B4%EA%B0%80%EB%93%A0%20%EC%96%91%ED%8F%89%EB%B3%B8%EC%A0%90",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:00~18:00"
   },
   {
    "placeId": "naver_1276374011_374748463",
@@ -1317,7 +1356,8 @@
    "address": "경기도 양평군 지평면 지평의병로 104",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%8F%97%EA%BD%88%EB%B9%84%EB%B3%B8%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%A7%80%ED%8F%89%EB%A9%B4%20%EC%A7%80%ED%8F%89%EC%9D%98%EB%B3%91%EB%A1%9C%20104",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "09:30~20:00"
   },
   {
    "placeId": "naver_1275393373_374131738",
@@ -1329,7 +1369,8 @@
    "address": "경기도 양평군 개군면 여양로 2111 상자포리 239-1",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%97%AC%EC%96%91%EB%A1%9C2111%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%9C%EA%B5%B0%EB%A9%B4%20%EC%97%AC%EC%96%91%EB%A1%9C%202111%20%EC%83%81%EC%9E%90%ED%8F%AC%EB%A6%AC%20239-1",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:00~20:00"
   },
   {
    "placeId": "tour_3445749",
@@ -1518,7 +1559,8 @@
    "address": "경기도 양평군 강상면 강남로 802 핏제리아 루카네",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%ED%95%8F%EC%A0%9C%EB%A6%AC%EC%95%84%20%EB%A3%A8%EC%B9%B4%EB%84%A4%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%EC%83%81%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%20802%20%ED%95%8F%EC%A0%9C%EB%A6%AC%EC%95%84%20%EB%A3%A8%EC%B9%B4%EB%84%A4",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "11:00~20:30"
   },
   {
    "placeId": "naver_1273168078_375348077",
@@ -1530,7 +1572,8 @@
    "address": "경기도 양평군 양서면 두물머리길 103-8",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%91%90%EB%AC%BC%EB%A8%B8%EB%A6%AC%EC%97%B0%ED%95%AB%EB%8F%84%EA%B7%B8%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%EC%84%9C%EB%A9%B4%20%EB%91%90%EB%AC%BC%EB%A8%B8%EB%A6%AC%EA%B8%B8%20103-8",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~금 10:00~17:50, 토 일 09:00~17:50"
   },
   {
    "placeId": "naver_1273532640_376228372",
@@ -1542,7 +1585,8 @@
    "address": "경기도 양평군 서종면 북한강로 962",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%ED%95%B4%EB%AC%BC%EA%BE%BC%EC%A1%B0%ED%83%9C%EC%82%B0%20%EC%96%91%ED%8F%89%EB%B3%B8%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%84%9C%EC%A2%85%EB%A9%B4%20%EB%B6%81%ED%95%9C%EA%B0%95%EB%A1%9C%20962",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:50~20:30, 19:50 라스트오더"
   },
   {
    "placeId": "naver_1276712534_375703518",
@@ -1554,7 +1598,8 @@
    "address": "경기도 양평군 단월면 단월로 408",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%A9%94%EB%B0%80%EA%B0%80%EB%A7%89%EA%B5%AD%EC%88%98%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EB%8B%A8%EC%9B%94%EB%A9%B4%20%EB%8B%A8%EC%9B%94%EB%A1%9C%20408",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "화~일 10:00~20:00, 19:45 라스트오더 / 휴무: 매주 월요일"
   },
   {
    "placeId": "naver_1277096023_375548494",
@@ -1583,7 +1628,8 @@
    "address": "경기도 양평군 용문면 은고갯길 3 고바우설렁탕",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EA%B3%A0%EB%B0%94%EC%9A%B0%EC%84%A4%EB%A0%81%ED%83%95%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%9A%A9%EB%AC%B8%EB%A9%B4%20%EC%9D%80%EA%B3%A0%EA%B0%AF%EA%B8%B8%203%20%EA%B3%A0%EB%B0%94%EC%9A%B0%EC%84%A4%EB%A0%81%ED%83%95",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월 화 목~일 07:00~16:00, 15:30 라스트오더 / 휴무: 매주 수요일"
   },
   {
    "placeId": "naver_1275509372_374778657",
@@ -1612,7 +1658,8 @@
    "address": "경기도 양평군 강상면 강남로 837-1",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%B3%B8%EA%B0%80%EC%96%91%ED%8F%89%ED%95%B4%EC%9E%A5%EA%B5%AD%20%EC%96%91%ED%8F%89%EC%A7%80%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%EC%83%81%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%20837-1",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "06:00~20:30"
   },
   {
    "placeId": "naver_1274633019_375127462",
@@ -1644,7 +1691,8 @@
    "address": "경기도 양평군 단월면 수미길 112",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%A8%B8%EB%AC%B4%EB%A6%84%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EB%8B%A8%EC%9B%94%EB%A9%B4%20%EC%88%98%EB%AF%B8%EA%B8%B8%20112",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "10:00~21:00"
   },
   {
    "placeId": "naver_1276369553_374755983",
@@ -1656,7 +1704,8 @@
    "address": "경기도 양평군 지평면 지평로 396",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%A7%80%ED%8F%89%EB%B3%B4%EB%A6%AC%EB%B0%A5%EC%A7%91%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%A7%80%ED%8F%89%EB%A9%B4%20%EC%A7%80%ED%8F%89%EB%A1%9C%20396",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월 화 목~일 10:30~16:00, 15시 이후 방문시 전화 후 방문 / 휴무: 매주 수요일"
   },
   {
    "placeId": "naver_1275376247_374257530",
@@ -1668,7 +1717,8 @@
    "address": "경기도 양평군 개군면 하자포길 27-2 1층",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EA%B0%9C%EA%B5%B0%ED%95%A0%EB%A8%B8%EB%8B%88%ED%86%A0%EC%A2%85%EC%88%9C%EB%8C%80%EA%B5%AD%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%9C%EA%B5%B0%EB%A9%B4%20%ED%95%98%EC%9E%90%ED%8F%AC%EA%B8%B8%2027-2%201%EC%B8%B5",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월 화 목~일 07:30~19:40, 19:10 라스트오더 / 휴무: 매주 수요일"
   },
   {
    "placeId": "naver_1274855652_374826816",
@@ -1680,7 +1730,8 @@
    "address": "경기도 양평군 강상면 양평대교길 81 1층 김명자낙지마당",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EA%B9%80%EB%AA%85%EC%9E%90%EB%82%99%EC%A7%80%EB%A7%88%EB%8B%B9%20%EC%96%91%ED%8F%89%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%EC%83%81%EB%A9%B4%20%EC%96%91%ED%8F%89%EB%8C%80%EA%B5%90%EA%B8%B8%2081%201%EC%B8%B5%20%EA%B9%80%EB%AA%85%EC%9E%90%EB%82%99%EC%A7%80%EB%A7%88%EB%8B%B9",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "11:00~22:00, 20:30 라스트오더"
   },
   {
    "placeId": "naver_1274578813_375197847",
@@ -1692,7 +1743,8 @@
    "address": "경기도 양평군 옥천면 고읍로 140",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%98%A5%EC%B2%9C%EB%83%89%EB%A9%B4%20%ED%99%A9%ED%95%B4%EC%8B%9D%EB%8B%B9%20%EB%B3%B8%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%98%A5%EC%B2%9C%EB%A9%B4%20%EA%B3%A0%EC%9D%8D%EB%A1%9C%20140",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "화~일 11:00~19:50 / 휴무: 매주 월요일"
   },
   {
    "placeId": "naver_1277322617_375627039",
@@ -1704,7 +1756,8 @@
    "address": "경기도 양평군 청운면 오목골길 33-1 1층",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%EC%86%A5%EB%9A%9C%EA%BB%91%EB%8B%AD%EB%B3%B6%EC%9D%8C%ED%83%95%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%B2%AD%EC%9A%B4%EB%A9%B4%20%EC%98%A4%EB%AA%A9%EA%B3%A8%EA%B8%B8%2033-1%201%EC%B8%B5",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "09:00~19:00, 18:00 라스트오더"
   },
   {
    "placeId": "naver_1276369452_374744965",
@@ -1716,7 +1769,8 @@
    "address": "경기도 양평군 지평면 지평시장2길 4-1 4,",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%ED%98%B8%ED%98%B8%EB%B6%84%EC%8B%9D%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%A7%80%ED%8F%89%EB%A9%B4%20%EC%A7%80%ED%8F%89%EC%8B%9C%EC%9E%A52%EA%B8%B8%204-1%204%2C",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월 수~일 10:30~19:00, 18:30 라스트오더 / 휴무: 매주 화요일"
   },
   {
    "placeId": "naver_1276029970_375158121",
@@ -1747,7 +1801,8 @@
    "address": "경기도 양평군 개군면 신내길 16",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%EC%8B%A0%EB%82%B4%EC%84%9C%EC%9A%B8%ED%95%B4%EC%9E%A5%EA%B5%AD%20%EB%B3%B8%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%9C%EA%B5%B0%EB%A9%B4%20%EC%8B%A0%EB%82%B4%EA%B8%B8%2016",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "07:00~20:00"
   },
   {
    "placeId": "naver_1274946094_374911048",
@@ -1778,7 +1833,8 @@
    "address": "경기도 양평군 강상면 강남로 851",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%EC%B6%95%ED%98%91%ED%95%9C%EC%9A%B0%ED%94%84%EB%9D%BC%EC%9E%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%EC%83%81%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%20851",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월 수~일 10:00~22:00 / 휴무: 매주 화요일"
   },
   {
    "placeId": "naver_1274423732_375042162",
@@ -1790,7 +1846,8 @@
    "address": "경기도 양평군 강하면 강남로 520 쏭바베큐 양평본점",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%8F%AD%EB%B0%94%EB%B2%A0%ED%81%90%20%EC%96%91%ED%8F%89%EB%B3%B8%EC%A0%90%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%ED%95%98%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%20520%20%EC%8F%AD%EB%B0%94%EB%B2%A0%ED%81%90%20%EC%96%91%ED%8F%89%EB%B3%B8%EC%A0%90",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월 화 목~토 11:30~21:00, 일 12:30~21:00 / 휴무: 매주 수요일"
   },
   {
    "placeId": "naver_1275005216_375485858",
@@ -1840,7 +1897,8 @@
    "address": "경기도 양평군 양평읍 양평장터길 9-1 양평오일장 장터 몽실식당",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EB%AA%BD%EC%8B%A4%EC%8B%9D%EB%8B%B9%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%ED%8F%89%EC%9D%8D%20%EC%96%91%ED%8F%89%EC%9E%A5%ED%84%B0%EA%B8%B8%209-1%20%EC%96%91%ED%8F%89%EC%98%A4%EC%9D%BC%EC%9E%A5%20%EC%9E%A5%ED%84%B0%20%EB%AA%BD%EC%8B%A4%EC%8B%9D%EB%8B%B9",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월 수~일 11:00~21:20 / 휴무: 매주 화요일"
   },
   {
    "placeId": "naver_1274857339_374700839",
@@ -1852,7 +1910,8 @@
    "address": "경기도 양평군 강상면 강남로 1141",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EA%B3%A0%EB%93%B1%EC%96%B4%EC%82%AC%EB%9E%91%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EA%B0%95%EC%83%81%EB%A9%B4%20%EA%B0%95%EB%82%A8%EB%A1%9C%201141",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월 화 목~일 11:00~21:00 / 휴무: 매주 수요일"
   },
   {
    "placeId": "naver_1274304126_375038871",
@@ -1884,7 +1943,8 @@
    "address": "경기도 양평군 양서면 용늪언덕길 57",
    "photos": [],
    "mapUrl": "https://map.naver.com/p/search/%EC%97%B0%EA%BD%83%EC%96%B8%EB%8D%95%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%EC%84%9C%EB%A9%B4%20%EC%9A%A9%EB%8A%AA%EC%96%B8%EB%8D%95%EA%B8%B8%2057",
-   "tags": []
+   "tags": [],
+   "businessHoursRaw": "월~금 11:00~21:00, 토 일 11:00~22:00"
   },
   {
    "placeId": "naver_1274621799_375233520",
@@ -1898,7 +1958,8 @@
    "mapUrl": "https://map.naver.com/p/search/%EC%96%91%ED%8F%89%EC%98%A5%EC%B2%9C%EB%83%89%EB%A9%B4%EB%AA%BD%EC%8B%A4%EB%A9%B4%EB%8B%B9%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%98%A5%EC%B2%9C%EB%A9%B4%20%EC%8B%A0%EB%B3%B5%EA%B8%B8%2015%20%EB%AA%BD%EC%8B%A4%EB%A9%B4%EB%8B%B9",
    "tags": [
     "local_food"
-   ]
+   ],
+   "businessHoursRaw": "11:00~20:30, 19:30 라스트오더"
   },
   {
    "placeId": "naver_1276245750_376378571",
@@ -1912,7 +1973,8 @@
    "mapUrl": "https://map.naver.com/p/search/%EC%86%8C%EB%A6%AC%EC%82%B0%EC%B0%B8%EC%88%AF%EA%B5%BD%EB%8A%94%EB%A7%88%EC%9D%84%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EB%8B%A8%EC%9B%94%EB%A9%B4%20%EC%84%9D%EC%82%B0%EB%8F%8C%EA%B3%A0%EA%B0%AF%EA%B8%B8%2012-29%20%EC%86%8C%EB%A6%AC%EC%82%B0%EC%B0%B8%EC%88%AF%EA%B5%BD%EB%8A%94%EB%A7%88%EC%9D%84",
    "tags": [
     "lively_food"
-   ]
+   ],
+   "businessHoursRaw": "09:00~21:00, 20:00 라스트오더"
   },
   {
    "placeId": "naver_1276963285_375432453",
@@ -1926,7 +1988,8 @@
    "mapUrl": "https://map.naver.com/p/search/%ED%87%B4%EC%B4%8C%20%EB%AF%BC%EB%AC%BC%EB%A7%A4%EC%9A%B4%ED%83%95%20%EC%96%B4%ED%83%95%EA%B5%AD%EC%88%98%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%B2%AD%EC%9A%B4%EB%A9%B4%20%EA%B2%BD%EA%B0%95%EB%A1%9C%204091",
    "tags": [
     "local_food"
-   ]
+   ],
+   "businessHoursRaw": "월 수~일 10:00~20:00 / 휴무: 매주 화요일"
   },
   {
    "placeId": "naver_1276139573_374161415",
@@ -1940,7 +2003,8 @@
    "mapUrl": "https://map.naver.com/p/search/%ED%95%9C%EA%B0%95%EC%A0%95%EC%9C%A1%EC%A0%90%EC%8B%9D%EB%8B%B9%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%A7%80%ED%8F%89%EB%A9%B4%20%EA%B3%A1%EC%88%98%EC%8B%9C%EC%9E%A5%EA%B8%B8%202%20%ED%95%9C%EA%B0%95%EC%A0%95%EC%9C%A1%EC%A0%90%EC%8B%9D%EB%8B%B9",
    "tags": [
     "lively_food"
-   ]
+   ],
+   "businessHoursRaw": "월~금 11:30~20:30, 토 11:30~14:00 / 휴무: 매주 일요일"
   },
   {
    "placeId": "tour_3458271",
