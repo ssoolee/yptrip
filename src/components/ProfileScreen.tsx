@@ -4,8 +4,11 @@ import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import {
+  getFavoritePlacesServerSnapshot,
+  getFavoritePlacesSnapshot,
   getFavoritesServerSnapshot,
   getFavoritesSnapshot,
+  subscribeFavoritePlaces,
   subscribeFavorites,
 } from "@/lib/favorites";
 
@@ -15,6 +18,11 @@ export default function ProfileScreen() {
     subscribeFavorites,
     getFavoritesSnapshot,
     getFavoritesServerSnapshot,
+  );
+  const favoritePlaces = useSyncExternalStore(
+    subscribeFavoritePlaces,
+    getFavoritePlacesSnapshot,
+    getFavoritePlacesServerSnapshot,
   );
 
   if (!configured) {
@@ -38,7 +46,8 @@ export default function ProfileScreen() {
         </span>
         <h1 className="mb-2 text-lg font-bold">로그인하면 찜이 안 사라져요</h1>
         <p className="mb-6 text-sm text-[var(--color-muted)]">
-          지금 찜한 코스 {favorites.length}개는 이 브라우저에만 저장돼 있어요.
+          지금 찜한 코스 {favorites.length}개, 장소 {favoritePlaces.length}개는 이 브라우저에만
+          저장돼 있어요.
           <br />
           로그인하면 계정으로 옮겨서 다른 기기에서도 볼 수 있어요.
         </p>
@@ -77,12 +86,14 @@ export default function ProfileScreen() {
         href="/favorites"
         className="mb-4 flex items-center justify-between rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-card)] p-4 text-sm"
       >
-        <span className="font-medium">찜한 코스</span>
-        <span className="text-[var(--color-muted)]">{favorites.length}개 →</span>
+        <span className="font-medium">찜 목록</span>
+        <span className="text-[var(--color-muted)]">
+          코스 {favorites.length} · 장소 {favoritePlaces.length} →
+        </span>
       </Link>
 
       <p className="mb-4 text-xs text-[var(--color-muted)]">
-        찜한 코스는 계정에 저장돼 다른 기기에서도 그대로 보여요.
+        찜한 코스와 장소는 계정에 저장돼 다른 기기에서도 그대로 보여요.
       </p>
 
       <button
