@@ -11,6 +11,22 @@
   --color-muted: #6b7280;
   --radius-card: 16px;
   --radius-button: 999px;
+
+  /* 양평 마스코트 '평안이' 팔레트 (그림: public/character/). 버튼·링크는 기존
+     primary/accent를 그대로 쓰고, 이 색은 캐릭터 주변 장식에만 쓴다.
+     연꽃 핑크는 아직 쓰는 곳이 없지만 팔레트 기록용으로 함께 둔다. */
+  --color-character-blue: #8fd3f2; /* 하늘물 블루 */
+  --color-character-mint: #9fdcd2; /* 평온 민트 */
+  --color-character-ivory: #fdf3e4; /* 따스한 아이보리 */
+  --color-character-pink: #f9b5b8; /* 연꽃 핑크 */
+
+  /* 히어로 틴트는 --background에 캐릭터 색을 섞어 만든다 — 다크모드에서 배경만
+     바뀌면 틴트도 같이 어두워지므로 아래 dark 블록에 따로 적을 필요가 없다. */
+  --color-hero-bg: color-mix(in srgb, var(--color-character-blue) 14%, var(--background));
+  --color-hero-border: color-mix(in srgb, var(--color-character-blue) 32%, var(--background));
+  /* 틴트 위에서는 --color-muted(#6b7280)가 4.4:1로 WCAG AA에 못 미쳐 따로 둔다. */
+  --color-hero-text: color-mix(in srgb, var(--foreground) 72%, var(--color-hero-bg));
+  --color-hero-eyebrow: var(--color-primary);
 }
 
 @theme inline {
@@ -32,12 +48,32 @@
     --color-card: #1c2124;
     --color-border: #2a3033;
     --color-muted: #9aa4ab;
+    /* primary(#2f6f4f)는 라이트/다크 공통이지만 어두운 히어로 틴트 위에서는 2.3:1까지
+       떨어진다. 히어로의 작은 글씨에만 밝게 섞은 값을 쓴다. */
+    --color-hero-eyebrow: color-mix(in srgb, var(--color-primary) 45%, var(--foreground));
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* 홈 히어로(HomeHero) 배경. 캐릭터 색을 투명도로 얹기 때문에 라이트(#fafaf7)와
+   다크(#14181a) 배경 모두에서 과하지 않게 깔린다. */
+.home-hero {
+  background-color: var(--color-hero-bg);
+  background-image:
+    radial-gradient(
+      120% 110% at 88% 0%,
+      color-mix(in srgb, var(--color-character-blue) 22%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--color-character-mint) 16%, transparent),
+      color-mix(in srgb, var(--color-character-ivory) 10%, transparent)
+    );
 }
 
 /* 장소 상세 시트(PlaceDetailSheet)의 등장 효과. 모바일은 아래에서 올라오고,
