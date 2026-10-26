@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import Mascot from "./Mascot";
 import { PRESETS } from "@/lib/presets";
 
 export default function PresetGrid() {
@@ -7,14 +7,7 @@ export default function PresetGrid() {
     <>
       {/* 제목은 여백 안에, 카드 줄은 화면 끝까지 — 모바일 가로 스와이프를 위해 분리한다. */}
       <h2 className="mb-2 flex items-center gap-2 px-4 text-sm font-semibold">
-        <Image
-          src="/character/face-smile.png"
-          alt=""
-          width={148}
-          height={125}
-          sizes="24px"
-          className="h-auto w-6"
-        />
+        <Mascot expression="smile" size={24} />
         유형으로 골라볼까요?
       </h2>
       <div className="flex gap-3 overflow-x-auto px-4 pb-2 sm:grid sm:grid-cols-3 sm:overflow-visible md:grid-cols-4">
