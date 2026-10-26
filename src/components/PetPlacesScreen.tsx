@@ -1,11 +1,11 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import Link from "next/link";
 import NaverMapView, { MapStop } from "@/components/NaverMapView";
 import PlaceDetailSheet, { DetailPlace } from "@/components/PlaceDetailSheet";
 import { CATEGORY_LABEL } from "@/lib/categories";
 import { Category, Place } from "@/types/travel";
+import PageHeader from "@/components/PageHeader";
 
 // 칩 순서. 해당 카테고리 장소가 없으면 칩을 숨긴다 (현재 동반 가능 관광지 데이터는 없음).
 const FILTERS: (Category | "all")[] = ["all", "restaurant", "cafe", "attraction", "lodging"];
@@ -27,17 +27,17 @@ export default function PetPlacesScreen({ places }: { places: Place[] }) {
 
   return (
     <div className="mx-auto max-w-2xl px-4 pb-6 pt-6">
-      <Link href="/course/pet" className="text-sm text-[var(--color-muted)]">
-        ← 반려동물 코스 보기
-      </Link>
-      <h1 className="mt-2 text-xl font-bold">🐾 반려동물 동반 업소</h1>
-      <p className="mt-1 text-sm text-[var(--color-muted)]">
-        양평에서 반려동물과 함께 갈 수 있는 {places.length}곳이에요. 동반 조건(크기·실내 입장)은 업소마다
-        달라 방문 전에 꼭 확인하세요.
-      </p>
-      <p className="mt-1 text-xs text-[var(--color-muted)]">
-        출처: 식품안전나라 반려동물 동반 가능 업소 현황(2026. 9. 28. 기준), 한국관광공사 장소 소개글
-      </p>
+      <PageHeader
+        backHref="/course/pet"
+        backLabel="반려동물 코스 보기"
+        title="🐾 반려동물 동반 업소"
+        description={`양평에서 반려동물과 함께 갈 수 있는 ${places.length}곳이에요. 동반 조건(크기·실내 입장)은 업소마다 달라 방문 전에 꼭 확인하세요.`}
+        expression="heart"
+      >
+        <p className="mt-1 text-xs text-[var(--color-muted)]">
+          출처: 식품안전나라 반려동물 동반 가능 업소 현황(2026. 9. 28. 기준), 한국관광공사 장소 소개글
+        </p>
+      </PageHeader>
 
       <div className="my-4 flex gap-2 overflow-x-auto">
         {FILTERS.map((f) => {

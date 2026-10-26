@@ -24,7 +24,10 @@ export default function LodgingPicks({ title, picks }: { title: string; picks: L
               // eslint-disable-next-line @next/next/no-img-element
               <img src={pick.photos[0]} alt={pick.name} loading="lazy" className="h-36 w-full object-cover" />
             ) : (
-              <div className="flex h-24 items-center justify-center bg-[var(--color-primary)]/5 text-3xl" aria-hidden>
+              <div
+                className="flex h-24 items-center justify-center bg-[var(--color-character-blue)]/15 text-3xl"
+                aria-hidden
+              >
                 {CATEGORY_EMOJI.lodging}
               </div>
             )}

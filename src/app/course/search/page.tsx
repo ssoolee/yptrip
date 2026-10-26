@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { generateCourses } from "@/lib/agents/orchestrator";
 import { interpretRequest, MAX_QUERY_LENGTH } from "@/lib/agents/requestInterpreter";
 import CourseResults from "@/components/CourseResults";
+import PageHeader from "@/components/PageHeader";
 import TripSearchBox from "@/components/TripSearchBox";
 
 // docs/prd/01-ai-course-recommendation-prd.md — 자연어 요청으로 코스 추천.
@@ -21,11 +21,13 @@ export default async function CourseSearchPage({
 
   return (
     <div className="mx-auto max-w-2xl pb-6 pt-6">
-      <div className="mb-4 px-4">
-        <Link href="/" className="text-sm text-[var(--color-muted)]">
-          ← 처음으로
-        </Link>
-        <h1 className="mt-2 text-xl font-bold">&ldquo;{query}&rdquo;</h1>
+      <PageHeader
+        className="mb-4 px-4"
+        backHref="/"
+        backLabel="처음으로"
+        title={<>&ldquo;{query}&rdquo;</>}
+        expression="wow"
+      >
         <p className="mt-2 text-xs text-[var(--color-muted)]">이렇게 이해했어요</p>
         <ul className="mt-1 flex flex-wrap gap-1.5">
           {conditions.highlights.map((highlight) => (
@@ -52,7 +54,7 @@ export default async function CourseSearchPage({
             특별한 취향을 찾지 못해 인기 장소 위주로 추천했어요. 누구와, 어떤 분위기를 원하는지 적어주시면 더 잘 맞춰드려요.
           </p>
         )}
-      </div>
+      </PageHeader>
       <div className="mb-5">
         <TripSearchBox defaultValue={query} />
       </div>

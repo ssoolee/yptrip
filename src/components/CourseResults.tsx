@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import CourseCard from "@/components/CourseCard";
+import EmptyState from "@/components/EmptyState";
 import { loadMoreCourses } from "@/lib/actions";
 import { courseSignature } from "@/lib/courseSignature";
 import { Course, PresetType } from "@/types/travel";
@@ -55,9 +56,12 @@ export default function CourseResults({
       </div>
 
       {courses.length === 0 && (
-        <p className="py-10 text-center text-sm text-[var(--color-muted)]">
-          조건에 맞는 코스를 찾지 못했어요. 다시 시도해보세요.
-        </p>
+        <div className="py-10">
+          <EmptyState
+            expression="wow"
+            message="조건에 맞는 코스를 찾지 못했어요. 조건을 조금 바꿔서 다시 알려주시겠어요?"
+          />
+        </div>
       )}
 
       {exhausted ? (

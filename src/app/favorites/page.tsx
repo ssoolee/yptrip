@@ -15,6 +15,8 @@ import {
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { CATEGORY_EMOJI, CATEGORY_LABEL } from "@/lib/categories";
 import PlaceDetailSheet, { DetailPlace } from "@/components/PlaceDetailSheet";
+import EmptyState from "@/components/EmptyState";
+import PageHeader from "@/components/PageHeader";
 
 // docs/prd/04-favorites-prd.md §4 — 찜 목록은 코스 찜 탭과 장소 찜 탭으로 나눈다.
 type Tab = "courses" | "places";
@@ -40,7 +42,7 @@ export default function FavoritesPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 pb-6 pt-8">
-      <h1 className="mb-4 text-xl font-bold">찜 목록</h1>
+      <PageHeader className="mb-4" title="찜 목록" expression="heart" />
 
       {showLoginBanner && (
         <div className="mb-4 flex items-center justify-between gap-3 rounded-[var(--radius-card)] bg-[var(--color-primary)]/10 p-4">
@@ -68,7 +70,12 @@ export default function FavoritesPage() {
       {tab === "courses" ? (
         <>
           {favorites.length === 0 && (
-            <EmptyState message="아직 찜한 코스가 없어요." href="/" action="코스 추천받으러 가기 →" />
+            <EmptyState
+              expression="heart"
+              message="아직 찜한 코스가 없어요."
+              href="/"
+              action="코스 추천받으러 가기 →"
+            />
           )}
           <ul className="space-y-3">
             {favorites.map((fav) => (
@@ -113,6 +120,7 @@ export default function FavoritesPage() {
         <>
           {places.length === 0 && (
             <EmptyState
+              expression="smile"
               message="아직 찜한 장소가 없어요. 코스나 지도에서 장소를 열면 하트를 누를 수 있어요."
               href="/map"
               action="지도 보러 가기 →"
@@ -186,13 +194,3 @@ function TabButton({
   );
 }
 
-function EmptyState({ message, href, action }: { message: string; href: string; action: string }) {
-  return (
-    <div className="rounded-[var(--radius-card)] border border-dashed border-[var(--color-border)] p-8 text-center">
-      <p className="mb-3 text-sm text-[var(--color-muted)]">{message}</p>
-      <Link href={href} className="text-sm font-semibold text-[var(--color-primary)]">
-        {action}
-      </Link>
-    </div>
-  );
-}

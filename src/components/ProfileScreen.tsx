@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { useAuth } from "@/lib/auth/AuthProvider";
+import Mascot, { type MascotExpression } from "@/components/Mascot";
+import MascotSpot from "@/components/MascotSpot";
+import PageHeader from "@/components/PageHeader";
 import {
   getFavoritePlacesServerSnapshot,
   getFavoritePlacesSnapshot,
@@ -27,7 +30,7 @@ export default function ProfileScreen() {
 
   if (!configured) {
     return (
-      <Centered emoji="👤" title="로그인 기능 준비 중">
+      <Centered expression="smile" title="로그인 기능 준비 중">
         Firebase 설정값(<code>NEXT_PUBLIC_FIREBASE_*</code>)이 채워지면 로그인하고 찜 목록을
         여러 기기에서 동기화할 수 있어요. (docs/prd/06-infra-deployment-prd.md)
       </Centered>
@@ -35,15 +38,17 @@ export default function ProfileScreen() {
   }
 
   if (loading) {
-    return <Centered emoji="⏳" title="불러오는 중…">잠시만 기다려 주세요.</Centered>;
+    return (
+      <Centered expression="calm" title="불러오는 중…">
+        잠시만 기다려 주세요.
+      </Centered>
+    );
   }
 
   if (!user) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
-        <span className="mb-3 block text-4xl" aria-hidden>
-          👤
-        </span>
+        <MascotSpot expression="heart" size={56} className="mb-3" />
         <h1 className="mb-2 text-lg font-bold">로그인하면 찜이 안 사라져요</h1>
         <p className="mb-6 text-sm text-[var(--color-muted)]">
           지금 찜한 코스 {favorites.length}개, 장소 {favoritePlaces.length}개는 이 브라우저에만
@@ -65,15 +70,15 @@ export default function ProfileScreen() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 pb-6 pt-8">
-      <h1 className="mb-4 text-xl font-bold">내정보</h1>
+      <PageHeader className="mb-4" title="내정보" expression="happy" />
 
       <div className="mb-4 flex items-center gap-3 rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-card)] p-4">
         {user.photoURL ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={user.photoURL} alt="" className="h-12 w-12 rounded-full object-cover" />
         ) : (
-          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-xl" aria-hidden>
-            👤
+          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-primary)]/10">
+            <Mascot expression="smile" size={32} />
           </span>
         )}
         <div className="min-w-0">
@@ -108,19 +113,17 @@ export default function ProfileScreen() {
 }
 
 function Centered({
-  emoji,
+  expression,
   title,
   children,
 }: {
-  emoji: string;
+  expression: MascotExpression;
   title: string;
   children: React.ReactNode;
 }) {
   return (
     <div className="mx-auto flex max-w-2xl flex-col items-center justify-center px-4 py-20 text-center">
-      <span className="mb-3 text-4xl" aria-hidden>
-        {emoji}
-      </span>
+      <MascotSpot expression={expression} size={56} className="mb-3" />
       <h1 className="mb-2 text-lg font-bold">{title}</h1>
       <p className="text-sm text-[var(--color-muted)]">{children}</p>
     </div>

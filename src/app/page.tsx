@@ -1,5 +1,5 @@
-import Image from "next/image";
 import HomeHero from "@/components/HomeHero";
+import Mascot from "@/components/Mascot";
 import HomeSteps from "@/components/HomeSteps";
 import PresetGrid from "@/components/PresetGrid";
 import TripSearchBox from "@/components/TripSearchBox";
@@ -24,14 +24,7 @@ export default function Home() {
         <HomeSteps />
       </div>
       <p className="mt-6 flex items-center justify-center gap-2 text-xs text-[var(--color-muted)]">
-        <Image
-          src="/character/pose-heart.png"
-          alt=""
-          width={117}
-          height={159}
-          sizes="32px"
-          className="h-auto w-8"
-        />
+        <Mascot expression="heart" size={32} />
         오늘도, 마음이 평안한 양평 💙
       </p>
     </div>

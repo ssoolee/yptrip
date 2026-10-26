@@ -174,7 +174,10 @@ export default function PlaceDetailSheet({ place, onClose }: { place: DetailPlac
 function PhotoGallery({ photos, name, category }: Pick<DetailPlace, "photos" | "name" | "category">) {
   if (photos.length === 0) {
     return (
-      <div className="flex h-32 items-center justify-center bg-[var(--color-primary)]/5 text-4xl sm:h-40" aria-hidden>
+      <div
+        className="flex h-32 items-center justify-center bg-[var(--color-character-blue)]/15 text-4xl sm:h-40"
+        aria-hidden
+      >
         {CATEGORY_EMOJI[category]}
       </div>
     );
