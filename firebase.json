@@ -3,6 +3,14 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
+  "hosting": {
+    "site": "yptour",
+    "public": "hosting-redirect",
+    "redirects": [
+      { "source": "/", "destination": "https://yptrip--ypcourse.asia-east1.hosted.app/", "type": 302 },
+      { "source": "/:path*", "destination": "https://yptrip--ypcourse.asia-east1.hosted.app/:path*", "type": 302 }
+    ]
+  },
   "apphosting": {
     "backendId": "yptrip",
     "rootDir": "/",
