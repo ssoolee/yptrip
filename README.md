@@ -83,6 +83,7 @@ TourAPI 항목이 있으면 함께 채운다(89곳). 어느 API에도 없는
 | `/pet-places` | 반려동물 동반 가능 업소 |
 | `/favorites` | 찜한 코스 / 장소 (탭) |
 | `/login`, `/profile` | 로그인 / 내 정보 |
+| (없는 주소) | 평안이 404 — `src/app/not-found.tsx` |
 
 ## 코드 구조
 
@@ -100,12 +101,36 @@ public/character/   마스코트 '평안이' 그림 (PNG)
 docs/               PRD, 에이전트 설계, 리서치 자료
 ```
 
-첫 화면의 캐릭터는 양평 마스코트 **평안이**(직접 제작)다. 그림 파일은
+서비스 전체의 얼굴은 양평 마스코트 **평안이**(직접 제작)다. 그림 파일은
 `public/character/`에 두고 `next/image`로 쓴다 — 외부 호스트 사진에 쓰는
 `<img>` 관례와 달리 로컬 파일은 설정 없이 srcset·WebP 변환을 받는다.
 캐릭터 색은 `src/app/globals.css`의 `--color-character-*` 토큰에 적어 두었고,
 히어로 배경 틴트(`--color-hero-*`)는 배경색에 섞어 만들어 다크모드에서도
 그대로 동작한다.
+
+그림을 화면에 올리는 통로는 `src/components/Mascot.tsx` 하나다. 표정 7종에 뜻을
+정해 두고(`calm` 확인 중, `happy` 완성, `wow` 어라?, `heart` 찜, `wink` 골라보세요,
+`smile` 중립, `hero` 홈) 쓸 수 있는 크기를 타입으로 묶었다 — 그림마다 또렷하게
+보이는 상한이 달라(얼굴 원본 ~150px이라 72px까지, 하트 포즈는 56px까지) 넘기면
+타입 검사에서 걸린다. 더 크게 보여야 하는 자리는 그림을 늘리지 않고
+`MascotSpot`으로 둥근 배경을 키운다. `alt`는 컴포넌트가 `""`로 고정한다 —
+그림은 모두 장식이고 뜻은 옆 글자가 나른다.
+
+평안이가 모든 화면에 닿는 통로는 `PageHeader`(뒤로가기 + 제목 + 설명)와
+`EmptyState`(보여줄 것이 없을 때)다. 하단 내비와 사진 없는 장소의 카테고리
+이모지(🍚 ☕ 🏞 🏡)는 일부러 그대로 뒀다 — 작은 크기에서 네 칸/네 카테고리를
+구분하는 정보를 캐릭터가 대신 나르지 못한다.
+
+코스를 만드는 동안에는 `loading.tsx`가 평안이와 뼈대 카드를 보여준다
+(`/course/search`, `/course/[preset]`, `/course/mbti/[type]`, `/course/detail/[courseId]`).
+세그먼트 파일을 쓰는 이유는 이 화면이 미리 받아져 링크를 누르는 즉시 뜨기 때문이고,
+대신 인자를 받을 수 없어(Next 16) 문구에 검색어나 MBTI 유형을 넣지 못한다.
+움직임은 `globals.css`의 `prefers-reduced-motion` 블록에서 모두 꺼진다.
+
+탭 아이콘과 공유 이미지는 `icon.tsx` / `apple-icon.tsx` / `opengraph-image.tsx`가
+빌드 때 평안이 그림에서 만들어 낸다. `favicon.ico`는 코드로 만들 수 없어 지웠다.
+공유 이미지에 글자를 넣지 않은 건 한글 폰트가 `ImageResponse`의 500KB 상한을 넘기
+때문이고, 제목·설명은 SNS가 `og:title`/`og:description`으로 그림 옆에 보여준다.
 
 추천 흐름: 사용자 입력 → `requestInterpreter`(조건 구조화) → `placeRetrieval`(후보 검색)
 → `itineraryComposer`(동선·시간대 배치) → `validation`(영업시간·휴무 검증) →
