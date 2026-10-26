@@ -47,3 +47,6 @@ next-env.d.ts
 # firebase 에뮬레이터 로그
 firebase-debug.log
 firestore-debug.log
+
+# firebase 배포 캐시 (hosting deploy가 만든다)
+.firebase/
