@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { generateCourses } from "@/lib/agents/orchestrator";
 import { getMbtiCuration, isMbtiType } from "@/lib/mbti";
 import CourseResults from "@/components/CourseResults";
+import PageHeader from "@/components/PageHeader";
 import LodgingPicks from "@/components/LodgingPicks";
 
 // MBTI 유형별 코스: 미리 만들어 둔 큐레이션 코스(src/lib/data/mbtiCourses.json)를
@@ -18,13 +18,14 @@ export default async function MbtiCoursePage({ params }: { params: Promise<{ typ
 
   return (
     <div className="mx-auto max-w-2xl pb-6 pt-6">
-      <div className="mb-4 px-4">
-        <Link href="/course/mbti" className="text-sm text-[var(--color-muted)]">
-          ← 다른 MBTI 고르기
-        </Link>
-        <h1 className="mt-2 text-xl font-bold">{type} 성향 맞춤 양평 코스</h1>
-        {curation.summary && <p className="mt-1 text-sm text-[var(--color-muted)]">{curation.summary}</p>}
-      </div>
+      <PageHeader
+        className="mb-4 px-4"
+        backHref="/course/mbti"
+        backLabel="다른 MBTI 고르기"
+        title={`${type} 성향 맞춤 양평 코스`}
+        description={curation.summary || undefined}
+        expression="happy"
+      />
       <CourseResults key={type} presetType="mbti" initialCourses={initialCourses} mbti={type} />
       <LodgingPicks title={`${type}에게 어울리는 숙소·펜션`} picks={curation.lodging} />
     </div>

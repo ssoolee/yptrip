@@ -12,6 +12,7 @@ import { RouteLink } from "@/components/RouteLinks";
 import { useCurrentPosition } from "@/lib/useCurrentPosition";
 import { estimateMinutes, formatDistance, nearest } from "@/lib/geo";
 import { Place } from "@/types/travel";
+import PageHeader from "@/components/PageHeader";
 
 // docs/prd/02-map-realtime-location-prd.md 참조.
 // 코스별 상세 화면이 아직 없어, 우선 "찜한 코스"를 골라 지도로 보는 형태로
@@ -57,8 +58,7 @@ export default function MapScreen({ overviewPlaces }: { overviewPlaces: Place[] 
 
   return (
     <div className="mx-auto max-w-2xl px-4 pb-6 pt-6">
-      <h1 className="mb-1 text-lg font-bold">🗺️ 지도</h1>
-      <p className="mb-4 text-sm text-[var(--color-muted)]">{subtitle}</p>
+      <PageHeader className="mb-4" title="🗺️ 지도" description={subtitle} expression="wow" />
 
       {favorites.length > 1 && (
         <select

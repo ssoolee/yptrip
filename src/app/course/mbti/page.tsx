@@ -1,16 +1,20 @@
 import Link from "next/link";
 import { MBTI_GROUPS } from "@/lib/mbti";
+import PageHeader from "@/components/PageHeader";
 
 // 홈의 "MBTI 성향별" 프리셋이 여는 16유형 선택 화면. 정적 세그먼트라
 // /course/[preset]보다 먼저 매칭된다.
 export default function MbtiSelectPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 pb-6 pt-6">
-      <Link href="/" className="text-sm text-[var(--color-muted)]">
-        ← 다른 유형 보기
-      </Link>
-      <h1 className="mt-2 text-xl font-bold">🔤 MBTI 성향별 여행</h1>
-      <p className="mb-6 text-sm text-[var(--color-muted)]">내 MBTI를 고르면 성향에 맞춘 양평 코스를 추천해드려요.</p>
+      <PageHeader
+        className="mb-6"
+        backHref="/"
+        backLabel="다른 유형 보기"
+        title="🔤 MBTI 성향별 여행"
+        description="내 MBTI를 고르면 성향에 맞춘 양평 코스를 추천해드려요."
+        expression="wink"
+      />
 
       <div className="space-y-5">
         {MBTI_GROUPS.map((group) => (
