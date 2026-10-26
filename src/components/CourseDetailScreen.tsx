@@ -6,6 +6,7 @@ import FavoriteButton from "@/components/FavoriteButton";
 import NaverMapView, { MapStop } from "@/components/NaverMapView";
 import PlaceDetailSheet, { DetailPlace } from "@/components/PlaceDetailSheet";
 import HoursStatusBadge from "@/components/HoursStatusBadge";
+import MascotSpot from "@/components/MascotSpot";
 import { RouteLink } from "@/components/RouteLinks";
 import { readCachedCourse } from "@/lib/courseCache";
 import {
@@ -261,9 +262,11 @@ function StopRow({
 function NotFound() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 text-center">
+      <MascotSpot expression="wow" size={56} className="mb-4" />
+      <h1 className="mb-2 text-xl font-bold">어라, 이 코스를 찾지 못했어요</h1>
       <p className="text-sm leading-relaxed text-[var(--color-muted)]">
-        이 코스를 찾지 못했어요. 추천 코스는 요청할 때마다 새로 만들어져서 브라우저를 다시 열면
-        사라져요. 마음에 드는 코스는 찜해 두면 언제든 다시 볼 수 있어요.
+        추천 코스는 요청할 때마다 새로 만들어져서 브라우저를 다시 열면 사라져요. 마음에 드는
+        코스는 찜해 두면 언제든 다시 볼 수 있어요.
       </p>
       <Link
         href="/"

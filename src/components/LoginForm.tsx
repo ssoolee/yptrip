@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { authErrorMessage } from "@/lib/auth/errors";
+import MascotSpot from "@/components/MascotSpot";
 
 type Mode = "signin" | "signup";
 
@@ -24,11 +25,14 @@ export default function LoginForm() {
 
   if (!configured) {
     return (
-      <p className="rounded-[var(--radius-card)] border border-dashed border-[var(--color-border)] p-6 text-sm text-[var(--color-muted)]">
-        Firebase 설정값(<code>NEXT_PUBLIC_FIREBASE_*</code>)이 없어 로그인을 사용할 수 없어요.
-        <br />
-        <code>.env.local</code>에 값을 채우면 바로 켜집니다.
-      </p>
+      <div className="rounded-[var(--radius-card)] border border-dashed border-[var(--color-border)] p-6 text-center">
+        <MascotSpot expression="calm" size={56} className="mb-3" />
+        <p className="text-sm text-[var(--color-muted)]">
+          Firebase 설정값(<code>NEXT_PUBLIC_FIREBASE_*</code>)이 없어 로그인을 사용할 수 없어요.
+          <br />
+          <code>.env.local</code>에 값을 채우면 바로 켜집니다.
+        </p>
+      </div>
     );
   }
 
