@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LOGIN_ENABLED } from "@/lib/featureFlags";
 
+// 로그인을 보류한 동안 '내정보'는 빼 둔다 — flex-1이라 남은 칸이 알아서 나눠 갖는다.
 const TABS = [
   { href: "/", label: "홈", emoji: "🏠" },
   { href: "/map", label: "지도", emoji: "🗺️" },
   { href: "/favorites", label: "찜", emoji: "❤️" },
-  { href: "/profile", label: "내정보", emoji: "👤" },
+  ...(LOGIN_ENABLED ? [{ href: "/profile", label: "내정보", emoji: "👤" }] : []),
 ];
 
 export default function BottomNav() {

@@ -14,6 +14,10 @@ import {
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { getFirebaseAuth, getFirebaseDb, isFirebaseConfigured } from "@/lib/firebase/client";
 import { attachFavoritesUser } from "@/lib/favorites";
+import { LOGIN_ENABLED } from "@/lib/featureFlags";
+
+// 로그인을 보류한 동안에는 인증을 붙이지 않는다 — 켜고 끄는 건 featureFlags.ts 한 줄.
+const authEnabled = LOGIN_ENABLED && isFirebaseConfigured;
 
 // docs/prd/06-infra-deployment-prd.md §2, docs/prd/04-favorites-prd.md §7 참조.
 // 로그인 상태는 Firebase Auth가 소유하고, 찜 저장소(favorites.ts)에는
@@ -33,13 +37,13 @@ const AuthContext = createContext<AuthState | null>(null);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(isFirebaseConfigured);
+  const [loading, setLoading] = useState(authEnabled);
   // User 객체는 프로필을 바꿔도 같은 참조가 유지돼 상태만으로는 리렌더가 걸리지
   // 않는다 — 표시 이름을 갱신한 뒤 이 값을 올려 다시 그린다.
   const [revision, setRevision] = useState(0);
 
   useEffect(() => {
-    if (!isFirebaseConfigured) return;
+    if (!authEnabled) return;
     return onAuthStateChanged(getFirebaseAuth(), (next) => {
       setUser(next);
       setLoading(false);
@@ -75,7 +79,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     () => ({
       user,
       loading,
-      configured: isFirebaseConfigured,
+      configured: authEnabled,
       signInWithGoogle,
       signInWithEmail,
       signUpWithEmail,

@@ -15,7 +15,7 @@
 | 프레임워크 | Next.js 16 (App Router, React 19, Server Actions) |
 | 스타일 | Tailwind CSS 4 |
 | LLM | Gemini(기본) / Anthropic Claude — `LLM_PROVIDER`로 전환 |
-| 인증 | Firebase Authentication (Google, 이메일/비밀번호) |
+| 인증 | Firebase Authentication (Google, 이메일/비밀번호) — **현재 보류, 화면에서 내려둠** |
 | DB | Cloud Firestore (찜 목록 동기화) |
 | 지도·검색 | Naver Cloud Platform Maps / API HUB 지역 검색, 공공데이터포털 TourAPI |
 | 배포 | Firebase App Hosting (백엔드 ID `yptrip`) |
@@ -82,7 +82,7 @@ TourAPI 항목이 있으면 함께 채운다(89곳). 어느 API에도 없는
 | `/map` | 지도 + 실시간 위치 |
 | `/pet-places` | 반려동물 동반 가능 업소 |
 | `/favorites` | 찜한 코스 / 장소 (탭) |
-| `/login`, `/profile` | 로그인 / 내 정보 |
+| `/login`, `/profile` | 로그인 / 내 정보 — **보류 중이라 404** (아래 "로그인 보류" 참조) |
 | (없는 주소) | 평안이 404 — `src/app/not-found.tsx` |
 
 ## 코드 구조
@@ -139,11 +139,35 @@ LLM 호출이 실패하면 규칙 기반 결과로 폴백한다.
 
 ## 찜(즐겨찾기) 동작
 
-찜은 코스 찜과 장소 찜 두 종류이고(찜 목록 화면의 탭), 비로그인 상태에서는
-`localStorage`에만 저장한다. 로그인하면 로컬 데이터를 `users/{uid}/favoriteCourses`와
+찜은 코스 찜과 장소 찜 두 종류다(찜 목록 화면의 탭). **로그인을 보류한 지금은
+`localStorage`에만 저장한다.**
+
+로그인을 다시 켜면, 로컬 데이터를 `users/{uid}/favoriteCourses`와
 `users/{uid}/favoritePlaces`로 한 번 병합한 뒤 Firestore를 기준으로 동기화한다
 (`src/lib/favorites.ts` — 두 종류가 같은 스토어 구현을 공유한다).
 보안 규칙은 `firestore.rules` — 사용자 문서는 본인만, 공용 참조 데이터는 읽기 전용.
+
+## 로그인 보류
+
+Firebase 인증과 카카오 로그인 연동을 보류하면서, 로그인 기능 전체를 화면에서
+내렸다. **코드는 지우지 않았다** — `src/lib/featureFlags.ts`의 `LOGIN_ENABLED`를
+`true`로 바꾸면 그대로 돌아온다.
+
+`false`일 때 달라지는 것:
+
+- 하단 내비에서 '내정보'가 빠져 3칸이 된다 (`BottomNav.tsx`)
+- `/login`·`/profile`은 `notFound()`로 404가 된다
+- 찜 목록의 로그인 유도 배너가 사라진다 — `configured`가 `false`가 되면서
+  `showLoginBanner` 조건이 저절로 꺼지는 것이라, 따로 가리지 않았다
+- `AuthProvider`가 Firebase 인증을 아예 붙이지 않는다. 찜의 Firestore 동기화는
+  이 Provider가 `attachFavoritesUser(uid)`를 부를 때만 켜지므로
+  (`src/lib/auth/AuthProvider.tsx`), `favorites.ts`는 손대지 않아도 함께 꺼진다
+
+이미 로그인해 둔 사용자의 세션은 무시되고 찜은 브라우저 저장분으로 돌아간다.
+Firestore에 있던 데이터는 지우지 않으므로 다시 켜면 그대로 돌아온다.
+
+`docs/prd/`는 카카오 로그인을 Must로 유지한다 — 요구사항이 바뀐 게 아니라
+일정이 미뤄진 것이다.
 
 ## 코스 저장
 
