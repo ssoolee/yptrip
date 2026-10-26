@@ -188,6 +188,35 @@ TTL 정책을 걸면 지난 코스가 자동으로 지워진다 (걸지 않으�
 Firebase App Hosting에 배포한다. 런타임 설정과 환경 변수 매핑은 `apphosting.yaml`,
 백엔드 지정은 `firebase.json`에 있다. 비공개 키는 파일에 적지 않고 Cloud Secret Manager를 참조한다.
 
+### 접속 주소
+
+| 주소 | 역할 |
+|---|---|
+| https://yptour.web.app | 외우기 쉬운 입구 — 실제 주소로 넘긴다(302) |
+| https://yptrip--ypcourse.asia-east1.hosted.app | 실제로 앱이 도는 곳 |
+
+`web.app`은 **Firebase Hosting**이 주는 주소이고 이 앱이 올라간 **App Hosting**은
+`*.hosted.app`만 준다 — 서로 다른 제품이라 `yptour.web.app`에서 앱을 직접 돌릴 수는
+없다(App Hosting 커스텀 도메인은 DNS를 가진 도메인만 붙일 수 있는데 `web.app`은
+구글 소유다). 그래서 `yptour`라는 Hosting 사이트를 따로 두고 모든 경로를 넘긴다
+— `firebase.json`의 `hosting` 블록이 그 역할이고, `hosting-redirect/`는
+그 사이트의 `public` 자리를 채우는 자리표시다(리다이렉트가 정적 파일보다 먼저
+적용되므로 평소엔 쓰이지 않는다).
+
+**301이 아니라 302를 쓴다** — 301은 브라우저가 오래 캐시해서, 나중에 진짜 도메인을
+붙이거나 방식을 바꿀 때 되돌리기 어렵다.
+
+주소창은 들어간 뒤 실제 주소로 바뀐다. 주소창까지 `yptour.web.app`으로 유지하려면
+도메인을 사서 App Hosting에 직접 붙여야 하고, 그때는 **네이버 지도 콘솔(앱 이름
+`ypgogo`)의 Web 서비스 URL에 새 도메인을 등록해야 지도가 뜬다.** 지금은 그 화면이
+`hosted.app`에서 그려지므로 등록이 필요 없다.
+
+리다이렉트 사이트만 따로 배포한다:
+
+```bash
+npx firebase-tools deploy --only hosting:yptour
+```
+
 ```bash
 npx firebase-tools apphosting:secrets:set <시크릿-이름>   # 키 등록
 npx firebase-tools deploy --only firestore                # 규칙·인덱스 배포
