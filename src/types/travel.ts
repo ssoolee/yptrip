@@ -2,12 +2,8 @@ export type Category = "restaurant" | "cafe" | "attraction" | "lodging";
 
 export type PresetType =
   | "solo"
-  | "couple"
-  | "family"
-  | "friends"
   | "pet"
   | "mbti"
-  | "festival"
   // 자연어 요청으로 만든 코스 (/course/search)
   | "custom";
 

@@ -1,7 +1,7 @@
 # 양평 AI 여행 코스 추천 (ypaicourse)
 
 양평군 맛집·카페·관광명소·숙소를 하나의 "코스"로 묶어 추천하는 모바일 우선 웹서비스.
-사용자가 자연어로 원하는 여행을 적거나 동행 유형(혼자/연인/가족/친구/반려동물/MBTI/축제)을
+사용자가 자연어로 원하는 여행을 적거나 동행 유형(혼자/반려동물/MBTI)을
 고르면, LLM 에이전트 파이프라인이 동선과 시간대를 고려한 1~2일 코스를 만들어
 지도·사진·연락처까지 한 화면에 보여준다.
 
@@ -17,7 +17,7 @@
 | LLM | Gemini(기본) / Anthropic Claude — `LLM_PROVIDER`로 전환 |
 | 인증 | Firebase Authentication (Google, 이메일/비밀번호) — **현재 보류, 화면에서 내려둠** |
 | DB | Cloud Firestore (찜 목록 동기화) |
-| 지도·검색 | Naver Cloud Platform Maps / API HUB 지역 검색, 공공데이터포털 TourAPI |
+| 지도·검색 | Naver Cloud Platform Maps / API HUB 지역·블로그 검색, 공공데이터포털 TourAPI |
 | 배포 | Firebase App Hosting (백엔드 ID `yptrip`) |
 
 ## 시작하기
@@ -61,7 +61,7 @@ TourAPI 항목이 있으면 함께 채운다(89곳). 어느 API에도 없는
 
 - **LLM** — `LLM_PROVIDER`(gemini|anthropic), `GEMINI_API_KEY`, `GEMINI_MODEL`,
   `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`
-- **지도/장소** — `NCP_MAP_CLIENT_ID`·`NCP_MAP_CLIENT_SECRET`(API HUB 지역 검색),
+- **지도/장소** — `NCP_MAP_CLIENT_ID`·`NCP_MAP_CLIENT_SECRET`(API HUB 지역·블로그 검색),
   `NCP_MAPS_API_KEY_ID`·`NCP_MAPS_API_KEY`(Geocoding·Directions),
   `NEXT_PUBLIC_NCP_MAP_CLIENT_ID`(브라우저 지도 SDK)
 - **공공 데이터** — `TOUR_API_KEY`(필수), `ODSAY_API_KEY`·`WEATHER_API_KEY`(선택)
@@ -77,13 +77,31 @@ TourAPI 항목이 있으면 함께 채운다(89곳). 어느 API에도 없는
 |---|---|
 | `/` | 평안이 히어로 + 자연어 검색창 + 동행 유형 프리셋 + 서비스 소개 3단계 |
 | `/course/search` | 자연어 요청 기반 코스 추천 결과 (당일치기/1박 탭) |
-| `/course/[preset]` | 프리셋별 코스 추천 결과 |
+| `/course/[preset]` | 유형별 코스 추천 결과 — `solo`·`pet`·`mbti`만, 나머지는 404 |
 | `/course/mbti`, `/course/mbti/[type]` | MBTI 유형 선택 및 큐레이션 코스 |
 | `/map` | 지도 + 실시간 위치 |
 | `/pet-places` | 반려동물 동반 가능 업소 |
 | `/favorites` | 찜한 코스 / 장소 (탭) |
 | `/login`, `/profile` | 로그인 / 내 정보 — **보류 중이라 404** (아래 "로그인 보류" 참조) |
 | (없는 주소) | 평안이 404 — `src/app/not-found.tsx` |
+
+## 코스 유형 3종
+
+홈의 유형 카드는 **혼자 여행 · 반려동물과 함께 · MBTI 성향별** 셋이다. 연인·가족·친구·
+축제는 화면에서 내렸다 — `src/lib/presets.ts`의 `PRESETS`에서 뺐고, 목록에 없는
+유형은 `/course/[preset]`이 `notFound()`로 404를 돌려준다.
+
+되살리려면 `PRESETS`에 항목을 다시 넣고 `PresetType`(`src/types/travel.ts`)에 그
+이름을 더하면 된다. 추천 엔진은 유형 이름을 따로 알지 못하고 `tags`만 보므로
+(`src/lib/agents/orchestrator.ts`) 그밖에 손댈 곳은 없다. 축제 연계만은 예외로,
+`tags`에 `"festival"`이 들어와야 TourAPI 축제 조회가 돌아가는데 그 태그를 넣던 것이
+축제 프리셋뿐이라 지금은 그 길이 잠들어 있다(코드는 그대로 둔 채 — `placeRetrieval.ts`).
+
+이미 찜해 둔 연인·가족·친구·축제 코스는 그대로 보인다. 찜은 코스 전체를 스냅샷으로
+저장하고(`src/lib/favorites.ts`) 화면에 유형 이름을 쓰지 않는다.
+
+자연어 검색창은 그대로다 — "연인과 조용한 뷰 카페"처럼 적으면 전과 같이 코스를 만든다.
+유형 카드를 줄인 것이지 추천 범위를 줄인 것이 아니다.
 
 ## 코드 구조
 
@@ -168,6 +186,39 @@ Firestore에 있던 데이터는 지우지 않으므로 다시 켜면 그대로 
 
 `docs/prd/`는 카카오 로그인을 Must로 유지한다 — 요구사항이 바뀐 게 아니라
 일정이 미뤄진 것이다.
+
+## 네이버 블로그 리뷰
+
+장소 상세 시트를 열면 그 장소의 **네이버 블로그 리뷰** 3건과 전체 건수를 보여준다
+(`src/components/PlaceReviews.tsx` → `loadPlaceReviews` 서버 액션 →
+`src/lib/api/naverBlogSearch.ts`).
+
+**평점(별점)과 플레이스 방문자 리뷰는 넣을 수 없다.** 네이버가 공개 API로 주지 않는다 —
+지역 검색 응답 필드는 title, link, category, description, telephone, address,
+roadAddress, mapx, mapy뿐이고(공식 문서와 2026-10 실측 일치) 평점·리뷰 수 필드가 없다.
+`sort=comment`로 "블로그·카페 리뷰 많은 순" 정렬만 할 수 있고 그 개수는 응답에 오지
+않는다. 그래서 공식 API로 받을 수 있는 블로그 리뷰로 대신한다 — PRD-03 오픈 이슈에
+적혀 있던 방향이다. `Place.rating` 필드와 상세 시트의 ⭐ 자리는 그대로 두었다(채우는
+곳이 없어 지금은 비어 있다).
+
+쓰려면 **NCP 콘솔에서 API HUB '블로그 검색'을 애플리케이션에 추가**해야 한다. 지역 검색만
+구독된 키로는 `401 "요청한 API는 이 Application에서 활성화되어 있지 않습니다."`가 오고,
+그때는 리뷰 영역이 조용히 빠진다(키 없음·결과 없음도 같다). 하루 한도는 25,000회이고,
+같은 장소를 여러 번 열어도 호출을 아끼려고 지역 검색·TourAPI와 같은 6시간 캐시를 쓴다.
+
+검색어는 `"양평 {장소명} 후기"`다. "양평"은 전국의 같은 이름을 걸러내고, "후기"는
+방문기가 아닌 글을 밀어낸다 — `"양평 두물머리"`의 상위 3건에는 살인사건 기사가 있었는데
+`"양평 두물머리 후기"`로는 10건 모두 방문기였다(2026-10 실측).
+
+받은 10건을 두 번 거른 뒤 3건을 보여준다: **글이 장소 이름을 한 번이라도 적었는지**
+(띄어쓰기는 무시한다 — 블로그는 "하우스베이커리"처럼 붙여 쓴다), 그리고 사건·사고
+낱말이 들어 있지 않은지. 두 번째는 "후기"를 붙인 뒤로 걸린 적이 없지만, 한 번 새면
+관광지 소개 옆에 사건 기사가 붙으므로 그물을 하나 더 둔 것이다. 남는 글이 없으면
+영역을 접는다.
+
+그래도 블로그 글이라 장소와 느슨하게만 엮인 글이 남을 수 있다 — 블로그에 거의 안
+올라오는 곳이 그렇다(실측: 지평레포츠공원은 전체 48건뿐이라 개인 일기가 남는다).
+제목에 "블로그 리뷰"라고 적어 출처를 밝히는 이유다.
 
 ## 코스 저장
 

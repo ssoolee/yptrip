@@ -16,13 +16,15 @@ import { PLACE_TAGS, isPlaceTag } from "@/lib/placeTags";
 import { RouteButtons } from "@/components/RouteLinks";
 import HoursStatusBadge from "@/components/HoursStatusBadge";
 import FavoritePlaceButton from "@/components/FavoritePlaceButton";
+import PlaceReviews from "@/components/PlaceReviews";
 import { ItineraryStop, Place } from "@/types/travel";
 
 // 코스 스팟(시간대·추천 이유 포함)과 일반 장소를 모두 받는다.
 export type DetailPlace = Place & Partial<Pick<ItineraryStop, "timeSlot" | "reason">>;
 
 // PRD-03 §4 — 모바일은 바텀시트, 데스크톱(sm 이상)은 오른쪽 사이드 패널.
-// 정보 우선순위: 사진 → 이름/카테고리 → 영업상태 → 주소/전화 → 리뷰 요약 → 지도 링크.
+// 정보 우선순위: 사진 → 이름/카테고리 → 영업상태 → 주소/전화 → 리뷰 요약 →
+// 네이버 블로그 리뷰 → 지도 링크.
 export default function PlaceDetailSheet({ place, onClose }: { place: DetailPlace; onClose: () => void }) {
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -127,6 +129,8 @@ export default function PlaceDetailSheet({ place, onClose }: { place: DetailPlac
               {place.reason ?? place.reviewSummary}
             </p>
           )}
+
+          <PlaceReviews key={place.name} placeName={place.name} />
 
           {tags.length > 0 && (
             <ul className="mt-3 flex flex-wrap gap-1.5">
