@@ -45,19 +45,40 @@ export function formatPostDate(postdate: string | undefined): string {
   return `${postdate.slice(0, 4)}.${postdate.slice(4, 6)}.${postdate.slice(6, 8)}`;
 }
 
-// 장소 이름만으로 검색하면 전국의 같은 이름이 섞이므로 지역명을 붙인다.
-// 지역 검색(searchNaverPlaces)도 "양평 {읍·면} {키워드}"로 같은 방식을 쓴다.
+// "양평"을 붙이는 건 전국의 같은 이름을 걸러내기 위해서고(지역 검색도 같은 방식),
+// "후기"를 붙이는 건 방문기가 아닌 글을 밀어내기 위해서다. 실측 비교(2026-10):
+// "양평 두물머리"의 상위 3건에는 살인사건 기사가 들어 있었는데 "양평 두물머리
+// 후기"로는 10건 모두 방문기였다. 지역명 없이 "{이름} 방문 후기"로 하면 광주·부산
+// 같은 다른 지역 글이 섞인다.
 export function reviewQuery(placeName: string): string {
-  return `양평 ${placeName.trim()}`.slice(0, 80);
+  return `양평 ${placeName.trim()} 후기`.slice(0, 80);
 }
+
+// 보여줄 수보다 넉넉히 받아 거른 뒤 앞에서 자른다.
+const CANDIDATE_COUNT = 10;
+
+// 여행 코스 옆에 둘 수 없는 글. "후기"를 붙인 뒤로는 상위에 올라오지 않지만,
+// 한 번 새면 관광지 소개 옆에 사건 기사가 붙으므로 그물을 하나 더 둔다.
+const BLOCKED_WORDS = /살인|사건|부검|실종|검거|폭행|사망|화재|압수|구속|피의자|성범죄|마약/;
+
+// 띄어쓰기를 지워 비교한다 — 블로그 제목은 "하우스베이커리"처럼 붙여 쓰는 일이 잦다.
+const squash = (text: string) => text.replace(/\s+/g, "");
 
 export function blogSearchUrl(placeName: string): string {
   return `https://search.naver.com/search.naver?ssc=tab.blog.all&query=${encodeURIComponent(reviewQuery(placeName))}`;
 }
 
-export function toReviews(items: NaverBlogItem[], count: number): BlogReview[] {
+export function toReviews(items: NaverBlogItem[], count: number, placeName = ""): BlogReview[] {
+  const needle = squash(placeName);
   return items
     .filter((item) => item.title && item.link)
+    .filter((item) => {
+      const text = `${item.title ?? ""} ${item.description ?? ""}`;
+      // 검색어가 장소를 가리켰다고 해서 글이 그 장소 얘기라는 보장은 없다 —
+      // 이름을 한 번도 적지 않은 글은 뺀다(띄어쓰기는 무시: "하우스베이커리").
+      if (needle && !squash(text).includes(needle)) return false;
+      return !BLOCKED_WORDS.test(text);
+    })
     .slice(0, count)
     .map((item) => ({
       title: stripHtml(item.title ?? ""),
@@ -82,7 +103,7 @@ export async function searchBlogReviews(
 
   const query = reviewQuery(placeName);
   try {
-    const qs = new URLSearchParams({ query, display: String(count), sort: "sim" });
+    const qs = new URLSearchParams({ query, display: String(CANDIDATE_COUNT), sort: "sim" });
     const res = await fetch(`${BLOG_SEARCH_URL}?${qs.toString()}`, {
       headers,
       // 블로그 글은 자주 늘지 않고, 같은 장소를 여러 번 열어도 호출을 아끼려고
@@ -94,7 +115,7 @@ export async function searchBlogReviews(
       return null;
     }
     const data = await res.json();
-    const reviews = toReviews(Array.isArray(data?.items) ? data.items : [], count);
+    const reviews = toReviews(Array.isArray(data?.items) ? data.items : [], count, placeName);
     if (reviews.length === 0) return null;
     return {
       total: typeof data?.total === "number" ? data.total : reviews.length,

@@ -12,15 +12,15 @@ test("날짜 형식이 아니면 빈 문자열 — 화면에서 빠진다", () =
   assert.equal(formatPostDate("2026-10-27"), "");
 });
 
-test("검색어에 지역명을 붙인다 — 전국의 같은 이름이 섞이지 않게", () => {
-  assert.equal(reviewQuery("테라로사"), "양평 테라로사");
-  assert.equal(reviewQuery("  두물머리  "), "양평 두물머리");
+test("검색어에 지역명과 '후기'를 붙인다 — 다른 지역·방문기 아닌 글을 밀어낸다", () => {
+  assert.equal(reviewQuery("테라로사"), "양평 테라로사 후기");
+  assert.equal(reviewQuery("  두물머리  "), "양평 두물머리 후기");
 });
 
 test("검색 링크는 블로그 탭으로 열고 검색어를 인코딩한다", () => {
   const url = blogSearchUrl("테라로사");
   assert.ok(url.startsWith("https://search.naver.com/search.naver?ssc=tab.blog.all&query="));
-  assert.ok(url.endsWith(encodeURIComponent("양평 테라로사")));
+  assert.ok(url.endsWith(encodeURIComponent("양평 테라로사 후기")));
 });
 
 test("<b> 강조와 HTML 엔티티를 벗겨 낸다", () => {
@@ -118,8 +118,9 @@ test("성공 응답을 리뷰 목록으로 조립한다", async () => {
     assert.ok(requested.includes("/search/v1/blog?"));
     // URLSearchParams는 공백을 "+"로 적는다 — 쿼리 문자열에서 유효한 공백 표현이다.
     const sent = new URL(requested).searchParams;
-    assert.equal(sent.get("query"), "양평 두물머리 카페");
-    assert.equal(sent.get("display"), "3");
+    assert.equal(sent.get("query"), "양평 두물머리 카페 후기");
+    // 걸러낼 것을 감안해 보여줄 3건보다 넉넉히 받는다.
+    assert.equal(sent.get("display"), "10");
     assert.equal(sent.get("sort"), "sim");
   } finally {
     restore();
@@ -168,4 +169,32 @@ test("키가 없으면 호출조차 하지 않는다", async () => {
   } finally {
     restore();
   }
+});
+
+test("장소 이름을 한 번도 적지 않은 글은 버린다 — 띄어쓰기는 무시", () => {
+  const items = [
+    { title: "양평 <b>하우스베이커리</b> 다녀왔어요", link: "https://blog.naver.com/a/1", description: "" },
+    { title: "경기도 산", link: "https://blog.naver.com/a/2", description: "등산 기록입니다" },
+    { title: "양평 나들이", link: "https://blog.naver.com/a/3", description: "하우스 베이커리에서 빵을 샀다" },
+  ];
+  const reviews = toReviews(items, 3, "하우스 베이커리");
+  assert.deepEqual(
+    reviews.map((r) => r.link),
+    ["https://blog.naver.com/a/1", "https://blog.naver.com/a/3"],
+  );
+});
+
+test("사건·사고 글은 이름이 맞아도 버린다 — 여행 코스 옆에 둘 수 없다", () => {
+  const items = [
+    { title: "양평 두물머리 살인사건, 사건의 전말", link: "https://blog.naver.com/a/1", description: "두물머리" },
+    { title: "양평 두물머리 연핫도그 후기", link: "https://blog.naver.com/a/2", description: "두물머리 맛집" },
+  ];
+  const reviews = toReviews(items, 3, "두물머리");
+  assert.equal(reviews.length, 1);
+  assert.equal(reviews[0].title, "양평 두물머리 연핫도그 후기");
+});
+
+test("장소 이름을 넘기지 않으면 이름 검사는 건너뛴다", () => {
+  const reviews = toReviews([{ title: "아무 글", link: "https://blog.naver.com/a/1" }], 3);
+  assert.equal(reviews.length, 1);
 });
