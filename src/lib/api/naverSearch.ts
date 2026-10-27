@@ -1,5 +1,6 @@
 import { Category, Place } from "@/types/travel";
 import { getNcpApiHeaders } from "@/lib/api/ncpMap";
+import { stripHtml } from "@/lib/api/naverSearchText";
 
 // docs/prd/07-external-api-integration.md "장소 검색", docs/agents/02-place-retrieval-agent.md 참조.
 // 네이버 지역 검색 — 개발자센터가 2026-07-31부로 신규 발급을 종료해 NCP의
@@ -19,6 +20,10 @@ const QUERY_KEYWORD: Partial<Record<Category, string>> = {
   restaurant: "맛집",
 };
 
+// 응답에 평점·리뷰 수·리뷰 내용 필드는 없다 (공식 문서 + 2026-10 실측). 플레이스
+// 리뷰는 src/lib/api/naverBlogSearch.ts의 블로그 검색으로 대신한다.
+// link는 업체 홈페이지 주소로, 대부분 빈 문자열이고 네이버 플레이스 주소가 아니다
+// (실측: "스타벅스 더양평DT점" → starbucks.co.kr, 개인 업체 → ""). description도 빈 값.
 interface NaverLocalItem {
   title: string;
   category?: string;
@@ -49,17 +54,6 @@ async function searchLocal(query: string): Promise<NaverLocalItem[]> {
   } catch {
     return [];
   }
-}
-
-function stripHtml(text: string): string {
-  return text
-    .replace(/<[^>]+>/g, "")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .trim();
 }
 
 // 네이버 업종 문자열(예: "음식점>카페,디저트", "한식>칼국수,만두")로 카테고리 판별.

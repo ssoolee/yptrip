@@ -17,7 +17,7 @@
 | LLM | Gemini(기본) / Anthropic Claude — `LLM_PROVIDER`로 전환 |
 | 인증 | Firebase Authentication (Google, 이메일/비밀번호) — **현재 보류, 화면에서 내려둠** |
 | DB | Cloud Firestore (찜 목록 동기화) |
-| 지도·검색 | Naver Cloud Platform Maps / API HUB 지역 검색, 공공데이터포털 TourAPI |
+| 지도·검색 | Naver Cloud Platform Maps / API HUB 지역·블로그 검색, 공공데이터포털 TourAPI |
 | 배포 | Firebase App Hosting (백엔드 ID `yptrip`) |
 
 ## 시작하기
@@ -61,7 +61,7 @@ TourAPI 항목이 있으면 함께 채운다(89곳). 어느 API에도 없는
 
 - **LLM** — `LLM_PROVIDER`(gemini|anthropic), `GEMINI_API_KEY`, `GEMINI_MODEL`,
   `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`
-- **지도/장소** — `NCP_MAP_CLIENT_ID`·`NCP_MAP_CLIENT_SECRET`(API HUB 지역 검색),
+- **지도/장소** — `NCP_MAP_CLIENT_ID`·`NCP_MAP_CLIENT_SECRET`(API HUB 지역·블로그 검색),
   `NCP_MAPS_API_KEY_ID`·`NCP_MAPS_API_KEY`(Geocoding·Directions),
   `NEXT_PUBLIC_NCP_MAP_CLIENT_ID`(브라우저 지도 SDK)
 - **공공 데이터** — `TOUR_API_KEY`(필수), `ODSAY_API_KEY`·`WEATHER_API_KEY`(선택)
@@ -186,6 +186,28 @@ Firestore에 있던 데이터는 지우지 않으므로 다시 켜면 그대로 
 
 `docs/prd/`는 카카오 로그인을 Must로 유지한다 — 요구사항이 바뀐 게 아니라
 일정이 미뤄진 것이다.
+
+## 네이버 블로그 리뷰
+
+장소 상세 시트를 열면 그 장소의 **네이버 블로그 리뷰** 3건과 전체 건수를 보여준다
+(`src/components/PlaceReviews.tsx` → `loadPlaceReviews` 서버 액션 →
+`src/lib/api/naverBlogSearch.ts`).
+
+**평점(별점)과 플레이스 방문자 리뷰는 넣을 수 없다.** 네이버가 공개 API로 주지 않는다 —
+지역 검색 응답 필드는 title, link, category, description, telephone, address,
+roadAddress, mapx, mapy뿐이고(공식 문서와 2026-10 실측 일치) 평점·리뷰 수 필드가 없다.
+`sort=comment`로 "블로그·카페 리뷰 많은 순" 정렬만 할 수 있고 그 개수는 응답에 오지
+않는다. 그래서 공식 API로 받을 수 있는 블로그 리뷰로 대신한다 — PRD-03 오픈 이슈에
+적혀 있던 방향이다. `Place.rating` 필드와 상세 시트의 ⭐ 자리는 그대로 두었다(채우는
+곳이 없어 지금은 비어 있다).
+
+쓰려면 **NCP 콘솔에서 API HUB '블로그 검색'을 애플리케이션에 추가**해야 한다. 지역 검색만
+구독된 키로는 `401 "요청한 API는 이 Application에서 활성화되어 있지 않습니다."`가 오고,
+그때는 리뷰 영역이 조용히 빠진다(키 없음·결과 없음도 같다). 하루 한도는 25,000회이고,
+같은 장소를 여러 번 열어도 호출을 아끼려고 지역 검색·TourAPI와 같은 6시간 캐시를 쓴다.
+
+검색어는 `"양평 {장소명}"`이다 — 이름만으로 찾으면 전국의 같은 이름이 섞인다. 블로그
+글이라 장소와 무관한 글이 섞일 수 있어, 제목에 "블로그 리뷰"라고 적어 출처를 밝힌다.
 
 ## 코스 저장
 
