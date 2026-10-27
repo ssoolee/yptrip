@@ -10,7 +10,7 @@ export default function PresetGrid() {
         <Mascot expression="smile" size={24} />
         유형으로 골라볼까요?
       </h2>
-      <div className="flex gap-3 overflow-x-auto px-4 pb-2 sm:grid sm:grid-cols-3 sm:overflow-visible md:grid-cols-4">
+      <div className="flex gap-3 overflow-x-auto px-4 pb-2 sm:grid sm:grid-cols-3 sm:overflow-visible">
         {PRESETS.map((preset) => (
           <Link
             key={preset.type}

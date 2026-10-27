@@ -39,7 +39,7 @@ function scorePlace(place: Place, tags: string[]): number {
 // 후보 풀 = ① 스냅샷(src/lib/data/places.json — LLM 태그가 붙은 실제 장소)을
 // 취향 태그 점수순으로, 점수가 같으면 영업시간을 아는 곳(HOURS_KNOWN_BONUS)이 먼저,
 // 그래도 같으면 원래 순서(네이버 리뷰 많은 순/TourAPI 인기순)대로
-// ② 진행 중 축제(festival 프리셋) ③ 스냅샷에 없는 실시간 조회 결과(태그 없음).
+// ② 진행 중 축제("festival" 태그 — 아래 참조) ③ 스냅샷에 없는 실시간 조회 결과(태그 없음).
 // offset은 "더 보기" 요청 시 다른 후보를 앞으로 돌리는 데 쓴다.
 //
 // 반려동물 동반은 스냅샷에서 petFriendly인 곳만 쓴다 — 소개글에 동반 가능이 명시된 곳과
@@ -62,9 +62,12 @@ export async function retrievePlaces(params: {
     .filter((p) => (requirePetFriendly ? p.petFriendly === true : true))
     .map((place) => ({ place, score: scorePlace(place, tags) }));
 
-  // "festival" 프리셋(관광지 카테고리)은 TourAPI searchFestival2의 실제 진행 중
-  // 축제를 후보에 섞는다 (축제 API가 "festival" 태그를 붙여 줌).
+  // 태그에 "festival"이 있으면(관광지 카테고리) TourAPI searchFestival2의 실제 진행
+  // 중인 축제를 후보에 섞는다 (축제 API가 "festival" 태그를 붙여 줌).
   // docs/prd/07-external-api-integration.md §3 "축제 캘린더 데이터 소스" 해소책.
+  // 축제 프리셋을 화면에서 내린 뒤로 이 태그를 넣는 호출자가 없어 지금은 지나간다
+  // — PLACE_TAGS에 없는 태그라 자연어 해석 결과로도 들어오지 않는다. 프리셋을
+  // 되살려 tags에 "festival"을 다시 넣으면 그대로 동작한다.
   if (category === "attraction" && tags.includes("festival") && !requirePetFriendly) {
     const festivals = await getActiveFestivals();
     const known = new Set([...excluded, ...scored.map((s) => s.place.placeId)]);
