@@ -243,26 +243,33 @@ Firebase App Hosting에 배포한다. 런타임 설정과 환경 변수 매핑�
 
 | 주소 | 역할 |
 |---|---|
-| https://yptour.web.app | 외우기 쉬운 입구 — 실제 주소로 넘긴다(302) |
-| https://yptrip--ypcourse.asia-east1.hosted.app | 실제로 앱이 도는 곳 |
+| https://yptour.web.app | 외우기 쉬운 입구 — 열면 아래 주소로 넘어간다(주소창도 바뀐다) |
+| https://yptrip--ypcourse.asia-east1.hosted.app | 실제 서비스 주소 |
 
 `web.app`은 **Firebase Hosting**이 주는 주소이고 이 앱이 올라간 **App Hosting**은
-`*.hosted.app`만 준다 — 서로 다른 제품이라 `yptour.web.app`에서 앱을 직접 돌릴 수는
-없다(App Hosting 커스텀 도메인은 DNS를 가진 도메인만 붙일 수 있는데 `web.app`은
-구글 소유다). 그래서 `yptour`라는 Hosting 사이트를 따로 두고 모든 경로를 넘긴다
-— `firebase.json`의 `hosting` 블록이 그 역할이고, `hosting-redirect/`는
-그 사이트의 `public` 자리를 채우는 자리표시다(리다이렉트가 정적 파일보다 먼저
-적용되므로 평소엔 쓰이지 않는다).
+`*.hosted.app`만 준다. `web.app`은 구글 소유라 DNS 레코드를 넣을 수 없어 App Hosting
+커스텀 도메인으로 붙일 수도 없다. 그래서 `yptour`라는 Hosting 사이트를 따로 두고
+모든 경로를 `hosting.redirects`로 넘긴다.
 
-**301이 아니라 302를 쓴다** — 301은 브라우저가 오래 캐시해서, 나중에 진짜 도메인을
-붙이거나 방식을 바꿀 때 되돌리기 어렵다.
+**주소창을 유지하는 rewrite는 지금 쓸 수 없다.** Hosting의 `rewrites`에는 App Hosting을
+가리키는 항목이 없고(`destination`·`function`·`run`·`dynamicLinks`뿐), `run`으로 App
+Hosting이 쓰는 Cloud Run 서비스(`yptrip`)를 직접 가리키면 **403 Forbidden**이 돌아온다
+— 그 서비스가 인증 없는 호출을 받지 않기 때문이다(2026-10-27 실측: Hosting은 정상
+동작해 `/.gitkeep`은 200, `/`만 Google Frontend 403). 쓰려면 Cloud Run 콘솔에서
+`yptrip` 서비스에 `allUsers`의 **Cloud Run 호출자(Invoker)** 권한을 줘야 하는데,
+그러면 (1) `run.app` 원본 주소도 누구나 열 수 있게 되고 (2) App Hosting이 앞에 둔 CDN을
+건너뛰어 느려지며 (3) App Hosting이 다시 배포될 때 권한이 되돌아갈 수 있다.
+그 값을 치를 만해지기 전까지는 리다이렉트로 둔다.
 
-주소창은 들어간 뒤 실제 주소로 바뀐다. 주소창까지 `yptour.web.app`으로 유지하려면
-도메인을 사서 App Hosting에 직접 붙여야 하고, 그때는 **네이버 지도 콘솔(앱 이름
-`ypgogo`)의 Web 서비스 URL에 새 도메인을 등록해야 지도가 뜬다.** 지금은 그 화면이
-`hosted.app`에서 그려지므로 등록이 필요 없다.
+`hosting-redirect/`에는 `index.html` 한 장만 둔다. 리다이렉트 규칙이 정적 파일보다
+먼저 적용되므로 평소에는 쓰이지 않고, 규칙이 잘못됐을 때를 위한 안전망이다.
 
-리다이렉트 사이트만 따로 배포한다:
+**네이버 지도 콘솔(앱 이름 `ypgogo`)에는 `https://yptrip--ypcourse.asia-east1.hosted.app`이
+등록되어 있어야 지도가 뜬다** — 지도는 리다이렉트가 끝난 이 주소에서 그려진다.
+`https://yptour.web.app`도 등록해 뒀지만, 리다이렉트를 쓰는 동안에는 쓰이지 않는다.
+
+입구 사이트(`yptour`)만 따로 배포한다 — `firebase.json`의 `hosting` 블록을 바꿨을 때만
+필요하고, 앱 코드 배포와는 별개다:
 
 ```bash
 npx firebase-tools deploy --only hosting:yptour
@@ -273,7 +280,16 @@ npx firebase-tools apphosting:secrets:set <시크릿-이름>   # 키 등록
 npx firebase-tools deploy --only firestore                # 규칙·인덱스 배포
 ```
 
-App Hosting은 GitHub 연동 시 푸시마다 자동 빌드된다. 상세는
+**이 백엔드는 GitHub에 연결되어 있지 않다 — `main`에 머지해도 저절로 배포되지 않는다.**
+App Hosting은 GitHub를 연결하면 푸시마다 자동 빌드하지만, 이 백엔드는 CLI로 만들어져
+(`deployment-tool: cli-firebase`) 아래 명령으로 직접 올려야 한다. 2026-09-28 빌드가
+한 달 동안 그대로 서비스되다 2026-10-27에야 밀린 47개 커밋이 한꺼번에 올라갔다.
+
+```bash
+npx firebase-tools deploy --only apphosting      # 앱 본체 배포
+```
+
+콘솔에서 백엔드에 저장소를 연결하면 자동 배포로 바꿀 수 있다. 상세는
 [docs/prd/06-infra-deployment-prd.md](./docs/prd/06-infra-deployment-prd.md) 참조.
 
 ## 문서
